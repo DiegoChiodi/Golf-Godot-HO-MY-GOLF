@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://b2sev4k5gg2vo" path="res://Scripts/PlayerBody.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://dm6a1033mwi3q" path="res://Art assets/player.png" id="1_rpqav"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(9, 6.25)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhhdu"]
 atlas = ExtResource("1_rpqav")
 region = Rect2(0, 32, 16, 16)
@@ -46,7 +43,7 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("1_rpqav")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5ixxa"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyqiw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -94,19 +91,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
+size = Vector2(9, 6.25)
 
-[node name="PlayerBody" type="CharacterBody2D" parent="."]
+[node name="PlayerBody" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_kyqiw")
 
-[node name="CollisorPlayer" type="CollisionShape2D" parent="PlayerBody"]
-position = Vector2(0.5, 4.125)
-shape = SubResource("RectangleShape2D_kyqiw")
-
-[node name="Animation" type="AnimatedSprite2D" parent="PlayerBody"]
+[node name="Animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
-sprite_frames = SubResource("SpriteFrames_5ixxa")
+sprite_frames = SubResource("SpriteFrames_kyqiw")
 animation = &"RunX"
 autoplay = "RunX"
-frame_progress = 0.180727
+
+[node name="CollisorPlayer" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 4.125)
+shape = SubResource("RectangleShape2D_gntrk")
