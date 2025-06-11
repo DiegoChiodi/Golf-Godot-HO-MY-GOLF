@@ -6,6 +6,8 @@ extends CharacterBody2D
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 @onready var animation_sprite := $Animation as AnimatedSprite2D
 
+# No script do player (opcional):
+
 func _physics_process(delta):
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = velocity.lerp(input_direction * speed, acceleration)

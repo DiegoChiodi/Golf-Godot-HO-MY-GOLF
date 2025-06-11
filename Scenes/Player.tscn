@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpa3p06mjob4u"]
+[gd_scene load_steps=16 format=3 uid="uid://bpa3p06mjob4u"]
 
 [ext_resource type="Script" uid="uid://b2sev4k5gg2vo" path="res://Scripts/PlayerBody.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://dm6a1033mwi3q" path="res://Art assets/player.png" id="1_rpqav"]
@@ -92,18 +92,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
-size = Vector2(9, 6.25)
+size = Vector2(9, 6)
 
-[node name="PlayerBody" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
+
+[node name="PlayerBody" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 script = ExtResource("1_kyqiw")
 
-[node name="Animation" type="AnimatedSprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_kyqiw")
 animation = &"RunX"
 autoplay = "RunX"
 
-[node name="CollisorPlayer" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 4.125)
+[node name="CollisorPlayer" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2(0.5, 4)
 shape = SubResource("RectangleShape2D_gntrk")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
+shape = SubResource("RectangleShape2D_kyqiw")
