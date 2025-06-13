@@ -107,4 +107,4 @@ script = SubResource("GDScript_5nsto")
 position = Vector2(-23, 68)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_gjpho")]
-position = Vector2(107, 111)
+position = Vector2(-8, 61)

@@ -9,7 +9,8 @@ size = Vector2(39.5, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0d8i"]
 radius = 45.0444
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CartBody" type="CharacterBody2D"]
+rotation = -6.28319
 script = ExtResource("1_l0d8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,3 +30,4 @@ offset_right = 40.0
 offset_bottom = 20.0
 
 [connection signal="area_entered" from="IntercatArea" to="IntercatArea" method="_on_area_entered"]
+[connection signal="area_exited" from="IntercatArea" to="IntercatArea" method="_on_area_exited"]
