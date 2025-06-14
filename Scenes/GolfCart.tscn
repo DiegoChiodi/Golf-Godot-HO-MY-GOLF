@@ -4,17 +4,18 @@
 [ext_resource type="Script" uid="uid://coy4gdgw2l40s" path="res://Scripts/IntercatArea.gd" id="2_qvra7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxk7d"]
-size = Vector2(39.5, 20)
+size = Vector2(40, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0d8i"]
 radius = 45.0444
 
 [node name="CartBody" type="CharacterBody2D"]
+position = Vector2(-104, -52)
 rotation = -6.28319
 script = ExtResource("1_l0d8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20.25, 10)
+position = Vector2(20, 10.5)
 shape = SubResource("RectangleShape2D_sxk7d")
 
 [node name="IntercatArea" type="Area2D" parent="."]
