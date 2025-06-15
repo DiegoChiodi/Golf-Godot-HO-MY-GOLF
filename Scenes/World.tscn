@@ -97,7 +97,6 @@ tile_set = SubResource("TileSet_hh5uf")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(-130, 20)
-rotation = 6.28319
 zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = 0

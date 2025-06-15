@@ -10,21 +10,12 @@ var exit = false
 
 @onready var ani := $Animation as AnimatedSprite2D
 
-@onready var line = Line2D.new()
-var points = []
-var width = 4
-
-func _ready() -> void:
-	points.clear()
-	add_child(line)
-	
 func _physics_process(delta: float) -> void:
 	if toRide:
 		driving(delta)
 		player.position.x = position.x
 		player.position.y = position.y
 		player.visible = false
-		
 		
 	else:
 		if exit:
