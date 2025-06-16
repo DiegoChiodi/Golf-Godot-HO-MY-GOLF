@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2sev4k5gg2vo" path="res://Scripts/PlayerBody.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://dm6a1033mwi3q" path="res://Art assets/player.png" id="1_rpqav"]
-[ext_resource type="PackedScene" uid="uid://bm6utctwoid1i" path="res://Scenes/GolfClub.tscn" id="3_gntrk"]
+[ext_resource type="PackedScene" uid="uid://c0fsg16lr8iy2" path="res://Scenes/GolfClub.tscn" id="3_gntrk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhhdu"]
 atlas = ExtResource("1_rpqav")

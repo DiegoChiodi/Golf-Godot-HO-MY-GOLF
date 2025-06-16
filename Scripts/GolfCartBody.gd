@@ -2,14 +2,33 @@ extends CharacterBody2D
 
 @onready var player := get_node("../Player")  # Ajuste o caminho conforme necessário
 var direction := Vector2.ZERO
-var rotation_speed = 2
+var rotation_speed = 2.5
 
 var toRide = false
 const speed = 1
 var exit = false
 
-@onready var ani := $Animation as AnimatedSprite2D
+@onready var spr := $spr_golfCart as Sprite2D
+@onready var lbl_debug: Label = $lbl_debug
 
+enum State {
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+}
+var state = State.RIGHT
+
+@onready var angle = 0
+
+func _process(delta: float) -> void:
+	rotation_degrees = int(rotation_degrees) % 360
+	angle = rotation_degrees
+	if (0 > angle):
+		angle += 360
+	
+	lbl_debug.text = "%.2f" % angle  # Ex.: "90.00" ou "45.50"
+	
 func _physics_process(delta: float) -> void:
 	if toRide:
 		driving(delta)

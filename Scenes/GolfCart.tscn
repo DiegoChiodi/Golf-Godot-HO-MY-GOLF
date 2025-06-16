@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://oxhjgdfmxxch"]
+[gd_scene load_steps=6 format=3 uid="uid://oxhjgdfmxxch"]
 
 [ext_resource type="Script" uid="uid://cjpue2p51mceo" path="res://Scripts/GolfCartBody.gd" id="1_l0d8i"]
 [ext_resource type="Script" uid="uid://coy4gdgw2l40s" path="res://Scripts/IntercatArea.gd" id="2_qvra7"]
@@ -10,47 +10,7 @@ size = Vector2(36, 19)
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0d8i"]
 radius = 45.0444
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5mk7u"]
-atlas = ExtResource("3_5mk7u")
-region = Rect2(20, 0, 20, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1r8ac"]
-atlas = ExtResource("3_5mk7u")
-region = Rect2(0, 0, 20, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtrfp"]
-atlas = ExtResource("3_5mk7u")
-region = Rect2(40, 0, 20, 25)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qvra7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5mk7u")
-}],
-"loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1r8ac")
-}],
-"loop": true,
-"name": &"right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gtrfp")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
-
 [node name="CartBody" type="CharacterBody2D"]
-rotation = -6.28319
 script = ExtResource("1_l0d8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -71,13 +31,18 @@ offset_right = 18.0
 offset_bottom = 13.0
 scale = Vector2(0.992026, 0.846752)
 
-[node name="Animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(8.93276e-06, -2)
-sprite_frames = SubResource("SpriteFrames_qvra7")
-animation = &"right"
-autoplay = "right"
-
 [node name="CarTrail" type="Line2D" parent="."]
+
+[node name="spr_golfCart" type="Sprite2D" parent="."]
+position = Vector2(1.00002, -4)
+texture = ExtResource("3_5mk7u")
+hframes = 5
+
+[node name="lbl_debug" type="Label" parent="."]
+offset_left = -19.0
+offset_top = 10.9999
+offset_right = 21.0
+offset_bottom = 33.9999
 
 [connection signal="area_entered" from="IntercatArea" to="IntercatArea" method="_on_area_entered"]
 [connection signal="area_exited" from="IntercatArea" to="IntercatArea" method="_on_area_exited"]
