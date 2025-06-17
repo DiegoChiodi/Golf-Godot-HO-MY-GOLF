@@ -117,4 +117,5 @@ shape = SubResource("RectangleShape2D_gntrk")
 shape = SubResource("RectangleShape2D_kyqiw")
 
 [node name="GolfClub" parent="." instance=ExtResource("3_gntrk")]
+visible = false
 position = Vector2(-1, 18)
