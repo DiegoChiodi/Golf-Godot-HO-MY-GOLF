@@ -39,6 +39,7 @@ texture = ExtResource("3_5mk7u")
 hframes = 5
 
 [node name="lbl_debug" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
 offset_left = -19.0
 offset_top = 10.9999
 offset_right = 21.0
