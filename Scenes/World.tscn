@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://dmlcaxedukan0"]
+[gd_scene load_steps=9 format=4 uid="uid://dmlcaxedukan0"]
 
 [ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/World.gd" id="1_gjpho"]
 [ext_resource type="PackedScene" uid="uid://bpa3p06mjob4u" path="res://Scenes/Player.tscn" id="1_j0p05"]
 [ext_resource type="Texture2D" uid="uid://bo7feg3anb7e3" path="res://Art assets/tileSet.png" id="2_5nsto"]
 [ext_resource type="PackedScene" uid="uid://oxhjgdfmxxch" path="res://Scenes/GolfCart.tscn" id="4_gjpho"]
+[ext_resource type="PackedScene" uid="uid://cu3ftopqq2vdn" path="res://Scenes/Ball.tscn" id="5_p70al"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v1qfn"]
 texture = ExtResource("2_5nsto")
@@ -107,3 +108,6 @@ position = Vector2(-23, 68)
 
 [node name="CartBody" parent="." instance=ExtResource("4_gjpho")]
 position = Vector2(21, 76)
+
+[node name="bod_ball" parent="." instance=ExtResource("5_p70al")]
+position = Vector2(88, 77)

@@ -74,11 +74,14 @@ func driving(delta: float) -> void:
 	var throttle = Input.get_axis("move_down", "move_up")
 	var steer = Input.get_axis("move_left", "move_right")
 	var steer_reverse = steer
+	var reverse = 1
 		
 	if throttle == -1:
 		steer_reverse = steer * -1
+		reverse = 0.66
 		
-	velocity = transform.x * speed * throttle
+	velocity = transform.x * speed * throttle * reverse
 	position += velocity
 	
-	rotation += steer_reverse * rotation_speed * delta
+	
+	rotation += steer_reverse * rotation_speed * delta * reverse
