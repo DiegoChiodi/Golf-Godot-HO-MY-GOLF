@@ -9,6 +9,7 @@ const speed = 1
 var exit = false
 @onready var ani_golf: AnimatedSprite2D = $ani_golf
 @onready var lbl_debug: Label = $lbl_debug
+@onready var col_debug: ColorRect = $crec_collisionDebug
 var fatAngle = 360 / 8	#45
 var compAngle = fatAngle / 2
 
@@ -21,16 +22,17 @@ func _process(delta: float) -> void:
 		angle += 360
 	ani_golf.rotation = -rotation
 	ani_golf.position = Vector2.ZERO
-	ani_golf.flip_h = false
 	if fatAngle * 7 + compAngle < angle || angle < fatAngle * 0 + compAngle:
 		lbl_debug.text = "direita"
 		ani_golf.play("right")
 	elif compAngle < angle && angle < fatAngle * 1 + compAngle:
 		lbl_debug.text = "direitaBaixo"
 		ani_golf.play("rightDown")
+		ani_golf.flip_h = false
 	elif fatAngle + compAngle < angle && angle < fatAngle * 2 + compAngle:
 		lbl_debug.text = "baixo"
 		ani_golf.play("down")
+		ani_golf.flip_h = false
 	elif fatAngle * 2 + compAngle < angle && angle < fatAngle * 3 + compAngle:
 		lbl_debug.text = "esquerda baixo"
 		ani_golf.flip_h = true
@@ -46,9 +48,11 @@ func _process(delta: float) -> void:
 	elif fatAngle * 5 + compAngle < angle && angle < fatAngle * 6 + compAngle:
 		lbl_debug.text = "cima"
 		ani_golf.play("up")
+		ani_golf.flip_h = false
 	elif fatAngle * 6 + compAngle < angle && angle < fatAngle * 7 + compAngle:
 		lbl_debug.text = "direita cima"
 		ani_golf.play("rightUp")
+		ani_golf.flip_h = false
 	lbl_debug.rotation = -rotation
 	lbl_debug.position = Vector2(0, 0)
 		
