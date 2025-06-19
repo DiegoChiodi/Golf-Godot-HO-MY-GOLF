@@ -107,7 +107,7 @@ script = SubResource("GDScript_5nsto")
 position = Vector2(-23, 68)
 
 [node name="CartBody" parent="." instance=ExtResource("4_gjpho")]
-position = Vector2(21, 76)
+position = Vector2(44, 69)
 
 [node name="bod_ball" parent="." instance=ExtResource("5_p70al")]
-position = Vector2(88, 77)
+position = Vector2(-12, 123)

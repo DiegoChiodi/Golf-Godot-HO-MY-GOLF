@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://oxhjgdfmxxch"]
 
 [ext_resource type="Script" uid="uid://cjpue2p51mceo" path="res://Scripts/GolfCartBody.gd" id="1_l0d8i"]
-[ext_resource type="Script" uid="uid://coy4gdgw2l40s" path="res://Scripts/IntercatArea.gd" id="2_qvra7"]
+[ext_resource type="Script" uid="uid://cufviqtyifjc0" path="res://Scripts/IntCart.gd" id="2_5mk7u"]
 [ext_resource type="Texture2D" uid="uid://bv5ox7wd7b0lc" path="res://Art assets/GolfCart.png" id="3_5mk7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxk7d"]
 size = Vector2(14.4467, 9.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0d8i"]
-radius = 45.0444
+radius = 12.0416
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5mk7u"]
 atlas = ExtResource("3_5mk7u")
@@ -82,7 +82,7 @@ scale = Vector2(1.00369, 1.0121)
 shape = SubResource("RectangleShape2D_sxk7d")
 
 [node name="IntercatArea" type="Area2D" parent="."]
-script = ExtResource("2_qvra7")
+script = ExtResource("2_5mk7u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IntercatArea"]
 shape = SubResource("CircleShape2D_l0d8i")

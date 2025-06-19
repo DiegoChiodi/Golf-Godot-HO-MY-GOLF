@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	angle = rotation_degrees
 	if (0 > angle):
 		angle += 360
-		
+	
 	"""if angle < 180:
 		spr_golfClub.flip_h = true
 	else:

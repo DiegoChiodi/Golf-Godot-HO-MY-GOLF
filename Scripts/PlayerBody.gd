@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var acceleration : float = 0.2  # Fator de suavização
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
-@onready var animation_sprite := $Animation as AnimatedSprite2D
+@onready var ani_player := $ani_player as AnimatedSprite2D
 
 # No script do player (opcional):
 
@@ -15,15 +15,14 @@ func _physics_process(delta):
 	# Controle de animação melhorado
 	if input_direction.length() > 0.1:  # Threshold para considerar movimento
 		if abs(input_direction.x) > abs(input_direction.y):
-			animation_sprite.play("RunX")
-			animation_sprite.flip_h = input_direction.x < 0  # Flip apenas no X
+			ani_player.play("RunX")
+			ani_player.flip_h = input_direction.x < 0  # Flip apenas no X
 		else:
 			if input_direction.y < 0:
-				animation_sprite.play("RunUp")  # Animação para cima
+				ani_player.play("RunUp")  # Animação para cima
 			else: 
-				animation_sprite.play("RunDown")
+				ani_player.play("RunDown")
 	else:
-		animation_sprite.stop()
-		animation_sprite.frame = 0  # Garante o frame de idle
-	
+		ani_player.stop()
+		ani_player.frame = 0  # Garante o frame de idle
 	move_and_slide()
