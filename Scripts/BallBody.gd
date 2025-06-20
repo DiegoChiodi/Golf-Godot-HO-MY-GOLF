@@ -15,7 +15,8 @@ var groundFriction = 0.95
 const deadZone = 1.0
 const forceDeadZone = 8.0
 const disMax = 400
-var golfClubForce = 400.0
+const disMaxZ = 250
+const golfClubForce = 400.0
 
 enum State {
 	IDLE,
@@ -28,6 +29,7 @@ var state = State.IDLE
 func _ready() -> void:
 	$rec_ball.z_index = z
 func _process(delta: float) -> void:
+	lblDebug.text = str(mouseDis)
 	if colPlayer:
 		if state == State.IDLE:
 			if Input.is_action_just_pressed("left_click"):
@@ -57,7 +59,8 @@ func initialImpulse():
 	var forcaFinal = dis / disMax * golfClubForce
 	speed.x = forcaFinal * dir.x
 	speed.y = forcaFinal * dir.y
-	speedZ = forcaFinal * 0.625
+	
+	speedZ = forcaFinal * 0.625 if forcaFinal < disMaxZ else disMaxZ
 	state = State.MOVING
 	
 func ballMoviment(delta : float):
