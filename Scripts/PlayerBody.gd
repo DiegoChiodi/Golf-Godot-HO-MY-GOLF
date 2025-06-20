@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Character
 
 @export var speed : float = 50.0
 @export var acceleration : float = 0.2  # Fator de suavização

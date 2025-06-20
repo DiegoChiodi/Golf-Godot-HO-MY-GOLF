@@ -1,7 +1,6 @@
-extends CharacterBody2D
+extends Character
 
 @onready var lblDebug : Label = $lbl_debug
-@onready var shadow : ColorRect = $rec_ballShadow
 var iniMousePos : Vector2
 var endMousePos : Vector2
 var mouseDis : Vector2
@@ -67,7 +66,6 @@ func ballMoviment(delta : float):
 	posZ += speedZ
 	position.x += speed.x * delta
 	position.y += (speed.y + speedZ) * delta
-	shadow.position.y -= speedZ * delta
 	
 	if posZ > 0.0:
 		speedZ *= -0.6 # Muda a direção e diminui
@@ -82,4 +80,3 @@ func ballMoviment(delta : float):
 		state = State.IDLE
 		speedZ = 0
 		posZ = 0
-		shadow.position.y = -2
