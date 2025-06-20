@@ -4,14 +4,16 @@ extends CharacterBody2D
 var direction := Vector2.ZERO
 var rotation_speed = 2.5
 
-var toRide = false
+@onready var toRide = false
 const speed = 1
-var exit = false
+@onready var exit = false
 @onready var ani_golf: AnimatedSprite2D = $ani_golf
 @onready var lbl_debug: Label = $lbl_debug
 @onready var col_debug: ColorRect = $crec_collisionDebug
-var fatAngle = 360 / 8	#45
+var fatAngle = 360 / 8#45
 var compAngle = fatAngle / 2
+var colPlayer = false
+@onready var interact = false
 
 var angle = 0
 
@@ -56,19 +58,17 @@ func _process(delta: float) -> void:
 	lbl_debug.rotation = -rotation
 	lbl_debug.position = Vector2(0, 0)
 		
-	
 func _physics_process(delta: float) -> void:
-	if toRide:
-		driving(delta)
-		player.position.x = position.x
-		player.position.y = position.y
-		player.visible = false
-		
-	else:
-		if exit:
-			player.visible = true
-			exit = false
-		
+	if colPlayer:
+		var space = Input.is_action_just_pressed("move_space")
+		if space:
+			interact = !interact
+			exit = true
+			player.visible = false if interact else true
+		if interact:
+			driving(delta)
+			player.position.x = position.x
+			player.position.y = position.y
 		
 func driving(delta: float) -> void:
 	var throttle = Input.get_axis("move_down", "move_up")
@@ -85,3 +85,10 @@ func driving(delta: float) -> void:
 	
 	
 	rotation += steer_reverse * rotation_speed * delta * reverse
+
+func _on_area_entered(area: Area2D) -> void:
+	colPlayer = true
+
+func _on_area_exited(area: Area2D) -> void:
+	if !interact:
+		colPlayer = false
