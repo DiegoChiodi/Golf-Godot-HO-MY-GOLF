@@ -2,12 +2,14 @@ extends CharacterBody2D
 
 @export var speed : float = 50.0
 @export var acceleration : float = 0.2  # Fator de suavização
+@onready var z = 5
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 @onready var ani_player := $ani_player as AnimatedSprite2D
 
 # No script do player (opcional):
-
+func _ready() -> void:
+	ani_player.z_index = z
 func _physics_process(delta):
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = velocity.lerp(input_direction * speed, acceleration)

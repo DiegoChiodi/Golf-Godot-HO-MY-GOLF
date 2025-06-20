@@ -3,20 +3,21 @@ extends CharacterBody2D
 @onready var player := get_node("../Player")  # Ajuste o caminho conforme necessário
 var direction := Vector2.ZERO
 var rotation_speed = 2.5
-
-@onready var toRide = false
+var toRide = false
 const speed = 1
-@onready var exit = false
+var exit = false
 @onready var ani_golf: AnimatedSprite2D = $ani_golf
 @onready var lbl_debug: Label = $lbl_debug
-@onready var col_debug: ColorRect = $crec_collisionDebug
+@onready var col_debug: ColorRect = $rec_colDebug
 var fatAngle = 360 / 8#45
 var compAngle = fatAngle / 2
 var colPlayer = false
-@onready var interact = false
-
+var interact = false
+var z = 4
 var angle = 0
 
+func _ready() -> void:
+	ani_golf.z_index = z
 func _process(delta: float) -> void:
 	rotation_degrees = int(rotation_degrees) % 360
 	angle = rotation_degrees
