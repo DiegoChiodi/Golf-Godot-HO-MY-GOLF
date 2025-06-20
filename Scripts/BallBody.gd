@@ -53,10 +53,10 @@ func initialImpulse():
 	if dis > disMax:
 		dis = disMax
 	var dir = mouseDis.normalized()
-	var forcaFinal = dis / disMax * 300.0
+	var forcaFinal = dis / disMax * 500.0
 	speed.x = forcaFinal * dir.x
 	speed.y = forcaFinal * dir.y
-	speedZ = forcaFinal
+	speedZ = forcaFinal * 1
 	state = State.MOVING
 	
 func ballMoviment(delta : float):
