@@ -99,7 +99,7 @@ tile_set = SubResource("TileSet_hh5uf")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(-130, 20)
-zoom = Vector2(4, 4)
+zoom = Vector2(3.5, 3.5)
 limit_left = 0
 limit_top = 0
 script = SubResource("GDScript_5nsto")
@@ -113,7 +113,7 @@ acceleration = null
 position = Vector2(44, 69)
 
 [node name="bod_ball" parent="." instance=ExtResource("5_p70al")]
-position = Vector2(3, 133)
+position = Vector2(-42, 133)
 
 [node name="rec_ballShadow" type="ColorRect" parent="."]
 offset_left = 1.0

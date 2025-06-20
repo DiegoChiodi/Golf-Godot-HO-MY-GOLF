@@ -7,7 +7,6 @@ var mouseDis : Vector2
 var colPlayer = false
 var z = 2
 var posZ = 0.0
-const disMax = 400
 var speed : Vector2
 var speedZ
 var friction = 0.98
@@ -15,6 +14,8 @@ const gravity = 9.8
 var groundFriction = 0.95
 const deadZone = 1.0
 const forceDeadZone = 8.0
+const disMax = 400
+var golfClubForce = 400.0
 
 enum State {
 	IDLE,
@@ -53,10 +54,10 @@ func initialImpulse():
 	if dis > disMax:
 		dis = disMax
 	var dir = mouseDis.normalized()
-	var forcaFinal = dis / disMax * 500.0
+	var forcaFinal = dis / disMax * golfClubForce
 	speed.x = forcaFinal * dir.x
 	speed.y = forcaFinal * dir.y
-	speedZ = forcaFinal * 1
+	speedZ = forcaFinal * 0.625
 	state = State.MOVING
 	
 func ballMoviment(delta : float):
