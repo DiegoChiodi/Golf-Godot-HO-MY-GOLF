@@ -103,7 +103,7 @@ offset_bottom = 28.0
 
 [node name="ani_golf" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dnr2i")
-animation = &"up"
+animation = &"right"
 autoplay = "right"
 
 [connection signal="area_entered" from="IntercatArea" to="." method="_on_area_entered"]

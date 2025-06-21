@@ -96,7 +96,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
 size = Vector2(7, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dewec"]
+radius = 12.0
 
 [node name="PlayerBody" type="CharacterBody2D" groups=["player"]]
 z_index = 1
@@ -114,7 +115,7 @@ shape = SubResource("RectangleShape2D_gntrk")
 [node name="are_intercact" type="Area2D" parent="." groups=["player"]]
 
 [node name="col_interact" type="CollisionShape2D" parent="are_intercact" groups=["player"]]
-shape = SubResource("RectangleShape2D_kyqiw")
+shape = SubResource("CircleShape2D_dewec")
 
 [node name="bod_golfClub" type="CharacterBody2D" parent="."]
 script = ExtResource("3_dewec")

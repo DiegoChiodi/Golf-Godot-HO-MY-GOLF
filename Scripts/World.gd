@@ -4,10 +4,12 @@ extends Node2D  # ou Node3D, se for 3D
 @onready var camera: Camera2D = $Camera
 @onready var player: CharacterBody2D = $Player  # Assumindo que o nó do Player se chama "Player"  
 @onready var ball: CharacterBody2D = $bod_ball
+
 #Camera ----------------
 const normalZoom = 3.5
 var lissing = 10
 var posTarget = Vector2.ZERO
+const targetBallPor = 0.4
 #Functions ----------------
 func _ready():  
 	# Garante que a câmera siga o Player  
@@ -19,10 +21,10 @@ func _process(delta):
 	#Stages -------------
 	#if moving diminui o zoom para ver ball e player
 	if ball.state == ball.State.MOVING:
-		posTarget = player.position + ball.mouseDis * 0.5
+		posTarget = player.position + ball.mouseDis * targetBallPor
 		lissing = 2.0
 		var maxDis = (player.position - ball.position).length()
-		var zoom_alvo = clamp(remap(maxDis, 100, 1000, 1.0, 0.5), 0.5, 2.0) * 3.0
+		var zoom_alvo = clamp(remap(maxDis, 100, 1000, 1.0, 0.5), 0.5, 2.0) * 3
 		camera.zoom = camera.zoom.lerp(Vector2(zoom_alvo, zoom_alvo), delta * 2.0)
 	else:
 		lissing += 2 * delta
@@ -32,7 +34,6 @@ func _process(delta):
 	#modulate = cor_rgb(255,255,0)
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
-		
 	# Calcular distância máxima entre os alvos
 	
 func cor_rgb(r: int, g: int, b: int, a: int = 255) -> Color:  
