@@ -1,35 +1,39 @@
 extends Character
 
+#Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug
+#Scoping ----------------------
 var iniMousePos : Vector2
 var endMousePos : Vector2
 var mouseDis : Vector2
+#Colision -------------------
 var colPlayer = false
+#Fisic ----------------------
 var z = 2
 var posZ = 0.0
 var speed : Vector2
 var speedZ
-var friction = 0.98
 const gravity = 9.8
+#Objects variants / Life world
+var airFriction = 0.98
 var groundFriction = 0.95
-const deadZone = 1.0
-const forceDeadZone = 8.0
+var golfClubForce = 400.0
+#Limits
 const disMax = 400
 const disMaxZ = 250
-const golfClubForce = 400.0
-
+const deadZone = 1.0
+const forceDeadZone = 8.0
+#Stats
 enum State {
 	IDLE,
 	SCOPING,
 	MOVING
 }
-
 var state = State.IDLE
-
+#funcition
 func _ready() -> void:
 	$rec_ball.z_index = z
 func _process(delta: float) -> void:
-	lblDebug.text = str(mouseDis)
 	if colPlayer:
 		if state == State.IDLE:
 			if Input.is_action_just_pressed("left_click"):
@@ -64,7 +68,7 @@ func initialImpulse():
 	state = State.MOVING
 	
 func ballMoviment(delta : float):
-	var frictionFactor = exp(-friction * delta)
+	var frictionFactor = exp(-airFriction * delta)
 	speed *= frictionFactor
 	speedZ += gravity * 15 * delta
 	posZ += speedZ

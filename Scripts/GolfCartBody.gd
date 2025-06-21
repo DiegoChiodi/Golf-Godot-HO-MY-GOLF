@@ -1,18 +1,20 @@
 extends CharacterBody2D
 
-@onready var player := get_node("../Player")  # Ajuste o caminho conforme necessário
-var direction := Vector2.ZERO
-var rotation_speed = 2.5
-var toRide = false
-const speed = 1
-var exit = false
+#Load files
+@onready var player := get_node("../Player")
 @onready var ani_golf: AnimatedSprite2D = $ani_golf
 @onready var lbl_debug: Label = $lbl_debug
 @onready var col_debug: ColorRect = $rec_colDebug
-var fatAngle = 360 / 8#45
-var compAngle = fatAngle / 2
+#Controles ---------------------------
+var direction := Vector2.ZERO
+var rotationSpeed = 2.5
+var toRide = false
+var speed = 0
+const fatAngle = 360 / 8#45
+const compAngle = fatAngle / 2
 var colPlayer = false
 var interact = false
+#Transform
 var z = 4
 var angle = 0
 
@@ -64,7 +66,6 @@ func _physics_process(delta: float) -> void:
 		var space = Input.is_action_just_pressed("move_space")
 		if space:
 			interact = !interact
-			exit = true
 			player.visible = false if interact else true
 		if interact:
 			driving(delta)
@@ -74,18 +75,18 @@ func _physics_process(delta: float) -> void:
 func driving(delta: float) -> void:
 	var throttle = Input.get_axis("move_down", "move_up")
 	var steer = Input.get_axis("move_left", "move_right")
-	var steer_reverse = steer
+	var steerReverse = steer
 	var reverse = 1
 		
 	if throttle == -1:
-		steer_reverse = steer * -1
+		steerReverse = -steer
 		reverse = 0.66
 		
-	velocity = transform.x * speed * throttle * reverse
-	position += velocity
+	speed = transform.x * throttle * reverse
+	position += speed
 	
 	
-	rotation += steer_reverse * rotation_speed * delta * reverse
+	rotation += steerReverse * rotationSpeed * delta * reverse
 
 func _on_area_entered(area: Area2D) -> void:
 	colPlayer = true

@@ -1,8 +1,8 @@
-extends Character
+extends CharacterBody2D
 
-@export var speed : float = 50.0
-@export var acceleration : float = 0.2  # Fator de suavização
-@onready var z = 5
+const speed : float = 50.0
+const acceleration : float = 0.2  # Fator de suavização
+const z = 5
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 @onready var ani_player := $ani_player as AnimatedSprite2D
