@@ -1,5 +1,7 @@
 extends "res://Scripts/Character.gd"
 
+@onready var bod_ball = get_node("../bod_ball")
+
 func _ready() -> void:
 	super._ready()
 	speed = 25
@@ -10,3 +12,7 @@ func defDirection () -> Vector2:
 
 func getAnimation () -> AnimatedSprite2D:
 	return $ani_guard
+
+func _on_area_2d_mouse_entered() -> void:
+	bod_ball.colEnemy = true
+	bod_ball.enemyId = self

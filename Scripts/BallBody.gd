@@ -4,10 +4,12 @@ extends CharacterBody2D
 @onready var lblDebug : Label = $lbl_debug
 #Scoping ----------------------
 var iniMousePos : Vector2
-var endMousePos : Vector2
 var mouseDis : Vector2
+var keepMouse = 0
 #Colision -------------------
 var colPlayer = false
+var colEnemy = false
+var enemyId
 #Fisic ----------------------
 var z = 2
 var posZ = 0.0
@@ -38,22 +40,30 @@ func _process(delta: float) -> void:
 		if state == State.IDLE:
 			if Input.is_action_just_pressed("left_click"):
 				iniMousePos = get_global_mouse_position()
-				state = State.SCOPING
+			if Input.is_action_pressed("left_click"):
+				keepMouse += 1 * delta
+			if Input.is_action_just_released("left_click"):
+				if keepMouse > 0.15:
+					state = State.SCOPING
+				elif colEnemy:
+					mouseDis = (position - get_global_mouse_position())
+					initialImpulse()
+					position = enemyId.position
 		elif state == State.SCOPING:
 			if Input.is_action_just_released("left_click"):
-				endMousePos = get_global_mouse_position()
-				mouseDis = (endMousePos - iniMousePos)
+				mouseDis = (get_global_mouse_position() - iniMousePos)
 				initialImpulse()
-	
+				keepMouse = 0
 	if state == State.MOVING:
 		ballMoviment(delta)
-			
 
 func _on_area_entered(area: Area2D) -> void:
-	colPlayer = true
+	if area.get_parent().is_in_group("player"):
+		colPlayer = true
 
 func _on_area_exited(area: Area2D) -> void:
-	colPlayer = false
+	if area.get_parent().is_in_group("player"):
+		colPlayer = false
 
 func initialImpulse():
 	var dis = mouseDis.length()

@@ -77,7 +77,7 @@ func driving(delta: float) -> void:
 	var steer = Input.get_axis("move_left", "move_right")
 	var steerReverse = steer
 	var reverse = 1
-		
+	
 	if throttle == -1:
 		steerReverse = -steer
 		reverse = 0.66
@@ -85,11 +85,11 @@ func driving(delta: float) -> void:
 	speed = transform.x * throttle * reverse
 	position += speed
 	
-	
 	rotation += steerReverse * rotationSpeed * delta * reverse
 
 func _on_area_entered(area: Area2D) -> void:
-	colPlayer = true
+	if area.get_parent().is_in_group("player"):
+		colPlayer = true
 
 func _on_area_exited(area: Area2D) -> void:
 	if !interact:

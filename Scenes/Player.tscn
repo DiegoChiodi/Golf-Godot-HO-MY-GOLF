@@ -103,18 +103,18 @@ radius = 12.0
 z_index = 1
 script = ExtResource("1_kyqiw")
 
-[node name="ani_player" type="AnimatedSprite2D" parent="." groups=["player"]]
+[node name="ani_player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kyqiw")
 animation = &"RunRight"
 autoplay = "RunRight"
 
-[node name="col_player" type="CollisionShape2D" parent="." groups=["player"]]
+[node name="col_player" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 4.5)
 shape = SubResource("RectangleShape2D_gntrk")
 
-[node name="are_intercact" type="Area2D" parent="." groups=["player"]]
+[node name="are_intercact" type="Area2D" parent="."]
 
-[node name="col_interact" type="CollisionShape2D" parent="are_intercact" groups=["player"]]
+[node name="col_interact" type="CollisionShape2D" parent="are_intercact"]
 shape = SubResource("CircleShape2D_dewec")
 
 [node name="bod_golfClub" type="CharacterBody2D" parent="."]
