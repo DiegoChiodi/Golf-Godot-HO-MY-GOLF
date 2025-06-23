@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dmlcaxedukan0"]
+[gd_scene load_steps=12 format=4 uid="uid://dmlcaxedukan0"]
 
 [ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/World.gd" id="1_gjpho"]
 [ext_resource type="PackedScene" uid="uid://bpa3p06mjob4u" path="res://Scenes/Player.tscn" id="1_j0p05"]
@@ -89,6 +89,10 @@ sources/0 = SubResource("TileSetAtlasSource_v1qfn")
 
 [sub_resource type="GDScript" id="GDScript_5nsto"]
 
+[sub_resource type="GDScript" id="GDScript_y7y61"]
+script/source = "extends Character
+"
+
 [node name="World" type="Node2D"]
 position = Vector2(71, 1)
 script = ExtResource("1_gjpho")
@@ -124,3 +128,4 @@ script = ExtResource("6_45d1s")
 
 [node name="SecurityGuard" parent="." instance=ExtResource("7_y7y61")]
 position = Vector2(362, 243)
+script = SubResource("GDScript_y7y61")

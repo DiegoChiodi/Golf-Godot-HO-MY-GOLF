@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const speed : float = 50.0
-const acceleration : float = 0.2  # Fator de suavização
-const z = 5
+var speed : float = 50.0
+var acceleration : float = 0.2  # Fator de suavização
+var z = 5
 var move_direction = Vector2.ZERO
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if move_direction.length() > 0.1:  # Threshold para considerar movimento
 		if abs(move_direction.x) > abs(move_direction.y):
-			ani.play("RunX")
+			ani.play("RunRight")
 			ani.flip_h = move_direction.x < 0  # Flip apenas no X
 		else:
 			if move_direction.y < 0:

@@ -21,6 +21,14 @@ region = Rect2(32, 32, 16, 16)
 atlas = ExtResource("1_rpqav")
 region = Rect2(48, 32, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
+atlas = ExtResource("1_rpqav")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dewec"]
+atlas = ExtResource("1_rpqav")
+region = Rect2(16, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("1_rpqav")
 region = Rect2(32, 16, 16, 16)
@@ -36,14 +44,6 @@ region = Rect2(0, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nn08x"]
 atlas = ExtResource("1_rpqav")
 region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gntrk"]
-atlas = ExtResource("1_rpqav")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dewec"]
-atlas = ExtResource("1_rpqav")
-region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kyqiw"]
 animations = [{
@@ -66,6 +66,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gntrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dewec")
+}],
+"loop": true,
+"name": &"RunRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kyqiw")
 }, {
 "duration": 1.0,
@@ -79,17 +90,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"RunUp",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gntrk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dewec")
-}],
-"loop": true,
-"name": &"RunX",
 "speed": 5.0
 }]
 
@@ -105,8 +105,8 @@ script = ExtResource("1_kyqiw")
 
 [node name="ani_player" type="AnimatedSprite2D" parent="." groups=["player"]]
 sprite_frames = SubResource("SpriteFrames_kyqiw")
-animation = &"RunX"
-autoplay = "RunX"
+animation = &"RunRight"
+autoplay = "RunRight"
 
 [node name="col_player" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0.5, 4.5)
