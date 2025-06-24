@@ -14,7 +14,7 @@ var enemyId
 var z = 2
 var posZ = 0.0
 var speed : Vector2
-var speedZ
+var speedZ = 0
 const gravity = 9.8
 #Objects variants / Life world
 var airFriction = 0.98
@@ -36,24 +36,24 @@ var state = State.IDLE
 func _ready() -> void:
 	$rec_ball.z_index = z
 func _process(delta: float) -> void:
+	var press = Input.is_action_just_pressed("left_click")
+	var pressed = Input.is_action_pressed("left_click")
+	var solt = Input.is_action_just_released("left_click")
 	if colPlayer:
 		if state == State.IDLE:
-			if Input.is_action_just_pressed("left_click"):
+			if press:
 				iniMousePos = get_global_mouse_position()
-			if Input.is_action_pressed("left_click"):
+			if pressed:
 				keepMouse += 1 * delta
-			if Input.is_action_just_released("left_click"):
+			if solt:
 				if keepMouse > 0.15:
-					state = State.SCOPING
+					mouseDis = (get_global_mouse_position() - iniMousePos)
+					initialImpulse()
+					keepMouse = 0
 				elif colEnemy:
 					mouseDis = (position - get_global_mouse_position())
 					initialImpulse()
 					position = enemyId.position
-		elif state == State.SCOPING:
-			if Input.is_action_just_released("left_click"):
-				mouseDis = (get_global_mouse_position() - iniMousePos)
-				initialImpulse()
-				keepMouse = 0
 	if state == State.MOVING:
 		ballMoviment(delta)
 
