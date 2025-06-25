@@ -27,9 +27,10 @@ func _process(delta: float) -> void:
 		ani.frame = 0  # Garante o frame de idle
 
 func _physics_process(delta):
-	move_and_slide()
+	
 	move_direction = defDirection()
 	velocity = velocity.lerp(move_direction * speed, acceleration)
+	move_and_slide()
 	# Controle de animação melhorado
 
 func defDirection () -> Vector2:

@@ -2,15 +2,18 @@ extends CharacterBody2D
 
 #Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug
+@onready var player : CharacterBody2D = self.get_parent().get_node("Player")
 #Scoping ----------------------
 var iniMousePos : Vector2
 var mouseDis : Vector2
 var keepMouse = 0
+var attack = false
 #Colision -------------------
 var colPlayer = false
 var colEnemy = false
 var enemyId
 #Fisic ----------------------
+var movSpeed = 1
 var z = 2
 var posZ = 0.0
 var speed : Vector2
@@ -28,7 +31,6 @@ const forceDeadZone = 8.0
 #Stats
 enum State {
 	IDLE,
-	SCOPING,
 	MOVING
 }
 var state = State.IDLE
@@ -48,12 +50,17 @@ func _process(delta: float) -> void:
 			if solt:
 				if keepMouse > 0.15:
 					mouseDis = (get_global_mouse_position() - iniMousePos)
+					attack = false
+					movSpeed = 1
 					initialImpulse()
-					keepMouse = 0
 				elif colEnemy:
-					mouseDis = (position - get_global_mouse_position())
-					initialImpulse()
+					mouseDis = (player.position - get_global_mouse_position())
+					attack = true
 					position = enemyId.position
+					enemyId.speed = 50
+					enemyId.impulse = mouseDis.normalized()
+					movSpeed = 3
+					initialImpulse()
 	if state == State.MOVING:
 		ballMoviment(delta)
 
@@ -66,6 +73,7 @@ func _on_area_exited(area: Area2D) -> void:
 		colPlayer = false
 
 func initialImpulse():
+	keepMouse = 0
 	var dis = mouseDis.length()
 	if dis > disMax:
 		dis = disMax
@@ -79,22 +87,29 @@ func initialImpulse():
 	
 func ballMoviment(delta : float):
 	var frictionFactor = exp(-airFriction * delta)
-	speed *= frictionFactor
-	speedZ += gravity * 15 * delta
-	posZ += speedZ
-	position.x += speed.x * delta
-	position.y += (speed.y + speedZ) * delta
-	
-	if posZ > 0.0:
-		speedZ *= -0.6 # Muda a direção e diminui
-		posZ = 0.0
-		speed.x *= groundFriction
-		speed.y *= groundFriction
-	
-	if abs(speed.x) < forceDeadZone && abs(speed.y) < forceDeadZone:
-		speedZ *= 0.98
-			
-	if abs(speed.x) < deadZone && abs(speed.y) < deadZone && abs(speedZ) < deadZone:
-		state = State.IDLE
-		speedZ = 0
-		posZ = 0
+	#var random = randi_range(0, 2)
+	for i in range(movSpeed):
+		speed *= frictionFactor
+		speedZ += gravity * 15 * delta
+		
+		position.x += speed.x * delta
+		position.y += (speed.y + speedZ) * delta
+		posZ += speedZ
+		
+		if posZ > 0.0:
+			speedZ *= -0.6 # Muda a direção e diminui
+			posZ = 0.0
+			speed.x *= groundFriction
+			speed.y *= groundFriction
+		
+		if (abs(speed.x) < forceDeadZone && abs(speed.y) < forceDeadZone):
+			print("sir")
+			speedZ *= 0.98
+		
+		if attack && colPlayer:
+			speed *= 0.95
+			speedZ *= 0.95
+		if abs(speed.x) < deadZone && abs(speed.y) < deadZone && abs(speedZ) < deadZone:
+			state = State.IDLE
+			speedZ = 0
+			posZ = 0

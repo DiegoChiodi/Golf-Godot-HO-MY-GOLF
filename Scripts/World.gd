@@ -20,7 +20,7 @@ func _process(delta):
 	
 	#Stages -------------
 	#if moving diminui o zoom para ver ball e player
-	if ball.state == ball.State.MOVING:
+	if ball.state == ball.State.MOVING && !ball.attack:
 		posTarget = player.position + ball.mouseDis * targetBallPor
 		lissing = 2.0
 		var maxDis = (player.position - ball.position).length()
