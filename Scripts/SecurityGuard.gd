@@ -13,19 +13,23 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	if Input.is_action_just_pressed("film"):
-		position = Vector2(1000,1000)
+	if Input.is_action_pressed("film"):
+		position += Vector2(2,2)
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	impulse = impulse.move_toward(Vector2.ZERO, impulse_drag * delta)
+	print(impulse)
 	speed = lerp(speed, 25.0, speed_deep)
 
 func defDirection () -> Vector2:
 	var dir = (player.position - position).normalized()
 	# soma do impulso (se existir) + direção de perseguição
-	var final_dir: Vector2 = dir - impulse * 5
-	print(impulse)
+	var final_dir: Vector2
+	if impulse == Vector2.ZERO:
+		final_dir = dir
+	else:
+		final_dir = dir - impulse * 5
 	return final_dir
 
 func getAnimation () -> AnimatedSprite2D:
@@ -34,3 +38,6 @@ func getAnimation () -> AnimatedSprite2D:
 func _on_area_2d_mouse_entered() -> void:
 	bod_ball.colEnemy = true
 	bod_ball.enemyId = self
+	
+func _on_area_2d_mouse_exited() -> void:
+	bod_ball.colEnemy = false

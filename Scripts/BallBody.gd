@@ -41,6 +41,9 @@ func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
 	var pressed = Input.is_action_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
+	if Input.is_action_just_pressed("move_space"):
+		print(get_global_mouse_position())
+		print(position)
 	if colPlayer:
 		if state == State.IDLE:
 			if press:
@@ -54,7 +57,7 @@ func _process(delta: float) -> void:
 					movSpeed = 1
 					initialImpulse()
 				elif colEnemy:
-					mouseDis = (player.position - get_global_mouse_position())
+					mouseDis = (position - enemyId.position)
 					attack = true
 					position = enemyId.position
 					enemyId.speed = 50
@@ -79,6 +82,9 @@ func initialImpulse():
 		dis = disMax
 	var dir = mouseDis.normalized()
 	var forcaFinal = dis / disMax * golfClubForce
+	if attack:
+		forcaFinal *= 1.5
+		
 	speed.x = forcaFinal * dir.x
 	speed.y = forcaFinal * dir.y
 	
@@ -96,19 +102,20 @@ func ballMoviment(delta : float):
 		position.y += (speed.y + speedZ) * delta
 		posZ += speedZ
 		
+		if attack && colPlayer:
+			speed *= 0.98
+			speedZ *= 0.95
+		
 		if posZ > 0.0:
 			speedZ *= -0.6 # Muda a direção e diminui
 			posZ = 0.0
 			speed.x *= groundFriction
 			speed.y *= groundFriction
+			
 		
 		if (abs(speed.x) < forceDeadZone && abs(speed.y) < forceDeadZone):
-			print("sir")
 			speedZ *= 0.98
-		
-		if attack && colPlayer:
-			speed *= 0.95
-			speedZ *= 0.95
+			
 		if abs(speed.x) < deadZone && abs(speed.y) < deadZone && abs(speedZ) < deadZone:
 			state = State.IDLE
 			speedZ = 0
