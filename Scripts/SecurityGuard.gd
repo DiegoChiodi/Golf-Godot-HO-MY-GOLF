@@ -3,6 +3,10 @@ extends "res://Scripts/Character.gd"
 @onready var bod_ball = get_node("../bod_ball")
 @onready var player: CharacterBody2D = get_parent().get_node("Player")
 
+#Mouse ---------------
+const mouseInt = 0.5
+var attackSus = false
+#Impulse -------------
 var impulse = Vector2.ZERO
 @export var impulse_drag : float = 1.0         # quão rápido o impulso se dissipa
 var speed_deep = 0.98
@@ -15,6 +19,13 @@ func _process(delta: float) -> void:
 	super._process(delta)
 	if Input.is_action_pressed("film"):
 		position += Vector2(2,2)
+	if attackSus && bod_ball.colPlayer: #Se o mouse está em cima o sprite fica vermelho
+		ani.modulate.g = lerp(ani.modulate.g, mouseInt, 0.05)
+		ani.modulate.b = lerp(ani.modulate.b, mouseInt, 0.05)
+	else: #Volta a cor normal
+		ani.modulate.g = lerp(ani.modulate.g, 1.0, 0.05)
+		ani.modulate.b = lerp(ani.modulate.b, 1.0, 0.05)
+		
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -36,8 +47,10 @@ func getAnimation () -> AnimatedSprite2D:
 	return $ani_guard
 
 func _on_area_2d_mouse_entered() -> void:
+	attackSus = true
 	bod_ball.colEnemy = true
 	bod_ball.enemyId = self
 	
 func _on_area_2d_mouse_exited() -> void:
 	bod_ball.colEnemy = false
+	attackSus = false

@@ -104,7 +104,7 @@ func ballMoviment(delta : float):
 		
 		if attack && colPlayer:
 			speed *= 0.98
-			speedZ *= 0.95
+			speedZ *= 0.98
 		
 		if posZ > 0.0:
 			speedZ *= -0.6 # Muda a direção e diminui
