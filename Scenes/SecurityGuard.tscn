@@ -55,7 +55,7 @@ script = ExtResource("1_nh3vw")
 
 [node name="ani_guard" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g54b3")
-animation = &"RunRight"
+animation = &"RunUp"
 autoplay = "RunRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -11,6 +11,9 @@ var impulse = Vector2.ZERO
 @export var impulse_drag : float = 1.0         # quão rápido o impulso se dissipa
 var speed_deep = 0.98
 
+var swingingAngle = 0.9
+var swinging = swingingAngle
+
 func _ready() -> void:
 	super._ready()
 	speed = 25
@@ -25,7 +28,6 @@ func _process(delta: float) -> void:
 	else: #Volta a cor normal
 		ani.modulate.g = lerp(ani.modulate.g, 1.0, 0.05)
 		ani.modulate.b = lerp(ani.modulate.b, 1.0, 0.05)
-		
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
