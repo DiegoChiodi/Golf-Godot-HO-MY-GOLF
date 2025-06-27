@@ -155,3 +155,4 @@ script = ExtResource("6_45d1s")
 
 [node name="SecurityGuard" parent="." instance=ExtResource("7_y7y61")]
 position = Vector2(139, 143)
+impulse_drag = 1.0

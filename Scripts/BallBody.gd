@@ -62,6 +62,7 @@ func _process(delta: float) -> void:
 					position = enemyId.position
 					enemyId.speed = 50
 					enemyId.impulse = mouseDis.normalized()
+					enemyId.takeDamage()
 					movSpeed = 3
 					initialImpulse()
 	if state == State.MOVING:
