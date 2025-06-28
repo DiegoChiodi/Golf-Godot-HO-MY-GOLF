@@ -8,6 +8,7 @@ var iniMousePos : Vector2
 var mouseDis : Vector2
 var keepMouse = 0
 var attack = false
+var interactive = true
 #Colision -------------------
 var colPlayer = false
 var colEnemy = false
@@ -22,7 +23,7 @@ const gravity = 9.8
 #Objects variants / Life world
 var airFriction = 0.98
 var groundFriction = 0.95
-var golfClubForce = 400.0
+var golfClubForce = 600.0
 #Limits
 const disMax = 400
 const disMaxZ = 250
@@ -37,15 +38,13 @@ var state = State.IDLE
 #funcition
 func _ready() -> void:
 	$rec_ball.z_index = z
+	
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
 	var pressed = Input.is_action_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
-	if Input.is_action_just_pressed("move_space"):
-		print(get_global_mouse_position())
-		print(position)
 	if colPlayer:
-		if state == State.IDLE:
+		if interactive:
 			if press:
 				iniMousePos = get_global_mouse_position()
 			if pressed:
@@ -78,13 +77,12 @@ func _on_area_exited(area: Area2D) -> void:
 
 func initialImpulse():
 	keepMouse = 0
+	interactive = false
 	var dis = mouseDis.length()
 	if dis > disMax:
 		dis = disMax
 	var dir = mouseDis.normalized()
 	var forcaFinal = dis / disMax * golfClubForce
-	if attack:
-		forcaFinal *= 1.5
 		
 	speed.x = forcaFinal * dir.x
 	speed.y = forcaFinal * dir.y
@@ -112,10 +110,11 @@ func ballMoviment(delta : float):
 			posZ = 0.0
 			speed.x *= groundFriction
 			speed.y *= groundFriction
-			
 		
-		if (abs(speed.x) < forceDeadZone && abs(speed.y) < forceDeadZone):
+		
+		if (abs(speed.x) < forceDeadZone * 3 && abs(speed.y) < forceDeadZone * 3):
 			speedZ *= 0.98
+			interactive = true
 			
 		if abs(speed.x) < deadZone && abs(speed.y) < deadZone && abs(speedZ) < deadZone:
 			state = State.IDLE

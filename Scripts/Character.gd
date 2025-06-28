@@ -33,7 +33,6 @@ func runUp():
 func runDown():
 	drawSelf.play("RunDown")
 func _physics_process(delta):
-	
 	move_direction = defDirection()
 	velocity = velocity.lerp(move_direction * speed, acceleration)
 	move_and_slide()

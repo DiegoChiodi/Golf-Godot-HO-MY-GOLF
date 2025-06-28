@@ -7,6 +7,7 @@ var swingingSpeed = 5
 #Life
 var life = 0
 var lifeMax = 2
+var colPlayer = false
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -29,3 +30,11 @@ func runUp():
 
 func takeDamage():
 	life = life + 1 if life < lifeMax else life
+	
+func _on_area_entered(area: Area2D) -> void:
+	if area.get_parent().is_in_group("player"):
+		colPlayer = true
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.get_parent().is_in_group("player"):
+		colPlayer = false

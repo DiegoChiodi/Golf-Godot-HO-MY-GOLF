@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8esk8t6c272h"]
+
+[ext_resource type="Script" uid="uid://fuuamyus23w6" path="res://Scripts/GolfClub.gd" id="1_nm6ro"]
+[ext_resource type="Texture2D" uid="uid://drx4ms06agav5" path="res://Art assets/GolfStelClub.png" id="2_7dk7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jb2yw"]
+size = Vector2(5.8862, 15.6376)
+
+[node name="bod_golfClub" type="CharacterBody2D"]
+script = ExtResource("1_nm6ro")
+
+[node name="spr_golfClub" type="Sprite2D" parent="."]
+position = Vector2(1, 15)
+texture = ExtResource("2_7dk7q")
+
+[node name="are_attack" type="Area2D" parent="."]
+
+[node name="col_attack" type="CollisionShape2D" parent="are_attack"]
+position = Vector2(1, 15)
+rotation = -0.420064
+shape = SubResource("RectangleShape2D_jb2yw")
+
+[connection signal="area_entered" from="are_attack" to="." method="_on_are_attack_area_entered"]

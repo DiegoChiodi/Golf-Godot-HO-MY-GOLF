@@ -49,6 +49,15 @@ func _on_area_2d_mouse_entered() -> void:
 func _on_area_2d_mouse_exited() -> void:
 	bod_ball.colEnemy = false
 	mouseCol = false
+	
+func _on_are_hb_attack_area_entered(area: Area2D) -> void:
+	if area.get_parent().is_in_group("player"):
+		colPlayer = true
+		speed = 50
+		impulse = (player.position - position).normalized()
+		
+func _on_are_hb_attack_area_exited(area: Area2D) -> void:
+	colPlayer = false
 
 func attackSus():
 	if mouseCol && bod_ball.colPlayer: #Se o mouse está em cima o sprite fica vermelho

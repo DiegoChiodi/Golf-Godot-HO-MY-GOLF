@@ -14,6 +14,8 @@ const fatAngle = 360 / 8#45
 const compAngle = fatAngle / 2
 var colPlayer = false
 var interact = false
+var delay = 0.0
+var cowdow = 0.2
 #Transform
 var z = 4
 var angle = 0
@@ -64,9 +66,11 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if colPlayer:
 		var space = Input.is_action_just_pressed("move_space")
-		if space:
+		delay += delta
+		if space && delay > cowdow:
 			interact = !interact
 			player.visible = false if interact else true
+			delay = 0.0
 		if interact:
 			driving(delta)
 			player.position.x = position.x
@@ -92,5 +96,5 @@ func _on_area_entered(area: Area2D) -> void:
 		colPlayer = true
 
 func _on_area_exited(area: Area2D) -> void:
-	if !interact:
+	if area.get_parent().is_in_group("player") && !interact:
 		colPlayer = false

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://2spk7t200iju"]
+
+[ext_resource type="Texture2D" uid="uid://dt7ocdsytj0in" path="res://Art assets/helmet.png" id="1_n34ja"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni6th"]
+atlas = ExtResource("1_n34ja")
+region = Rect2(0, 0, 12, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wefd"]
+atlas = ExtResource("1_n34ja")
+region = Rect2(36, 0, 12, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jione"]
+atlas = ExtResource("1_n34ja")
+region = Rect2(24, 0, 12, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibwvu"]
+atlas = ExtResource("1_n34ja")
+region = Rect2(12, 0, 12, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ac4oy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni6th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wefd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jione")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibwvu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ac4oy")
+autoplay = "default"
+frame_progress = 0.0662068

@@ -1,85 +1,42 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn6xsiot3ogq1"]
+[gd_scene load_steps=6 format=3 uid="uid://dn6xsiot3ogq1"]
 
 [ext_resource type="Script" uid="uid://b5m84cx356usk" path="res://Scripts/SecurityGuard.gd" id="1_nh3vw"]
 [ext_resource type="Texture2D" uid="uid://bos3byj3tuvsd" path="res://Art assets/Segurança.png" id="2_nh3vw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rtpcg"]
-atlas = ExtResource("2_nh3vw")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wasgd"]
-atlas = ExtResource("2_nh3vw")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgv6f"]
-atlas = ExtResource("2_nh3vw")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g54b3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rtpcg")
-}],
-"loop": true,
-"name": &"RunDown",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wasgd")
-}],
-"loop": true,
-"name": &"RunRight",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xgv6f")
-}],
-"loop": true,
-"name": &"RunUp",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh3vw"]
-size = Vector2(10, 13.5)
+size = Vector2(10, 6.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtpcg"]
 size = Vector2(53.375, 51.5)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_nh3vw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wasgd"]
+size = Vector2(15, 15)
 
-[node name="SecurityGuard" type="CharacterBody2D" groups=["Enemy"]]
+[node name="SecurityGuard" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_nh3vw")
 
-[node name="ani_guard" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_g54b3")
-animation = &"RunUp"
-autoplay = "RunRight"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0.75)
+[node name="col_hitBox" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4.375)
 shape = SubResource("RectangleShape2D_nh3vw")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="are_hbMouse" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="col_hbMouse" type="CollisionShape2D" parent="are_hbMouse"]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_rtpcg")
-
-[node name="TextureRect" type="TextureRect" parent="Area2D"]
-visible = false
-offset_left = -21.0
-offset_top = -20.0
-offset_right = 21.0
-offset_bottom = 21.0
-texture = SubResource("CanvasTexture_nh3vw")
 
 [node name="spr_guard" type="Sprite2D" parent="."]
 texture = ExtResource("2_nh3vw")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="are_hbAttack" type="Area2D" parent="." groups=["colHb", "colHt"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="are_hbAttack"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_wasgd")
+
+[connection signal="mouse_entered" from="are_hbMouse" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="are_hbMouse" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="are_hbAttack" to="." method="_on_are_hb_attack_area_entered"]
+[connection signal="area_exited" from="are_hbAttack" to="." method="_on_are_hb_attack_area_exited"]
