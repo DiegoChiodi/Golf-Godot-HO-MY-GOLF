@@ -4,9 +4,9 @@ extends CharacterBody2D
 @onready var lblDebug : Label = $lbl_debug
 @onready var player : CharacterBody2D = self.get_parent().get_node("Player")
 #Scoping with Mouse ----------------------
-var iniMousePos : Vector2
+var iniMousePos : Vector2 = Vector2.ZERO
+var previousPressed = false
 var mouseDis : Vector2
-var keepMouse = 0
 var attack = false
 var interactive = true
 const mouDisInterval = 25.0
@@ -42,22 +42,20 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
-	var pressed = Input.is_action_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
 	if colPlayer:
 		if interactive:
 			if press:
 				iniMousePos = get_global_mouse_position()
-			if pressed:
-				keepMouse += 1 * delta
-			if solt:
-				if (keepMouse > 0.15 && !colEnemy) || (get_global_mouse_position() - iniMousePos).length() > mouDisInterval:
+				previousPressed = true
+			if solt && previousPressed:
+				previousPressed = false
+				if (get_global_mouse_position() - iniMousePos).length() > mouDisInterval:
 					mouseDis = (get_global_mouse_position() - iniMousePos)
 					attack = false
 					movSpeed = 1
 					initialImpulse()
-					print(mouseDis)
-				else:
+				elif colEnemy:
 					mouseDis = (position - enemyId.position)
 					attack = true
 					position = enemyId.position
@@ -78,7 +76,6 @@ func _on_area_exited(area: Area2D) -> void:
 		colPlayer = false
 
 func initialImpulse():
-	keepMouse = 0
 	interactive = false
 	var dis = mouseDis.length()
 	if dis > disMax:

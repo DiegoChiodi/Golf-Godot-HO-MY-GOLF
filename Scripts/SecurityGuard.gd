@@ -9,7 +9,7 @@ var mouseCol = false
 #Impulse -------------
 var impulse = Vector2.ZERO
 @export var impulse_drag : float = 1.0 # quão rápido o impulso se dissipa
-var speed_deep = 0.98
+var speed_deep = 0.03
 
 func _ready() -> void:
 	super._ready()
