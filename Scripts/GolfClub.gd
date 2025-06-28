@@ -20,4 +20,4 @@ func _on_are_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
 		var parArea = area.get_parent()
 		parArea.impulse = (get_parent().position - parArea.position).normalized()
-		parArea.speed = 50
+		parArea.speed += 25

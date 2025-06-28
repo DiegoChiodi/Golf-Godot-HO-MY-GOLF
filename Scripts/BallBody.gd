@@ -3,12 +3,13 @@ extends CharacterBody2D
 #Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug
 @onready var player : CharacterBody2D = self.get_parent().get_node("Player")
-#Scoping ----------------------
+#Scoping with Mouse ----------------------
 var iniMousePos : Vector2
 var mouseDis : Vector2
 var keepMouse = 0
 var attack = false
 var interactive = true
+const mouDisInterval = 25.0
 #Colision -------------------
 var colPlayer = false
 var colEnemy = false
@@ -50,12 +51,13 @@ func _process(delta: float) -> void:
 			if pressed:
 				keepMouse += 1 * delta
 			if solt:
-				if keepMouse > 0.15:
+				if (keepMouse > 0.15 && !colEnemy) || (get_global_mouse_position() - iniMousePos).length() > mouDisInterval:
 					mouseDis = (get_global_mouse_position() - iniMousePos)
 					attack = false
 					movSpeed = 1
 					initialImpulse()
-				elif colEnemy:
+					print(mouseDis)
+				else:
 					mouseDis = (position - enemyId.position)
 					attack = true
 					position = enemyId.position

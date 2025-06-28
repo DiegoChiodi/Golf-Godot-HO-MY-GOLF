@@ -1,7 +1,7 @@
 extends "res://Scripts/Character.gd"
 
 #Sprite
-@onready var frameDim = drawSelf.texture.get_size() / 3
+@onready var frameDim = Vector2(drawSelf.texture.get_size().x / 3, drawSelf.texture.get_size().y / 4)
 var timePassed = 0.0
 var swingingSpeed = 5
 #Life
