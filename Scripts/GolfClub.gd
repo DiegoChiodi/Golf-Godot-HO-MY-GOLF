@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 @onready var spr_golfClub := $spr_golfClub as Sprite2D
-@onready var z = 5
+@onready var col_attack := $are_attack/col_attack as CollisionShape2D
+@onready var player = get_parent()
+@onready var debugText := $Label as Label
+@onready var debugRect := $ColorRect as ColorRect
 
 #Angle for impulse
 var lastAngle = 0
@@ -13,16 +16,60 @@ var compRotation = 0
 var pressioned = false
 var timePressed = 0.0
 const alaPressed = 0.32
-
-
-
-var angle
+var mouseDis = 0.0
+var iniMousePos : Vector2 = Vector2.ZERO
+var previousPressed = false
+#Attack
+var attacking = false
+const rotationSpeed = 0.98
+const suavidade = 0.05
+var clubFacePosisition = Vector2(2,4)
+var angle = 0.0
+#Z
+var z = 5
 
 func _ready() -> void:
 	spr_golfClub.z_index = z
+	
 func _process(delta: float) -> void:
+	var press = Input.is_action_just_pressed("left_click")
+	var pressed = Input.is_action_pressed("left_click")
+	var solt = Input.is_action_just_released("left_click")
+	
 	look_at(get_global_mouse_position())
-	rotation_degrees += 90
+	rotation_degrees -= 90
+	
+	if press:
+		iniMousePos = get_global_mouse_position() - get_parent().position
+		previousPressed = true
+
+	if solt && previousPressed:
+		previousPressed = false
+		mouseDis = (get_global_mouse_position() - get_parent().position)
+		attacking = true
+	
+	angle = int(rotation_degrees) % 360
+	if (0 > angle):
+		angle += 360
+		
+func _on_are_attack_area_entered(area: Area2D) -> void:
+	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
+		var parArea = area.get_parent()
+		
+		var A = player.position
+		var B = col_attack.position
+		var P = parArea.position
+		
+		var dir_a = (P - A).normalized()
+		var dir_b = (P - B).normalized()
+		var media = (dir_a + dir_b).normalized()
+		debugText.text = str(dir_b)
+		
+		parArea.impulse = media
+		parArea.speed += 35
+		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10
+		
+func rotationAttack (delta : float):
 	if !pressioned:
 		pass
 	else:
@@ -32,24 +79,3 @@ func _process(delta: float) -> void:
 			timePressed = 0
 			compRotation = 0
 			pressioned = false
-			
-	rotation_degrees += compRotation
-	
-	var clickLeft = Input.is_action_just_pressed("left_click")
-	if clickLeft:
-		pressioned = true
-	timeLastAngle += delta
-	if timeLastAngle > alaLastAngle:
-		timeLastAngle = 0
-		lastAngle = rotation_degrees
-	angle = int(rotation_degrees) % 360
-	if (0 > angle):
-		angle += 360
-		
-func _on_are_attack_area_entered(area: Area2D) -> void:
-	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
-		var parArea = area.get_parent()
-		parArea.impulse = (get_parent().position - parArea.position).normalized()
-		parArea.speed += 35
-		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10
-		print(abs(lastAngle - rotation_degrees))

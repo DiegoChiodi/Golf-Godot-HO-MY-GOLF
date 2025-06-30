@@ -31,10 +31,7 @@ func defDirection () -> Vector2:
 		dir = -dir
 	# soma do impulso (se existir) + direção de perseguição
 	var final_dir: Vector2
-	if impulse == Vector2.ZERO:
-		final_dir = dir
-	else:
-		final_dir = dir - impulse * 5
+	final_dir = dir - impulse * 3
 	
 	return final_dir
 

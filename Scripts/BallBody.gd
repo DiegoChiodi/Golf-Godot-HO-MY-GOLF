@@ -8,7 +8,7 @@ var iniMousePos : Vector2 = Vector2.ZERO
 var previousPressed = false
 var mouseDis : Vector2
 var attack = false
-var interactive = true
+var readyShot = true
 const mouDisInterval = 25.0
 #Colision -------------------
 var colPlayer = false
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
 	if colPlayer:
-		if interactive:
+		if readyShot:
 			if press:
 				iniMousePos = get_global_mouse_position()
 				previousPressed = true
@@ -76,7 +76,7 @@ func _on_area_exited(area: Area2D) -> void:
 		colPlayer = false
 
 func initialImpulse():
-	interactive = false
+	readyShot = false
 	var dis = mouseDis.length()
 	if dis > disMax:
 		dis = disMax
@@ -113,7 +113,7 @@ func ballMoviment(delta : float):
 		
 		if (abs(speed.x) < forceDeadZone * 3 && abs(speed.y) < forceDeadZone * 3):
 			speedZ *= 0.98
-			interactive = true
+			readyShot = true
 			
 		if abs(speed.x) < deadZone && abs(speed.y) < deadZone && abs(speedZ) < deadZone:
 			state = State.IDLE
