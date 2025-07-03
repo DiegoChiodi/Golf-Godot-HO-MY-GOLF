@@ -36,6 +36,9 @@ func _process(delta: float) -> void:
 	var pressed = Input.is_action_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
 	
+	var B = col_attack.position
+	debugRect.position = B
+	
 	look_at(get_global_mouse_position())
 	rotation_degrees -= 90
 	
@@ -56,17 +59,17 @@ func _on_are_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
 		var parArea = area.get_parent()
 		
-		var A = player.position
-		var B = col_attack.position
-		var P = parArea.position
+		var A = player.global_position
+		var B = col_attack.global_position
+		var P = parArea.global_position
 		
-		var dir_a = (P - A).normalized()
-		var dir_b = (P - B).normalized()
-		var media = (dir_a + dir_b).normalized()
-		debugText.text = str(dir_b)
+		var dir_a = (A - P).normalized()
+		var dir_b = (B - P).normalized()
 		
+		var media = (dir_a + dir_b * 0.5).normalized()
 		parArea.impulse = media
 		parArea.speed += 35
+
 		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10
 		
 func rotationAttack (delta : float):

@@ -10,7 +10,7 @@ size = Vector2(10, 6.75)
 size = Vector2(53.375, 51.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wasgd"]
-size = Vector2(15, 15)
+size = Vector2(11.5, 8.5)
 
 [node name="SecurityGuard" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_nh3vw")
@@ -30,10 +30,10 @@ texture = ExtResource("2_nh3vw")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="are_hbAttack" type="Area2D" parent="." groups=["colHb", "colHt"]]
+[node name="are_hbAttack" type="Area2D" parent="." groups=["colHb", "enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="are_hbAttack"]
-position = Vector2(0.5, 1.5)
+position = Vector2(0.75, 4.75)
 shape = SubResource("RectangleShape2D_wasgd")
 
 [connection signal="mouse_entered" from="are_hbMouse" to="." method="_on_area_2d_mouse_entered"]
