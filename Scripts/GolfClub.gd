@@ -69,7 +69,7 @@ func _on_are_attack_area_entered(area: Area2D) -> void:
 		var media = (dir_a + dir_b * 0.5).normalized()
 		parArea.impulse = media
 		parArea.speed += 35
-
+		parArea.mouFollow = true
 		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10
 		
 func rotationAttack (delta : float):

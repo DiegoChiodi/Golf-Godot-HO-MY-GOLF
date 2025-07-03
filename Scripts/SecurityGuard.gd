@@ -6,9 +6,17 @@ extends "res://Scripts/Enemy.gd"
 #Mouse ---------------
 const mouseInt = 0.5
 var mouseCol = false
+#with attack -
+var mouFollow = false
+var mouFollowCow = 0.0
+var mouFollowDel = 0.3
+var mouDir = Vector2.ZERO
+const mouDirDrag : float = 0.8 # quão rápido o impulso do mouse se dissipa
 #Impulse -------------
 var impulse = Vector2.ZERO
-@export var impulse_drag : float = 1.0 # quão rápido o impulso se dissipa
+const impulse_drag : float = 1.0 # quão rápido o impulso se dissipa
+#Speed
+var speedNormal = 25.0
 var speed_deep = 0.03
 
 func _ready() -> void:
@@ -18,20 +26,30 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super._process(delta)
 	attackSus()
-	
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	impulse = impulse.move_toward(Vector2.ZERO, impulse_drag * delta)
-	speed = lerp(speed, 25.0, speed_deep)
+	mouDir = mouDir.move_toward(Vector2.ZERO, mouDirDrag * delta)
+	speed = lerp(speed, speedNormal, speed_deep)
+	
+	if mouFollow:
+		mouFollowCow += delta
+		mouDir = (get_global_mouse_position() - player.position).normalized()
+		if mouFollowCow > mouFollowDel:
+			mouFollow = false
+			mouFollowCow = 0.0
 
 func defDirection () -> Vector2:
 	var dir = (player.position - position).normalized()
+	#Se foi muito atacado corre de medo
 	if life == lifeMax:
 		dir = -dir
+		speedNormal = 20.0
+	
 	# soma do impulso (se existir) + direção de perseguição
 	var final_dir: Vector2
-	final_dir = dir - impulse * 3
+	final_dir = dir - impulse * 3 + mouDir * 2
 	
 	return final_dir
 
