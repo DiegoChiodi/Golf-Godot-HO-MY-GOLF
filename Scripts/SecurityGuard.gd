@@ -20,6 +20,8 @@ var speedNormal = 25.0
 var speed_deep = 0.03
 
 func _ready() -> void:
+	sliceX = 3
+	sliceY = 4
 	super._ready()
 	speed = 25
 

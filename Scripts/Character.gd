@@ -5,6 +5,10 @@ var acceleration : float = 0.2  # Fator de suavização
 var z = 5
 var move_direction = Vector2.ZERO
 
+#Swing -------------
+var timePassed = 0.0
+var swingingSpeed = 5
+
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 @onready var drawSelf = getDraw()
 
@@ -14,24 +18,30 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if move_direction.length() > 0.1:  # Threshold para considerar movimento
-		if abs(move_direction.x) > abs(move_direction.y):
-			runRight()
-			drawSelf.flip_h = move_direction.x < 0  # Flip apenas no X
-		else:
-			if move_direction.y < 0:
-				runUp()  # Animação para cima
-			else: 
-				runDown()
+		swing(delta)
+		drawSelfDir()
 	else:
 		stop()
+		
+func drawSelfDir():
+	if abs(move_direction.x) > abs(move_direction.y):
+		runRight()
+		drawSelf.flip_h = move_direction.x < 0  # Flip apenas no X
+	else:
+		if move_direction.y < 0:
+			runUp()  # Animação para cima
+		else: 
+			runDown()
+
 func runRight():
-	drawSelf.play("RunRight")
+	pass
 	
 func runUp():
-	drawSelf.play("RunUp")
+	pass
 	
 func runDown():
-	drawSelf.play("RunDown")
+	pass
+
 func _physics_process(delta):
 	move_direction = defDirection()
 	velocity = velocity.lerp(move_direction * speed, acceleration)
@@ -46,3 +56,8 @@ func getDraw () -> AnimatedSprite2D:
 
 func stop():
 	pass
+	
+func swing (delta : float):
+	timePassed += delta * swingingSpeed  # Velocidade do balanço
+	var angle := sin(timePassed) * 8.0  # Oscila entre -10 e +10 graus
+	drawSelf.rotation_degrees = angle
