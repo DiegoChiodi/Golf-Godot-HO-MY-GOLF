@@ -11,7 +11,7 @@ var mouFollow = false
 var mouFollowCow = 0.0
 var mouFollowDel = 0.3
 var mouDir = Vector2.ZERO
-const mouDirDrag : float = 0.8 # quão rápido o impulso do mouse se dissipa
+const mouDirDrag : float = 1 # quão rápido o impulso do mouse se dissipa
 #Impulse -------------
 var impulse = Vector2.ZERO
 const impulse_drag : float = 1.0 # quão rápido o impulso se dissipa
@@ -49,7 +49,7 @@ func defDirection () -> Vector2:
 	
 	# soma do impulso (se existir) + direção de perseguição
 	var final_dir: Vector2
-	final_dir = dir - impulse * 3 + mouDir * 2
+	final_dir = dir - impulse * 2 + mouDir * 2
 	
 	return final_dir
 
