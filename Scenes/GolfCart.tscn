@@ -86,7 +86,6 @@ shape = SubResource("RectangleShape2D_sxk7d")
 shape = SubResource("CircleShape2D_l0d8i")
 
 [node name="rec_colDebug" type="ColorRect" parent="."]
-visible = false
 offset_left = -8.0
 offset_top = -5.0
 offset_right = 10.0
@@ -102,6 +101,7 @@ offset_right = 22.0
 offset_bottom = 28.0
 
 [node name="ani_golf" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_dnr2i")
 animation = &"right"
 autoplay = "right"

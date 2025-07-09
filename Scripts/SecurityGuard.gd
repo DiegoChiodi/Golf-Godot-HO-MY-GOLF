@@ -68,7 +68,7 @@ func _on_area_2d_mouse_exited() -> void:
 	mouseCol = false
 	
 func _on_are_hb_attack_area_entered(area: Area2D) -> void:
-	if area.is_in_group("colHb"):
+	if area.is_in_group("colHb") && area.get_parent().is_in_group("player"):
 		colPlayer = true
 		speed = 50
 		impulse = (player.position - position).normalized()

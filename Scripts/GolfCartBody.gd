@@ -22,13 +22,13 @@ var angle = 0
 
 func _ready() -> void:
 	ani_golf.z_index = z
+	ani_golf.position = Vector2.ZERO
 func _process(delta: float) -> void:
 	rotation_degrees = int(rotation_degrees) % 360
 	angle = rotation_degrees
 	if (0 > angle):
 		angle += 360
 	ani_golf.rotation = -rotation
-	ani_golf.position = Vector2.ZERO
 	if fatAngle * 7 + compAngle < angle || angle < fatAngle * 0 + compAngle:
 		lbl_debug.text = "direita"
 		ani_golf.play("right")
