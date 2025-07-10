@@ -12,6 +12,7 @@ const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 #Swing -------------
 var timePassed = 0.0
 var swingingSpeed = 5
+var swingingDis = 8
 
 #Life system ------------
 var lifeMax = 100
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 		swing(delta)
 		drawSelfDir()
 	else:
+		drawSelf.rotation_degrees = lerp(drawSelf.rotation_degrees, 0.0, 0.05)
 		stop()
 		
 func drawSelfDir():
@@ -67,7 +69,7 @@ func stop():
 	pass
 	
 func swing (delta : float):
-	timePassed += delta * swingingSpeed  # Velocidade do balanço
+	timePassed += delta * swingingDis  # Velocidade do balanço
 	var angle := sin(timePassed) * 8.0  # Oscila entre -10 e +10 graus
 	drawSelf.rotation_degrees = angle
 
