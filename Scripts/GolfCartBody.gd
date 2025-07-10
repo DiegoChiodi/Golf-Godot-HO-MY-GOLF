@@ -10,12 +10,14 @@ var direction := Vector2.ZERO
 var rotationSpeed = 2.5
 var toRide = false
 var speed = 0
+#Draw
 const fatAngle = 360 / 8#45
 const compAngle = fatAngle / 2
+#
 var colPlayer = false
 var interact = false
-var delay = 0.0
-var cowdow = 0.2
+var enterDelay = 0.0
+var enterCowdow = 0.2
 #Transform
 var z = 4
 var angle = 0
@@ -66,11 +68,11 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if colPlayer:
 		var space = Input.is_action_just_pressed("move_space")
-		delay += delta
-		if space && delay > cowdow:
+		enterDelay += delta
+		if space && enterDelay > enterCowdow:
 			interact = !interact
 			player.visible = false if interact else true
-			delay = 0.0
+			enterDelay = 0.0
 		if interact:
 			driving(delta)
 			player.position.x = position.x
@@ -88,7 +90,6 @@ func driving(delta: float) -> void:
 		
 	speed = transform.x * throttle * reverse
 	position += speed
-	
 	rotation += steerReverse * rotationSpeed * delta * reverse
 
 func _on_area_entered(area: Area2D) -> void:

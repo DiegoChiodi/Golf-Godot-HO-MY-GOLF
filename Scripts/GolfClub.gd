@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 @onready var spr_golfClub := $spr_golfClub as Sprite2D
 @onready var are_attack := $are_attack as Area2D

@@ -1,9 +1,8 @@
 extends "res://Scripts/Character.gd"
 
 @onready var frameDim = Vector2.ZERO
-var sliceX = 5
-var sliceY = 5
-
+var sliceX = 1
+var sliceY = 1
 
 func _ready() -> void:
 	frameDim = Vector2(drawSelf.texture.get_size().x / sliceX, drawSelf.texture.get_size().y / sliceY)
