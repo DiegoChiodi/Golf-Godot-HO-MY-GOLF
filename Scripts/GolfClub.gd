@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 @onready var spr_golfClub := $spr_golfClub as Sprite2D
-@onready var col_attack := $are_attack/col_attack as CollisionShape2D
+@onready var are_attack := $are_attack as Area2D
+@onready var col_attack := are_attack.get_node("col_attack") as CollisionShape2D
 @onready var player = get_parent()
 @onready var debugText := $Label as Label
 @onready var debugRect := $ColorRect as ColorRect
-
 #Angle for impulse
 var lastAngle = 0
 var timeLastAngle = 0.0
@@ -20,11 +20,13 @@ var mouseDis = 0.0
 var iniMousePos : Vector2 = Vector2.ZERO
 var previousPressed = false
 #Attack
+@export var damage : float = 10.0 
 var attacking = false
 const rotationSpeed = 0.98
 const suavidade = 0.05
 var clubFacePosisition = Vector2(2,4)
 var angle = 0.0
+var enemy_detect : bool = false
 #Z
 var z = 5
 
@@ -57,6 +59,7 @@ func _process(delta: float) -> void:
 		
 func _on_are_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
+		
 		var parArea = area.get_parent()
 		
 		var A = player.global_position
@@ -67,8 +70,7 @@ func _on_are_attack_area_entered(area: Area2D) -> void:
 		var dir_b = (B - P).normalized()
 		
 		var media = (dir_a + dir_b * 0.5).normalized()
-		parArea.impulse = media
-		parArea.speed += 35
+		parArea.takeDamage(damage, dir_a)
 		parArea.mouFollow = true
 		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10
 		

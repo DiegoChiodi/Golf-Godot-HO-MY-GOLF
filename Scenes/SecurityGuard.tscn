@@ -15,7 +15,7 @@ size = Vector2(11.5, 8.5)
 [node name="SecurityGuard" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_nh3vw")
 
-[node name="col_hitBox" type="CollisionShape2D" parent="."]
+[node name="col_colisor" type="CollisionShape2D" parent="."]
 position = Vector2(1, 4.375)
 shape = SubResource("RectangleShape2D_nh3vw")
 

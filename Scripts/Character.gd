@@ -1,18 +1,27 @@
 extends CharacterBody2D
 
+#Moving -----------------
 var speed : float = 50.0
 var acceleration : float = 0.2  # Fator de suavização
 var z = 5
 var move_direction = Vector2.ZERO
 
+#Impulse -------------
+var colImpulse = Vector2.ZERO
+const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 #Swing -------------
 var timePassed = 0.0
 var swingingSpeed = 5
 
+#Life system ------------
+var lifeMax = 100
+var life = lifeMax
+var lifeParcent = 0
+var lifeParcentMax = 2
+
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 @onready var drawSelf = getDraw()
 
-# No script do player (opcional):
 func _ready() -> void:
 	drawSelf.z_index = z
 	
@@ -61,3 +70,10 @@ func swing (delta : float):
 	timePassed += delta * swingingSpeed  # Velocidade do balanço
 	var angle := sin(timePassed) * 8.0  # Oscila entre -10 e +10 graus
 	drawSelf.rotation_degrees = angle
+
+func takeDamage(damage : float, impulseForce : Vector2):
+	life -= damage
+	collisionImpulse(impulseForce)
+	
+func collisionImpulse (impulseForce : Vector2):
+	colImpulse = impulseForce

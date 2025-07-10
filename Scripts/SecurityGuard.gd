@@ -12,11 +12,8 @@ var mouFollowCow = 0.0
 var mouFollowDel = 0.3
 var mouDir = Vector2.ZERO
 const mouDirDrag : float = 1 # quão rápido o impulso do mouse se dissipa
-#Impulse -------------
-var impulse = Vector2.ZERO
-const impulse_drag : float = 1.0 # quão rápido o impulso se dissipa
 #Speed
-var speedNormal = 25.0
+var speedNormal = 35.0
 var speed_deep = 0.03
 
 func _ready() -> void:
@@ -31,8 +28,8 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	impulse = impulse.move_toward(Vector2.ZERO, impulse_drag * delta)
-	mouDir = mouDir.move_toward(Vector2.ZERO, mouDirDrag * delta)
+	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
+	mouDir = mouDir.lerp(Vector2.ZERO, 2 * delta)
 	speed = lerp(speed, speedNormal, speed_deep)
 	
 	if mouFollow:
@@ -45,13 +42,13 @@ func _physics_process(delta: float) -> void:
 func defDirection () -> Vector2:
 	var dir = (player.position - position).normalized()
 	#Se foi muito atacado corre de medo
-	if life == lifeMax:
+	if life < lifeMax/3:
 		dir = -dir
 		speedNormal = 20.0
 	
 	# soma do impulso (se existir) + direção de perseguição
 	var final_dir: Vector2
-	final_dir = dir - impulse * 2 + mouDir * 2
+	final_dir = dir - colImpulse + mouDir * 2
 	
 	return final_dir
 
@@ -71,7 +68,7 @@ func _on_are_hb_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") && area.get_parent().is_in_group("player"):
 		colPlayer = true
 		speed = 50
-		impulse = (player.position - position).normalized()
+		colImpulse = (player.global_position - global_position).normalized()
 		
 func _on_are_hb_attack_area_exited(area: Area2D) -> void:
 	colPlayer = false
