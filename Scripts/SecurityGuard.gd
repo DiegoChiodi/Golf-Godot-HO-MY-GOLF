@@ -23,6 +23,10 @@ func _ready() -> void:
 	speed = 25
 
 func _process(delta: float) -> void:
+	if life < lifeMax / 3:
+		lifeParcent = 2
+	elif life < lifeMax - lifeMax / 3:
+		lifeParcent = 1
 	super._process(delta)
 	attackSus()
 
@@ -80,3 +84,13 @@ func attackSus():
 	else: #Volta a cor normal
 		drawSelf.modulate.g = lerp(drawSelf.modulate.g, 1.0, 0.05)
 		drawSelf.modulate.b = lerp(drawSelf.modulate.b, 1.0, 0.05)
+	
+func runRight():
+	drawSelf.region_rect = Rect2(Vector2(frameDim.x * lifeParcent, 0), frameDim) 
+	#O y do vetor vale 0 por causa que é para direita
+
+func runDown():
+	drawSelf.region_rect = Rect2(Vector2(frameDim.x * lifeParcent ,frameDim.y * 1), frameDim)
+	
+func runUp():
+	drawSelf.region_rect = Rect2(Vector2(frameDim.x * lifeParcent,frameDim.y * 2), frameDim)

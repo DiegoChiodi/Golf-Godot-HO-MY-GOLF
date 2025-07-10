@@ -12,7 +12,7 @@ const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 #Swing -------------
 var timePassed = 0.0
 var swingingSpeed = 5
-var swingingDis = 8
+var swingingDis : float = 8.0
 
 #Life system ------------
 var lifeMax = 100
@@ -44,6 +44,12 @@ func drawSelfDir():
 		else: 
 			runDown()
 
+func _physics_process(delta):
+	move_direction = defDirection()
+	velocity = velocity.lerp(move_direction * speed, acceleration)
+	move_and_slide()
+	# Controle de drawSelfmação melhorado
+
 func runRight():
 	pass
 	
@@ -52,13 +58,7 @@ func runUp():
 	
 func runDown():
 	pass
-
-func _physics_process(delta):
-	move_direction = defDirection()
-	velocity = velocity.lerp(move_direction * speed, acceleration)
-	move_and_slide()
-	# Controle de drawSelfmação melhorado
-
+	
 func defDirection () -> Vector2:
 	return Vector2.ZERO
 	
@@ -70,12 +70,12 @@ func stop():
 	
 func swing (delta : float):
 	timePassed += delta * swingingDis  # Velocidade do balanço
-	var angle := sin(timePassed) * 8.0  # Oscila entre -10 e +10 graus
+	var angle := sin(timePassed) * swingingDis  # Oscila entre -10 e +10 graus
 	drawSelf.rotation_degrees = angle
 
 func takeDamage(damage : float, impulseForce : Vector2):
 	life -= damage
 	collisionImpulse(impulseForce)
-	
+
 func collisionImpulse (impulseForce : Vector2):
 	colImpulse = impulseForce
