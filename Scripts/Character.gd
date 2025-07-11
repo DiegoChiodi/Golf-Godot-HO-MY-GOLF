@@ -12,7 +12,7 @@ const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 #Swing -------------
 var timePassed = 0.0
 var swingingSpeed = 5
-var swingingDis : float = 8.0
+var swingingDis : float = 8.0 # < ------------------ Dúvida
 
 #Life system ------------
 var lifeMax = 100
@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	else:
 		drawSelf.rotation_degrees = lerp(drawSelf.rotation_degrees, 0.0, 0.05)
 		stop()
-		
+
 func drawSelfDir():
 	if abs(move_direction.x) > abs(move_direction.y):
 		runRight()

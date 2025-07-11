@@ -70,7 +70,7 @@ func _on_are_attack_area_entered(area: Area2D) -> void:
 		var dir_b = (B - P).normalized()
 		
 		var media = (dir_a + dir_b * 0.5).normalized()
-		parArea.takeDamage(damage, dir_a)
+		parArea.takeDamage(damage, dir_a * 3)
 		parArea.mouFollow = true
 		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10
 		

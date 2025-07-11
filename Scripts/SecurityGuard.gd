@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 func defDirection () -> Vector2:
 	var dir = (player.position - position).normalized()
 	#Se foi muito atacado corre de medo
-	if life < lifeMax/3:
+	if life < lifeMax / 3:
 		dir = -dir
 		speedNormal = 20.0
 	
@@ -90,7 +90,7 @@ func runRight():
 	#O y do vetor vale 0 por causa que é para direita
 
 func runDown():
-	drawSelf.region_rect = Rect2(Vector2(frameDim.x * lifeParcent ,frameDim.y * 1), frameDim)
+	drawSelf.region_rect = Rect2(Vector2(frameDim.x * lifeParcent, frameDim.y * 1), frameDim)
 	
 func runUp():
-	drawSelf.region_rect = Rect2(Vector2(frameDim.x * lifeParcent,frameDim.y * 2), frameDim)
+	drawSelf.region_rect = Rect2(Vector2(frameDim.x * lifeParcent, frameDim.y * 2), frameDim)

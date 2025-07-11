@@ -3,7 +3,7 @@ extends Node2D  # ou Node3D, se for 3D
 #Load files ------------------
 @onready var camera: Camera2D = $Camera
 @onready var player: CharacterBody2D = $Player  # Assumindo que o nó do Player se chama "Player"  
-@onready var ball: CharacterBody2D = $bod_ball
+@onready var ball: Node2D = $bod_ball
 
 #Camera ----------------
 const normalZoom = 3.5

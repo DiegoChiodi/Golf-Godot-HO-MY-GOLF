@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 #Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug

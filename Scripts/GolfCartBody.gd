@@ -9,7 +9,7 @@ extends CharacterBody2D
 var direction := Vector2.ZERO
 var rotationSpeed = 2.5
 var toRide = false
-var speed = 0
+var speed = 60
 #Draw
 const fatAngle = 360 / 8#45
 const compAngle = fatAngle / 2
@@ -77,6 +77,7 @@ func _physics_process(delta: float) -> void:
 			driving(delta)
 			player.position.x = position.x
 			player.position.y = position.y
+			player.get_node("col_colisor").disabled = true
 		
 func driving(delta: float) -> void:
 	var throttle = Input.get_axis("move_down", "move_up")
@@ -88,8 +89,8 @@ func driving(delta: float) -> void:
 		steerReverse = -steer
 		reverse = 0.66
 		
-	speed = transform.x * throttle * reverse
-	position += speed
+	velocity = transform.x * throttle * reverse * 60
+	move_and_slide()
 	rotation += steerReverse * rotationSpeed * delta * reverse
 
 func _on_area_entered(area: Area2D) -> void:
