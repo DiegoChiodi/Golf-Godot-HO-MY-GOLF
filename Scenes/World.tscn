@@ -158,4 +158,4 @@ color = Color(0.147672, 0.147672, 0.147672, 1)
 script = ExtResource("6_45d1s")
 
 [node name="SecurityGuard" parent="." instance=ExtResource("7_y7y61")]
-position = Vector2(139, 143)
+position = Vector2(61, 71)

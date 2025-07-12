@@ -28,12 +28,19 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
-	if move_direction.length() > 0.1:  # Threshold para considerar movimento
-		swing(delta)
+	if direction.length() > 0.1:  # Threshold para considerar movimento
 		drawSelfDir()
 	else:
-		drawSelf.rotation_degrees = lerp(drawSelf.rotation_degrees, 0.0, 0.05)
 		stop()
+		
+	if move_direction.length() > 0.1:  # Threshold para considerar movimento
+		swing(delta)
+	else:
+		drawSelf.rotation_degrees = lerp(drawSelf.rotation_degrees, 0.0, 0.05)
+		
+		
+	
+
 
 func drawSelfDir():
 	if abs(direction.x) > abs(direction.y):
@@ -46,7 +53,8 @@ func drawSelfDir():
 			runDown()
 
 func _physics_process(delta):
-	move_direction = defDirection()
+	direction = setDirection()
+	move_direction = setMoveDirection()
 	velocity = velocity.lerp(move_direction * speed, acceleration)
 	move_and_slide()
 	# Controle de drawSelfmação melhorado
@@ -60,7 +68,10 @@ func runUp():
 func runDown():
 	pass
 	
-func defDirection () -> Vector2:
+func setMoveDirection () -> Vector2:
+	return Vector2.ZERO
+	
+func setDirection () -> Vector2:
 	return Vector2.ZERO
 	
 func getDraw () -> AnimatedSprite2D:
@@ -76,7 +87,7 @@ func swing (delta : float):
 
 func takeDamage(damage : float, impulseForce : Vector2):
 	life -= damage
-	collisionImpulse(impulseForce)
+	defCollisionImpulse(impulseForce)
 
-func collisionImpulse (impulseForce : Vector2):
+func defCollisionImpulse (impulseForce : Vector2):
 	colImpulse = impulseForce

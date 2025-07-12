@@ -59,17 +59,16 @@ func _process(delta: float) -> void:
 		
 func _on_are_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
-		
 		var parArea = area.get_parent()
 		
-		var A = player.global_position
-		var B = col_attack.global_position
-		var P = parArea.global_position
+		var playerPos = player.global_position
+		var attackPos = col_attack.global_position
+		var enemyPos = parArea.global_position
 		
-		var dir_a = (A - P).normalized()
-		var dir_b = (B - P).normalized()
+		var dirPlayerEnemy = (playerPos - enemyPos).normalized()
+		var dirAttackEnemy = (attackPos - enemyPos).normalized()
 		
-		var media = ((dir_a + dir_b) * 0.5).normalized()
+		var media = (dirPlayerEnemy + dirAttackEnemy).normalized()
 		parArea.takeDamage(damage, media * 3)
 		parArea.mouFollow = true
 		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10

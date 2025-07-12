@@ -1,7 +1,6 @@
 extends "res://Scripts/Enemy.gd"
 
 @onready var bod_ball = get_node("../bod_ball")
-@onready var player: CharacterBody2D = get_parent().get_node("Player")
 
 #Mouse ---------------
 const mouseInt = 0.5
@@ -38,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	if mouFollow:
 		mouFollowCow += delta
 		mouDir = ((get_global_mouse_position() - player.global_position).normalized()
-		+ (global_position - playerTeam.global_position).normalized()).normalized()
+		+ (global_position - player.global_position).normalized()).normalized()
 		if mouFollowCow > mouFollowDel:
 			mouFollow = false
 			mouFollowCow = 0.0
@@ -47,8 +46,7 @@ func _physics_process(delta: float) -> void:
 		playerTeam.takeDamage(15, (global_position - playerTeam.global_position).normalized())
 		#colImpulse = (playerTeam.global_position - global_position).normalized()
 
-func defDirection () -> Vector2:
-	direction = (player.position - position).normalized()
+func setMoveDirection () -> Vector2:
 	#Se foi muito atacado corre de medo
 	if life < lifeMax / 3:
 		direction *= -1
@@ -59,7 +57,7 @@ func defDirection () -> Vector2:
 	final_dir = direction - colImpulse + mouDir * 2
 	
 	return final_dir
-
+	
 func getDraw () -> AnimatedSprite2D:
 	return $spr_guard
 
