@@ -37,7 +37,8 @@ func _physics_process(delta: float) -> void:
 	
 	if mouFollow:
 		mouFollowCow += delta
-		mouDir = (get_global_mouse_position() - player.position).normalized()
+		mouDir = ((get_global_mouse_position() - player.global_position).normalized()
+		+ (global_position - playerTeam.global_position).normalized()).normalized()
 		if mouFollowCow > mouFollowDel:
 			mouFollow = false
 			mouFollowCow = 0.0
