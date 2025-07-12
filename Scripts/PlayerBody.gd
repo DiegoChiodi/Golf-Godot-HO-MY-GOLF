@@ -10,8 +10,12 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	super._process(delta)
-	if colEnemy:
-		enemyId.takeDamage(15, (global_position - enemyId.global_position).normalized())
+	
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	if colRival:
+		print("colidiu")
+		colRivalId.setCollisionImpulse((global_position - colRivalId.global_position).normalized() * 3)
 
 func setMoveDirection () -> Vector2:
 	return Input.get_vector("move_left", "move_right", "move_up", "move_down") - colImpulse

@@ -3,6 +3,7 @@ extends Node2D
 #Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug
 @onready var player : CharacterBody2D = self.get_parent().get_node("Player")
+@onready var camera : Camera2D = self.get_parent().get_node("cam_camera")
 #Scoping with Mouse ----------------------
 var iniMousePos : Vector2 = Vector2.ZERO
 var previousPressed = false
@@ -86,6 +87,8 @@ func initialImpulse():
 	
 	speedZ = forcaFinal * 0.625 if forcaFinal < disMaxZ else disMaxZ
 	state = State.MOVING
+	
+	camera.start_shake(1, 10.0)
 	
 func ballMoviment(delta : float):
 	var frictionFactor = exp(-airFriction * delta)

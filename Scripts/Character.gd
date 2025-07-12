@@ -17,9 +17,18 @@ var swingingDis : float = 8.0 # < ------------------ Dúvida
 var groupRival : String
 var groupSelf : String
 
+#Collision -----------
+var colRival
+var colRivalId
+
 #Life system ------------
 var lifeMax = 100
 var life = lifeMax
+
+#Damage ----------
+var is_invulnerability : bool = false
+var invulnerabilityCowdow : float = 0.0
+var invulnerabilityDelay : float = 0.4
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 @onready var drawSelf = getDraw()
@@ -40,6 +49,17 @@ func _process(delta: float) -> void:
 		swing(delta)
 	else:
 		drawSelf.rotation_degrees = lerp(drawSelf.rotation_degrees, 0.0, 0.05)
+	
+	if is_invulnerability:
+		feedbackDamage(0.25)
+		invulnerabilityCowdow += delta
+		if invulnerabilityCowdow > invulnerabilityDelay:
+			invulnerabilityCowdow = 0.0
+			is_invulnerability = false
+	else:
+		feedbackDamage(1.0)
+		
+		
 
 func drawSelfDir():
 	if abs(direction.x) > abs(direction.y):
@@ -57,6 +77,15 @@ func _physics_process(delta):
 	velocity = velocity.lerp(move_direction * speed, acceleration)
 	move_and_slide()
 	# Controle de drawSelfmação melhorado
+	
+func _on_are_hb_attack_area_entered(area: Area2D) -> void:
+	if area.is_in_group("colHb") and area.get_parent().is_in_group(groupRival):
+		colRival = true
+		colRivalId = area.get_parent()
+		
+func _on_are_hb_attack_area_exited(area: Area2D) -> void:
+	if area.get_parent().is_in_group(groupRival):
+		colRival = false
 
 func runRight():
 	pass
@@ -85,10 +114,17 @@ func swing (delta : float):
 	drawSelf.rotation_degrees = angle
 
 func takeDamage(damage : float, impulseForce : Vector2):
-	life -= damage
-	defCollisionImpulse(impulseForce)
+	if !is_invulnerability:
+		life -= damage
+		setCollisionImpulse(impulseForce)
+		is_invulnerability = true
+		invulnerabilityCowdow = 0.0
 
-func defCollisionImpulse (impulseForce : Vector2):
+func feedbackDamage(target : float) -> void:
+	drawSelf.modulate.g = lerp(drawSelf.modulate.g, target, 0.09)
+	drawSelf.modulate.b = lerp(drawSelf.modulate.b, target, 0.09)
+
+func setCollisionImpulse (impulseForce : Vector2):
 	colImpulse = impulseForce
 	
 func groupsAdd () -> void:

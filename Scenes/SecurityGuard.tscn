@@ -12,7 +12,7 @@ size = Vector2(53.375, 51.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wasgd"]
 size = Vector2(11, 9)
 
-[node name="SecurityGuard" type="CharacterBody2D" groups=["enemy"]]
+[node name="SecurityGuard" type="CharacterBody2D"]
 script = ExtResource("1_nh3vw")
 
 [node name="col_colisor" type="CollisionShape2D" parent="."]

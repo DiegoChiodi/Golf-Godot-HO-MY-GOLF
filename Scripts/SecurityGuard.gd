@@ -45,9 +45,9 @@ func _physics_process(delta: float) -> void:
 			mouFollow = false
 			mouFollowCow = 0.0
 	
-	if colPlayer:
-		playerTeamId.takeDamage(15, (global_position - playerTeamId.global_position).normalized())
-		#colImpulse = (playerTeamId.global_position - global_position).normalized()
+	if colRival:
+		colRivalId.takeDamage(15, (global_position - colRivalId.global_position).normalized())
+		#colImpulse = (colRivalId.global_position - global_position).normalized()
 
 func setMoveDirection () -> Vector2:
 	#Se foi muito atacado corre de medo
@@ -80,12 +80,10 @@ func _on_area_2d_mouse_exited() -> void:
 
 func attackSus():
 	if mouseCol && bod_ball.colPlayer: #Se o mouse está em cima o sprite fica vermelho
-		drawSelf.modulate.g = lerp(drawSelf.modulate.g, mouseInt, 0.05)
-		drawSelf.modulate.b = lerp(drawSelf.modulate.b, mouseInt, 0.05)
+		pass
 	else: #Volta a cor normal
-		drawSelf.modulate.g = lerp(drawSelf.modulate.g, 1.0, 0.05)
-		drawSelf.modulate.b = lerp(drawSelf.modulate.b, 1.0, 0.05)
-	
+		pass
+
 func runRight():
 	drawSelf.region_rect = Rect2(Vector2(frameDim.x * lifeParcent, 0), frameDim) 
 	#O y do vetor vale 0 por causa que é para direita

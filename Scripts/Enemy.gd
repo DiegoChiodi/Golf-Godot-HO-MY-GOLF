@@ -1,19 +1,6 @@
 extends "res://Scripts/ChaSprite.gd"
 
-var colPlayer = false
-var playerTeamId
 @onready var player: CharacterBody2D = get_parent().get_node("Player")
-
-
-func _on_are_hb_attack_area_entered(area: Area2D) -> void:
-	if area.is_in_group("colHb") and area.get_parent().is_in_group("player"):
-		colPlayer = true
-		playerTeamId = area.get_parent()
-		
-func _on_are_hb_attack_area_exited(area: Area2D) -> void:
-	if area.get_parent().is_in_group("player"):
-		colPlayer = false
-		playerTeamId = null
 
 func setDirection () -> Vector2:
 	return (player.global_position - global_position).normalized()
