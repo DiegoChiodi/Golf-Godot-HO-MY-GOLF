@@ -3,15 +3,15 @@ extends CharacterBody2D
 #Moving -----------------
 var speed : float = 50.0
 var acceleration : float = 0.2  # Fator de suavização
-var z = 5
+var z : int = 5
 var move_direction = Vector2.ZERO
-
+var direction : Vector2 = Vector2.ZERO
 #Impulse -------------
 var colImpulse = Vector2.ZERO
 const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 #Swing -------------
 var timePassed = 0.0
-var swingingSpeed = 5
+var swingingSpeed : int = 5
 var swingingDis : float = 8.0 # < ------------------ Dúvida
 
 #Life system ------------
@@ -27,6 +27,7 @@ func _ready() -> void:
 	drawSelf.z_index = z
 	
 func _process(delta: float) -> void:
+	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
 	if move_direction.length() > 0.1:  # Threshold para considerar movimento
 		swing(delta)
 		drawSelfDir()
@@ -35,11 +36,11 @@ func _process(delta: float) -> void:
 		stop()
 
 func drawSelfDir():
-	if abs(move_direction.x) > abs(move_direction.y):
+	if abs(direction.x) > abs(direction.y):
 		runRight()
-		drawSelf.flip_h = move_direction.x < 0  # Flip apenas no X
+		drawSelf.flip_h = direction.x < 0  # Flip apenas no X
 	else:
-		if move_direction.y < 0:
+		if direction.y < 0:
 			runUp()  # Animação para cima
 		else: 
 			runDown()

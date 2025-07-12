@@ -15,7 +15,7 @@ size = Vector2(12, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixxa"]
 size = Vector2(5.64289, 8.55453)
 
-[node name="PlayerBody" type="CharacterBody2D" groups=["colHb", "player"]]
+[node name="PlayerBody" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 script = ExtResource("1_kyqiw")
 

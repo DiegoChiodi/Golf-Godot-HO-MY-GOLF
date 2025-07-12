@@ -71,13 +71,18 @@ func _physics_process(delta: float) -> void:
 		enterDelay += delta
 		if space && enterDelay > enterCowdow:
 			interact = !interact
-			player.visible = false if interact else true
+			if !interact:
+				player.visible = true
+				player.get_node("col_colisor").disabled = false
+			else:
+				player.visible = false
+				player.get_node("col_colisor").disabled = true
+			
 			enterDelay = 0.0
 		if interact:
 			driving(delta)
 			player.position.x = position.x
 			player.position.y = position.y
-			player.get_node("col_colisor").disabled = true
 		
 func driving(delta: float) -> void:
 	var throttle = Input.get_axis("move_down", "move_up")

@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
 	mouDir = mouDir.lerp(Vector2.ZERO, 2 * delta)
 	speed = lerp(speed, speedNormal, speed_deep)
 	
@@ -42,17 +41,21 @@ func _physics_process(delta: float) -> void:
 		if mouFollowCow > mouFollowDel:
 			mouFollow = false
 			mouFollowCow = 0.0
+	
+	if colPlayer:
+		playerTeam.takeDamage(15, (global_position - playerTeam.global_position).normalized())
+		#colImpulse = (playerTeam.global_position - global_position).normalized()
 
 func defDirection () -> Vector2:
-	var dir = (player.position - position).normalized()
+	direction = (player.position - position).normalized()
 	#Se foi muito atacado corre de medo
 	if life < lifeMax / 3:
-		dir = -dir
+		direction *= -1
 		speedNormal = 20.0
 	
 	# soma do impulso (se existir) + direção de perseguição
 	var final_dir: Vector2
-	final_dir = dir - colImpulse + mouDir * 2
+	final_dir = direction - colImpulse + mouDir * 2
 	
 	return final_dir
 
@@ -68,14 +71,10 @@ func _on_area_2d_mouse_exited() -> void:
 	bod_ball.colEnemy = false
 	mouseCol = false
 	
-func _on_are_hb_attack_area_entered(area: Area2D) -> void:
-	if area.is_in_group("colHb") && area.get_parent().is_in_group("player"):
-		colPlayer = true
-		speed = 50
-		colImpulse = (player.global_position - global_position).normalized()
-		
-func _on_are_hb_attack_area_exited(area: Area2D) -> void:
-	colPlayer = false
+#func _on_are_hb_attack_area_entered(area: Area2D) -> void:
+#	if area.is_in_group("colHb") && area.get_parent().is_in_group("player"):
+
+#	pass
 
 func attackSus():
 	if mouseCol && bod_ball.colPlayer: #Se o mouse está em cima o sprite fica vermelho
