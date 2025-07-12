@@ -13,18 +13,21 @@ const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 var timePassed = 0.0
 var swingingSpeed : int = 5
 var swingingDis : float = 8.0 # < ------------------ Dúvida
+#Groups -----------
+var groupRival : String
+var groupSelf : String
 
 #Life system ------------
 var lifeMax = 100
 var life = lifeMax
-var lifeParcent = 0
-var lifeParcentMax = 2
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 @onready var drawSelf = getDraw()
 
 func _ready() -> void:
 	drawSelf.z_index = z
+	groupsAdd()
+	add_to_group(groupSelf)
 	
 func _process(delta: float) -> void:
 	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
@@ -37,10 +40,6 @@ func _process(delta: float) -> void:
 		swing(delta)
 	else:
 		drawSelf.rotation_degrees = lerp(drawSelf.rotation_degrees, 0.0, 0.05)
-		
-		
-	
-
 
 func drawSelfDir():
 	if abs(direction.x) > abs(direction.y):
@@ -91,3 +90,6 @@ func takeDamage(damage : float, impulseForce : Vector2):
 
 func defCollisionImpulse (impulseForce : Vector2):
 	colImpulse = impulseForce
+	
+func groupsAdd () -> void:
+	pass

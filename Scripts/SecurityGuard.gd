@@ -14,6 +14,9 @@ const mouDirDrag : float = 1 # quão rápido o impulso do mouse se dissipa
 #Speed
 var speedNormal = 35.0
 var speed_deep = 0.03
+#Life
+var lifeParcent = 0
+var lifeParcentMax = 2
 
 func _ready() -> void:
 	sliceX = 3
@@ -32,7 +35,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	mouDir = mouDir.lerp(Vector2.ZERO, 2 * delta)
-	speed = lerp(speed, speedNormal, speed_deep)
+	speed = lerp(speed, speedNormal, speed_deep) #NOJOOOOOOOOO
 	
 	if mouFollow:
 		mouFollowCow += delta
@@ -43,8 +46,8 @@ func _physics_process(delta: float) -> void:
 			mouFollowCow = 0.0
 	
 	if colPlayer:
-		playerTeam.takeDamage(15, (global_position - playerTeam.global_position).normalized())
-		#colImpulse = (playerTeam.global_position - global_position).normalized()
+		playerTeamId.takeDamage(15, (global_position - playerTeamId.global_position).normalized())
+		#colImpulse = (playerTeamId.global_position - global_position).normalized()
 
 func setMoveDirection () -> Vector2:
 	#Se foi muito atacado corre de medo

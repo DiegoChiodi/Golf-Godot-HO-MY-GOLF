@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpa3p06mjob4u"]
+[gd_scene load_steps=8 format=3 uid="uid://bpa3p06mjob4u"]
 
 [ext_resource type="Script" uid="uid://b2sev4k5gg2vo" path="res://Scripts/PlayerBody.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://db1bjfv62pfi0" path="res://Art assets/newPlayer.png" id="3_dewec"]
@@ -8,9 +8,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
 size = Vector2(5, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
-size = Vector2(12, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixxa"]
 size = Vector2(5.64289, 8.55453)
@@ -25,15 +22,9 @@ shape = SubResource("RectangleShape2D_gntrk")
 
 [node name="bod_golfClub" parent="." instance=ExtResource("3_gntrk")]
 
-[node name="are_interact" type="Area2D" parent="." groups=["colInteract"]]
-
-[node name="col_interact" type="CollisionShape2D" parent="are_interact"]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_dewec")
-
 [node name="are_hb" type="Area2D" parent="." groups=["colHb"]]
 
-[node name="col_hitbox" type="CollisionShape2D" parent="are_hb"]
+[node name="col_hb" type="CollisionShape2D" parent="are_hb"]
 position = Vector2(-0.366461, 5)
 scale = Vector2(1.19317, -0.701383)
 shape = SubResource("RectangleShape2D_5ixxa")
