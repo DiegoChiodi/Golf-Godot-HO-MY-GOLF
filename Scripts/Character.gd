@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Character
 
 #Moving -----------------
 var speed : float = 50.0
@@ -39,17 +40,6 @@ func _ready() -> void:
 	add_to_group(groupSelf)
 	
 func _process(delta: float) -> void:
-	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
-	if direction.length() > 0.1:  # Threshold para considerar movimento
-		drawSelfDir()
-	else:
-		stop()
-		
-	if move_direction.length() > 0.1:  # Threshold para considerar movimento
-		swing(delta)
-	else:
-		drawSelf.rotation_degrees = lerp(drawSelf.rotation_degrees, 0.0, 0.05)
-	
 	if is_invulnerability:
 		feedbackDamage(0.25)
 		invulnerabilityCowdow += delta
@@ -58,21 +48,10 @@ func _process(delta: float) -> void:
 			is_invulnerability = false
 	else:
 		feedbackDamage(1.0)
-		
-		
-
-func drawSelfDir():
-	if abs(direction.x) > abs(direction.y):
-		runRight()
-		drawSelf.flip_h = direction.x < 0  # Flip apenas no X
-	else:
-		if direction.y < 0:
-			runUp()  # Animação para cima
-		else: 
-			runDown()
+	
 
 func _physics_process(delta):
-	direction = setDirection()
+	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
 	move_direction = setMoveDirection()
 	velocity = velocity.lerp(move_direction * speed, acceleration)
 	move_and_slide()
@@ -87,15 +66,6 @@ func _on_are_hb_attack_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group(groupRival):
 		colRival = false
 
-func runRight():
-	pass
-	
-func runUp():
-	pass
-	
-func runDown():
-	pass
-	
 func setMoveDirection () -> Vector2:
 	return Vector2.ZERO
 	

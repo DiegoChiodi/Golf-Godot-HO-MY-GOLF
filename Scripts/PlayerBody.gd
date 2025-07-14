@@ -1,4 +1,4 @@
-extends "res://Scripts/ChaSprite.gd"
+extends Movel
 
 var colEnemy : bool = false
 var enemyId = null
@@ -7,14 +7,12 @@ func _ready() -> void:
 	sliceX = 1
 	sliceY = 3
 	super._ready()
-	
 func _process(delta: float) -> void:
 	super._process(delta)
 	
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	if colRival:
-		print("colidiu")
 		colRivalId.setCollisionImpulse((global_position - colRivalId.global_position).normalized() * 3)
 
 func setMoveDirection () -> Vector2:

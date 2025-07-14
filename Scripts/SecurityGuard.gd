@@ -1,16 +1,7 @@
-extends "res://Scripts/Enemy.gd"
+extends Enemy
 
 @onready var bod_ball = get_node("../bod_ball")
 
-#Mouse ---------------
-const mouseInt = 0.5
-var mouseCol = false
-#with attack -
-var mouFollow = false
-var mouFollowCow = 0.0
-var mouFollowDel = 0.3
-var mouDir = Vector2.ZERO
-const mouDirDrag : float = 1 # quão rápido o impulso do mouse se dissipa
 #Speed
 var speedNormal = 35.0
 var speed_deep = 0.03
@@ -25,11 +16,11 @@ func _ready() -> void:
 	speed = 25
 
 func _process(delta: float) -> void:
+	super._process(delta)
 	if life < lifeMax / 3:
 		lifeParcent = 2
 	elif life < lifeMax - lifeMax / 3:
 		lifeParcent = 1
-	super._process(delta)
 	attackSus()
 
 func _physics_process(delta: float) -> void:
@@ -51,15 +42,14 @@ func _physics_process(delta: float) -> void:
 
 func setMoveDirection () -> Vector2:
 	#Se foi muito atacado corre de medo
+	var run : int = 1
 	if life < lifeMax / 3:
 		direction *= -1
+		print("what")
 		speedNormal = 20.0
+		
+	return super.setMoveDirection()
 	
-	# soma do impulso (se existir) + direção de perseguição
-	var final_dir: Vector2
-	final_dir = direction - colImpulse + mouDir * 2
-	
-	return final_dir
 	
 func getDraw () -> AnimatedSprite2D:
 	return $spr_guard
