@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://c2nilxyyy813p"]
+[gd_scene load_steps=2 format=3 uid="uid://c2nilxyyy813p"]
 
-[node name="main" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://cqsrorm4s6g" path="res://Scenes/RoomMaster.tscn" id="1_r150o"]
+
+[node name="Main" type="Node2D"]
+
+[node name="roomMaster" parent="." instance=ExtResource("1_r150o")]

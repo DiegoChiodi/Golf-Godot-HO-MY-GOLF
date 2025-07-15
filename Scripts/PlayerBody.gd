@@ -1,4 +1,5 @@
 extends Movel
+class_name Player
 
 var colEnemy : bool = false
 var enemyId = null

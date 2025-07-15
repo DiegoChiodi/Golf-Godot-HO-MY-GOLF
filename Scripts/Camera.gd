@@ -1,4 +1,5 @@
 extends Camera2D
+class_name Camera
 
 # Parâmetros do tremor
 var shake_amount = 0.0

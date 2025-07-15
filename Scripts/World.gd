@@ -1,8 +1,6 @@
-extends Node2D  # ou Node3D, se for 3D  
+extends BaseScene  # ou Node3D, se for 3D  
 
 #Load files ------------------
-@onready var camera: Camera2D = $cam_camera
-@onready var player: CharacterBody2D = $Player  # Assumindo que o nó do Player se chama "Player"  
 @onready var ball: Node2D = $bod_ball
 
 #Camera ----------------
@@ -14,7 +12,7 @@ var canBallFollow = false
 #Functions ----------------
 func _ready():  
 	# Garante que a câmera siga o Player  
-	camera.position = player.position  
+	camera.position = player.position
 
 func _process(delta):  
 	posTarget = player.position # Atualiza a posição da câmera para acompanhar o Player (suavizado opcional) 

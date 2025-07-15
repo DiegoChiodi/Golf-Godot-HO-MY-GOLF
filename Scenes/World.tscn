@@ -1,9 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://dmlcaxedukan0"]
+[gd_scene load_steps=10 format=4 uid="uid://dmlcaxedukan0"]
 
 [ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/World.gd" id="1_gjpho"]
-[ext_resource type="PackedScene" uid="uid://bpa3p06mjob4u" path="res://Scenes/Player.tscn" id="1_j0p05"]
 [ext_resource type="Texture2D" uid="uid://bo7feg3anb7e3" path="res://Art assets/tileSet.png" id="2_5nsto"]
-[ext_resource type="Script" uid="uid://b120rtaovfm78" path="res://Scripts/Camera.gd" id="3_uo7di"]
 [ext_resource type="PackedScene" uid="uid://oxhjgdfmxxch" path="res://Scenes/GolfCart.tscn" id="4_gjpho"]
 [ext_resource type="PackedScene" uid="uid://cu3ftopqq2vdn" path="res://Scenes/Ball.tscn" id="5_p70al"]
 [ext_resource type="Script" uid="uid://ckqax8xrfaijj" path="res://Scripts/BallShadow.gd" id="6_45d1s"]
@@ -127,16 +125,6 @@ tile_set = SubResource("TileSet_q2d71")
 position = Vector2(-71, -1)
 tile_map_data = PackedByteArray("AAABAAcAAAAEAAgAAAAFAAkAAAAFAAgAAAAOAAUAAAAFAAkAAAAOAAEAAAADAAUAAAAKAAEAAAAFAAMAAAALAAEAAAAFAAMAAAALAAAAAAAFAAMAAAAKAAAAAAAFAAMAAAAJAAAAAAAFAAMAAAAMAAAAAAAFAAMAAAAJAAYAAAAGAAgAAAAJAAcAAAAGAAkAAAA=")
 tile_set = SubResource("TileSet_q2d71")
-
-[node name="cam_camera" type="Camera2D" parent="."]
-position = Vector2(-130, 20)
-zoom = Vector2(3.5, 3.5)
-limit_left = 0
-limit_top = 0
-script = ExtResource("3_uo7di")
-
-[node name="Player" parent="." instance=ExtResource("1_j0p05")]
-position = Vector2(8, 60)
 
 [node name="CartBody" parent="." instance=ExtResource("4_gjpho")]
 position = Vector2(-12, 103)
