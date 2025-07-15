@@ -13,7 +13,7 @@ const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 #Swing -------------
 var timePassed = 0.0
 var swingingSpeed : int = 5
-var swingingDis : float = 8.0 # < ------------------ Dúvida
+var swingingDis : float = 8.0
 #Groups -----------
 var groupRival : String
 var groupSelf : String
@@ -58,13 +58,10 @@ func _physics_process(delta):
 	# Controle de drawSelfmação melhorado
 	
 func _on_are_hb_attack_area_entered(area: Area2D) -> void:
-	if area.is_in_group("colHb") and area.get_parent().is_in_group(groupRival):
-		colRival = true
-		colRivalId = area.get_parent()
-		
+	pass
+
 func _on_are_hb_attack_area_exited(area: Area2D) -> void:
-	if area.get_parent().is_in_group(groupRival):
-		colRival = false
+	pass
 
 func setMoveDirection () -> Vector2:
 	return Vector2.ZERO

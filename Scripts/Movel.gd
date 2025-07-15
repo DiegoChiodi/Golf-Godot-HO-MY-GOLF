@@ -24,6 +24,16 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	direction = setDirection()
 	super._physics_process(delta)
+
+func _on_are_hb_attack_area_entered(area: Area2D) -> void:
+	if area.is_in_group("colHb") and area.get_parent().is_in_group(groupRival):
+		colRival = true
+		colRivalId = area.get_parent()
+		
+func _on_are_hb_attack_area_exited(area: Area2D) -> void:
+	if area.get_parent().is_in_group(groupRival):
+		colRival = false
+
 func drawSelfDir():
 	if abs(direction.x) > abs(direction.y):
 		runRight()
