@@ -1,7 +1,9 @@
 extends Movel
 class_name Enemy
 
-@onready var player: CharacterBody2D = get_parent().get_node("Player")
+var world : BaseScene = null
+var player : Player = null
+var target : Character = null
 
 #Mouse ---------------
 const mouseInt = 0.5
@@ -14,7 +16,8 @@ var mouDir = Vector2.ZERO
 const mouDirDrag : float = 1 # quão rápido o impulso do mouse se dissipa
 
 func setDirection () -> Vector2:
-	return (player.global_position - global_position).normalized()
+	target = selectRival()
+	return (target.global_position - global_position).normalized()
 
 func setMoveDirection () -> Vector2:
 	# soma do impulso (se existir) + direção de perseguição
@@ -26,3 +29,11 @@ func setMoveDirection () -> Vector2:
 func groupsAdd() -> void:
 	groupRival = "player"
 	groupSelf = "enemy"
+	
+func setup(_player : Player, _world : BaseScene) -> void:
+	self.player = _player
+	self.world = _world
+
+func selectRival() -> Character:
+	#var targets = world.get_nodes_in_group(groupRival)
+	return player

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #Load files
-@onready var player := get_node("../Player")
+var player : Player = null
 @onready var ani_golf: AnimatedSprite2D = $ani_golf
 @onready var lbl_debug: Label = $lbl_debug
 @onready var col_debug: ColorRect = $rec_colDebug
@@ -101,7 +101,9 @@ func driving(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
 		colPlayer = true
+		player = area.get_parent()
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player") && !interact:
 		colPlayer = false
+		player = null

@@ -1,6 +1,7 @@
 extends Enemy
+class_name Guard
 
-@onready var bod_ball = get_node("../bod_ball")
+@onready var bod_ball = world.get_node("ball")
 
 #Speed
 var speedNormal = 35.0
@@ -8,6 +9,8 @@ var speed_deep = 0.03
 #Life
 var lifeParcent = 0
 var lifeParcentMax = 2
+var lestLifeParcent = lifeParcent
+var is_week = false
 
 func _ready() -> void:
 	sliceX = 3
@@ -17,9 +20,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	if life < lifeMax / 3:
+	if life < lifeMax * 0.4:
 		lifeParcent = 2
-	elif life < lifeMax - lifeMax / 3:
+		is_week = true
+		speedNormal = 20.0
+	elif life < lifeMax * 0.7:
 		lifeParcent = 1
 	attackSus()
 
@@ -40,25 +45,18 @@ func _physics_process(delta: float) -> void:
 		colRivalId.takeDamage(15, (global_position - colRivalId.global_position).normalized())
 		#colImpulse = (colRivalId.global_position - global_position).normalized()
 
-func setMoveDirection () -> Vector2:
-	#Se foi muito atacado corre de medo
-	var run : int = 1
-	if life < lifeMax / 3:
-		direction *= -1
-		print("what")
-		speedNormal = 20.0
-		
-	return super.setMoveDirection()
-	
-	
-func getDraw () -> AnimatedSprite2D:
-	return $spr_guard
+func setDirection () -> Vector2:
+	if is_week:
+		return -super.setDirection()
+	return super.setDirection() 
+func setDraw () -> void:
+	drawSelf = $spr_guard
 
 func _on_area_2d_mouse_entered() -> void:
 	mouseCol = true
 	bod_ball.colEnemy = true
 	bod_ball.enemyId = self
-	
+
 func _on_area_2d_mouse_exited() -> void:
 	bod_ball.colEnemy = false
 	mouseCol = false

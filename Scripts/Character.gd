@@ -32,9 +32,10 @@ var invulnerabilityCowdow : float = 0.0
 var invulnerabilityDelay : float = 0.4
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
-@onready var drawSelf = getDraw()
+var drawSelf
 
 func _ready() -> void:
+	setDraw()
 	drawSelf.z_index = z
 	groupsAdd()
 	add_to_group(groupSelf)
@@ -52,6 +53,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta):
 	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
+	
 	move_direction = setMoveDirection()
 	velocity = velocity.lerp(move_direction * speed, acceleration)
 	move_and_slide()
@@ -69,8 +71,8 @@ func setMoveDirection () -> Vector2:
 func setDirection () -> Vector2:
 	return Vector2.ZERO
 	
-func getDraw () -> AnimatedSprite2D:
-	return $drawSelf
+func setDraw () -> void:
+	drawSelf = null
 
 func stop():
 	pass

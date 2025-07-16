@@ -1,17 +1,21 @@
 extends BaseScene  # ou Node3D, se for 3D  
 
 #Load files ------------------
-@onready var ball: Node2D = $bod_ball
+@onready var ball: Node2D = $ball
+var guard : Guard = preload("res://Scenes/SecurityGuard.tscn").instantiate()
 
 #Functions ----------------
 func _ready():  
 	# Garante que a câmera siga o Player  
 	camera.position = player.position
+	guard.setup(player, self)
+	add_child(guard)
 
 func _process(delta):  
 	#modulate = cor_rgb(255,255,0)
 	if Input.is_action_just_pressed("reset"):
-		get_tree().reload_current_scene()
+		#get_tree().reload_current_scene()
+		pass
 	# Calcular distância máxima entre os alvos
 		
 func cor_rgb(r: int, g: int, b: int, a: int = 255) -> Color:  

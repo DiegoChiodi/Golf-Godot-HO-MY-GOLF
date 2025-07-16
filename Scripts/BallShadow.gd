@@ -1,7 +1,7 @@
 extends ColorRect
 
 #Load files
-@onready var bod_ball = get_parent().get_node("bod_ball")
+@onready var bod_ball = get_parent().get_node("ball")
 
 func _process(delta: float) -> void:
 	#Ball x is equals position ball void 

@@ -2,8 +2,7 @@ extends Node2D
 
 #Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug
-@onready var player : CharacterBody2D = self.get_parent().get_node("Player")
-@onready var camera : Camera2D = self.get_parent().get_node("cam_camera")
+@onready var player : Player = null
 #Scoping with Mouse ----------------------
 var iniMousePos : Vector2 = Vector2.ZERO
 var previousPressed = false
@@ -69,10 +68,12 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
 		colPlayer = true
+		player = area.get_parent()
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
 		colPlayer = false
+		player = area.get_parent()
 
 func initialImpulse():
 	readyShot = false
@@ -87,8 +88,6 @@ func initialImpulse():
 	
 	speedZ = forcaFinal * 0.625 if forcaFinal < disMaxZ else disMaxZ
 	state = State.MOVING
-	
-	camera.start_shake(1, 10.0)
 	
 func ballMoviment(delta : float):
 	var frictionFactor = exp(-airFriction * delta)
