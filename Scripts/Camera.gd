@@ -20,13 +20,8 @@ func _ready():
 	self.zoom = Vector2(3.5,3.5)
 
 func _process(delta):
-	
-
-	posTarget = target.position # Atualiza a posição da câmera para acompanhar o Player (suavizado opcional) 
-	
-	self.position = self.position.lerp(posTarget, delta * lissing)  # Ajuste o "5.0" para mudar a suavidade 
-
-	self.position = target.position
+	posTarget = target.position
+	self.position = self.position.lerp(posTarget, delta * lissing)  # Ajuste o "5.0" para mudar a suavidade
 	if shake_amount > 0:
 		# Aplica uma posição aleatória
 		offset = original_offset + Vector2(

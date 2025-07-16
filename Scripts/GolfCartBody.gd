@@ -81,9 +81,8 @@ func _physics_process(delta: float) -> void:
 			enterDelay = 0.0
 		if interact:
 			driving(delta)
-			player.position.x = position.x
-			player.position.y = position.y
-		
+			player.position = self.global_position
+	
 func driving(delta: float) -> void:
 	var throttle = Input.get_axis("move_down", "move_up")
 	var steer = Input.get_axis("move_left", "move_right")
