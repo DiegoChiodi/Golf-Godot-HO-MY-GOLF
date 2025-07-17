@@ -2,14 +2,13 @@ extends BaseScene  # ou Node3D, se for 3D
 
 #Load files ------------------
 @onready var ball: Node2D = $ball
-var guard : Guard = preload("res://Scenes/SecurityGuard.tscn").instantiate()
+@onready var guard = $SecurityGuard
 
 #Functions ----------------
 func _ready():  
 	# Garante que a câmera siga o Player  
 	camera.position = player.position
 	guard.setup(player, self)
-	add_child(guard)
 
 func _process(delta):  
 	#modulate = cor_rgb(255,255,0)

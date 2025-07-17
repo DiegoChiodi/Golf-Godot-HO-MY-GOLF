@@ -17,6 +17,9 @@ const mouDirDrag : float = 1 # quão rápido o impulso do mouse se dissipa
 
 func setDirection () -> Vector2:
 	target = selectRival()
+	if target == null:
+		return Vector2.ZERO
+	
 	return (target.global_position - global_position).normalized()
 
 func setMoveDirection () -> Vector2:

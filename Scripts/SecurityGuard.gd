@@ -1,8 +1,7 @@
 extends Enemy
 class_name Guard
 
-@onready var bod_ball = world.get_node("ball")
-
+var ball = null
 #Speed
 var speedNormal = 35.0
 var speed_deep = 0.03
@@ -53,12 +52,16 @@ func setDraw () -> void:
 	drawSelf = $spr_guard
 
 func _on_area_2d_mouse_entered() -> void:
+	if ball == null:
+		return
 	mouseCol = true
-	bod_ball.colEnemy = true
-	bod_ball.enemyId = self
+	ball.colEnemy = true
+	ball.enemyId = self
 
 func _on_area_2d_mouse_exited() -> void:
-	bod_ball.colEnemy = false
+	if ball == null:
+		return
+	ball.colEnemy = false
 	mouseCol = false
 	
 #func _on_are_hb_attack_area_entered(area: Area2D) -> void:
@@ -66,8 +69,12 @@ func _on_area_2d_mouse_exited() -> void:
 
 #	pass
 
+func setup(_player : Player, _world : BaseScene) -> void:
+	super.setup(_player, _world)
+	ball = world.ball
+
 func attackSus():
-	if mouseCol && bod_ball.colPlayer: #Se o mouse está em cima o sprite fica vermelho
+	if mouseCol && ball.colPlayer: #Se o mouse está em cima o sprite fica vermelho
 		pass
 	else: #Volta a cor normal
 		pass
