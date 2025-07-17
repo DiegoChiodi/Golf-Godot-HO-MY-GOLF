@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://oxhjgdfmxxch"]
+[gd_scene load_steps=12 format=3 uid="uid://oxhjgdfmxxch"]
 
 [ext_resource type="Script" uid="uid://cjpue2p51mceo" path="res://Scripts/GolfCartBody.gd" id="1_l0d8i"]
 [ext_resource type="Texture2D" uid="uid://bv5ox7wd7b0lc" path="res://Art assets/GolfCart.png" id="3_5mk7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxk7d"]
-size = Vector2(14.4467, 9.5)
+size = Vector2(15.1967, 9.88045)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0d8i"]
 radius = 18.0278
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvra7"]
+size = Vector2(15.3959, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5mk7u"]
 atlas = ExtResource("3_5mk7u")
@@ -76,8 +79,8 @@ animations = [{
 script = ExtResource("1_l0d8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.250002, -1.90735e-06)
-scale = Vector2(1.00369, 1.0121)
+position = Vector2(-0.5, 0)
+scale = Vector2(0.987057, 1.0121)
 shape = SubResource("RectangleShape2D_sxk7d")
 
 [node name="IntercatArea" type="Area2D" parent="."]
@@ -85,6 +88,14 @@ shape = SubResource("RectangleShape2D_sxk7d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IntercatArea"]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_l0d8i")
+
+[node name="are_hbAttack" type="Area2D" parent="."]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="are_hbAttack"]
+position = Vector2(-0.5, -5)
+scale = Vector2(1.364, 1)
+shape = SubResource("RectangleShape2D_qvra7")
 
 [node name="rec_colDebug" type="ColorRect" parent="."]
 visible = false
@@ -110,3 +121,5 @@ autoplay = "right"
 
 [connection signal="area_entered" from="IntercatArea" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="IntercatArea" to="." method="_on_area_exited"]
+[connection signal="area_entered" from="are_hbAttack" to="." method="_on_are_hb_attack_area_entered"]
+[connection signal="area_exited" from="are_hbAttack" to="." method="_on_are_hb_attack_area_exited"]

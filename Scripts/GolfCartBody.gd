@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 #Load files
 var player : Player = null
+var enemy : Enemy = null
 @onready var ani_golf: AnimatedSprite2D = $ani_golf
 @onready var lbl_debug: Label = $lbl_debug
 @onready var col_debug: ColorRect = $rec_colDebug
@@ -15,6 +16,7 @@ const fatAngle = 360 / 8#45
 const compAngle = fatAngle / 2
 #
 var colPlayer = false
+var colEnemy = false
 var interact = false
 var enterDelay = 0.0
 var enterCowdow = 0.2
@@ -66,6 +68,8 @@ func _process(delta: float) -> void:
 	lbl_debug.position = Vector2(0, 0)
 		
 func _physics_process(delta: float) -> void:
+	if colEnemy:
+		enemy.setCollisionImpulse((global_position - enemy.global_position).normalized() * 5)
 	if colPlayer:
 		var space = Input.is_action_just_pressed("move_space")
 		enterDelay += delta
@@ -93,7 +97,7 @@ func driving(delta: float) -> void:
 		steerReverse = -steer
 		reverse = 0.66
 		
-	velocity = transform.x * throttle * reverse * 60
+	velocity = transform.x * throttle * reverse * speed
 	move_and_slide()
 	rotation += steerReverse * rotationSpeed * delta * reverse
 
@@ -101,8 +105,20 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
 		colPlayer = true
 		player = area.get_parent()
+		
+
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player") && !interact:
 		colPlayer = false
 		player = null
+
+func _on_are_hb_attack_area_entered(area: Area2D) -> void:
+	if area.is_in_group("colHb") and area.get_parent().is_in_group("enemy"):
+		enemy = area.get_parent()
+		colEnemy = true
+
+func _on_are_hb_attack_area_exited(area: Area2D) -> void:
+	if area.is_in_group("colHb") and area.get_parent().is_in_group("enemy"):
+		enemy = null
+		colEnemy = false
