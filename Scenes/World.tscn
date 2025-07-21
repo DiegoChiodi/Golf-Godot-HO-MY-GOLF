@@ -145,4 +145,7 @@ color = Color(0.147672, 0.147672, 0.147672, 1)
 script = ExtResource("6_45d1s")
 
 [node name="SecurityGuard" parent="." instance=ExtResource("7_y7y61")]
-position = Vector2(156, 43)
+position = Vector2(41, 37)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(160, 129)
