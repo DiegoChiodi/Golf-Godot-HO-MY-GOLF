@@ -1,9 +1,10 @@
 extends Node2D
 
+var player : Player
 @onready var spr_golfClub := $spr_golfClub as Sprite2D
 @onready var are_attack := $are_attack as Area2D
 @onready var col_attack := are_attack.get_node("col_attack") as CollisionShape2D
-@onready var player = get_parent()
+
 @onready var debugText := $Label as Label
 @onready var debugRect := $ColorRect as ColorRect
 #Angle for impulse
@@ -56,7 +57,10 @@ func _process(delta: float) -> void:
 	angle = int(rotation_degrees) % 360
 	if (0 > angle):
 		angle += 360
-		
+
+func _physics_process(delta: float) -> void:
+	global_position = player.global_position
+
 func _on_are_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
 		var parArea = area.get_parent()
@@ -83,3 +87,6 @@ func rotationAttack (delta : float):
 			timePressed = 0
 			compRotation = 0
 			pressioned = false
+			
+func setup(_player : Player) -> void:
+	player = _player

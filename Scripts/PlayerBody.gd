@@ -3,11 +3,16 @@ class_name Player
 
 var colEnemy : bool = false
 var enemyId = null
+@onready var leftHand : Sprite2D = $spr_leftHand
+@onready var rightHand : Sprite2D = $spr_rightHand
 
 func _ready() -> void:
 	sliceX = 1
 	sliceY = 3
 	super._ready()
+	leftHand.setup(self)
+	rightHand.setup(self)
+	
 func _process(delta: float) -> void:
 	super._process(delta)
 	

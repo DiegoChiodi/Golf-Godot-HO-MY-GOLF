@@ -2,13 +2,15 @@ extends BaseScene  # ou Node3D, se for 3D
 
 #Load files ------------------
 @onready var ball: Node2D = $ball
-@onready var guard = $SecurityGuard
+@onready var guard = $securityGuard
+@onready var golfClub = $golfClub
 
 #Functions ----------------
 func _ready():  
 	# Garante que a câmera siga o Player  
 	camera.position = player.position
 	guard.setup(player, self)
+	golfClub.setup(player)
 
 func _process(delta):  
 	#modulate = cor_rgb(255,255,0)

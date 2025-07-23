@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cqxcwog8285ti"]
+[gd_scene load_steps=11 format=4 uid="uid://cqxcwog8285ti"]
 
 [ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/World.gd" id="1_jjfra"]
 [ext_resource type="Texture2D" uid="uid://bo7feg3anb7e3" path="res://Art assets/tileSet.png" id="2_vkyju"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2spk7t200iju" path="res://Scenes/GuardHelmet.tscn" id="5_jeqjr"]
 [ext_resource type="Script" uid="uid://ckqax8xrfaijj" path="res://Scripts/BallShadow.gd" id="6_7kmno"]
 [ext_resource type="PackedScene" uid="uid://dn6xsiot3ogq1" path="res://Scenes/SecurityGuard.tscn" id="7_nxl7q"]
+[ext_resource type="PackedScene" uid="uid://c8esk8t6c272h" path="res://Scenes/GolfClub.tscn" id="8_vkyju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf5tu"]
 texture = ExtResource("2_vkyju")
@@ -146,6 +147,9 @@ script = ExtResource("6_7kmno")
 
 [node name="SecurityGuard" parent="." instance=ExtResource("7_nxl7q")]
 position = Vector2(270, 121)
+
+[node name="golfClub" parent="." instance=ExtResource("8_vkyju")]
+position = Vector2(401, 248)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(300, 182)
