@@ -9,6 +9,8 @@ var worldPath : String = "res://Scenes/World.tscn"
 
 func init(main : Node2D):
 	self.camera.setup(player)
+	camera.limit_left = 0
+	camera.limit_top = 0
 	main.add_child(camera)
 	main.add_child(player)
 	self.worldContainer.setup(player, camera)

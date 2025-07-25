@@ -53,3 +53,9 @@ func followBall(delta : float ) -> void:
 		lissing += 2 * delta
 		lissing = clamp(lissing,0,10) 
 		camera.zoom = camera.zoom.lerp(Vector2(normalZoom,normalZoom), delta * 2)"""
+
+func setLimit(_limit : Vector2) -> void:
+	self.limit_left = 0
+	self.limit_top = 0
+	self.limit_right = _limit.x
+	self.limit_bottom = _limit.y

@@ -11,6 +11,7 @@ func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	var dirMouse : Vector2 = (get_global_mouse_position() - self.player.global_position).normalized()
 	rotation = dirMouse.angle()
+	
 	global_position = player.global_position + Vector2(10,10) * dirMouse
 
 func setup(_player : Player) -> void:

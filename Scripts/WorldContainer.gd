@@ -1,5 +1,12 @@
-extends BaseScene
+extends Node2D
 class_name WorldContainer
+
+var player: Player
+var camera: Camera
+
+func setup(_player: Player, _camera: Camera) -> void:
+	player = _player
+	camera = _camera
 
 var currentRoom
 

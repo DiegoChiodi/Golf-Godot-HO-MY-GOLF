@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://drx4ms06agav5" path="res://Art assets/GolfStelClub.png" id="2_7dk7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jb2yw"]
-size = Vector2(8.77379, 7.86632)
+size = Vector2(4.46789, 4.46789)
 
 [node name="bod_golfClub" type="Node2D"]
 script = ExtResource("1_nm6ro")
@@ -16,7 +16,7 @@ texture = ExtResource("2_7dk7q")
 [node name="are_attack" type="Area2D" parent="."]
 
 [node name="col_attack" type="CollisionShape2D" parent="are_attack"]
-position = Vector2(3.21808, 19.4882)
+position = Vector2(3, 19)
 rotation = -0.420064
 shape = SubResource("RectangleShape2D_jb2yw")
 
