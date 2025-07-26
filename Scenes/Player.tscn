@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bpa3p06mjob4u"]
 
-[ext_resource type="Script" uid="uid://b2sev4k5gg2vo" path="res://Scripts/PlayerBody.gd" id="1_kyqiw"]
+[ext_resource type="Script" uid="uid://b2sev4k5gg2vo" path="res://Scripts/Characters/PlayerBody.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://db1bjfv62pfi0" path="res://Art assets/newPlayer.png" id="3_dewec"]
 [ext_resource type="Texture2D" uid="uid://doe71l1thfwyl" path="res://Art assets/mao.png" id="4_5ixxa"]
-[ext_resource type="Script" uid="uid://drrixkcvu15wc" path="res://Scripts/Hand.gd" id="5_nn08x"]
+[ext_resource type="Script" uid="uid://drrixkcvu15wc" path="res://Scripts/Characters/Hand.gd" id="5_nn08x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
 size = Vector2(5, 4)

@@ -1,11 +1,16 @@
-extends TileMap
+extends Node
+class_name ClubsManager
 
-@onready var ground = $Ground 
-@onready var tileSize = ground.tile_set.tile_size
+enum Clubs { HAND, GOLFCLUB, PISTOL}
+
+var club_1 = Clubs.HAND;
+var club_2 = Clubs.HAND;
+
+var actualClub = club_1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(str(tileSize))
-
+	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

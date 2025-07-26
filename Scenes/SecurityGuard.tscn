@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dn6xsiot3ogq1"]
 
-[ext_resource type="Script" uid="uid://b5m84cx356usk" path="res://Scripts/SecurityGuard.gd" id="1_nh3vw"]
+[ext_resource type="Script" uid="uid://b5m84cx356usk" path="res://Scripts/Characters/SecurityGuard.gd" id="1_nh3vw"]
 [ext_resource type="Texture2D" uid="uid://bos3byj3tuvsd" path="res://Art assets/Segurança.png" id="2_nh3vw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nh3vw"]

@@ -21,5 +21,4 @@ func init(main : Node2D):
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		worldContainer.change_map("res://Scenes/World.tscn", player, camera)
-		
 		player.position = worldContainer.currentRoom.get_node("PlayerSpawn").position

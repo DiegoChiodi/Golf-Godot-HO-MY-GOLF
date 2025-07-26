@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=4 uid="uid://d3u7l854gteaq"]
 
-[ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/World.gd" id="1_v35xb"]
+[ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/Scenes/World.gd" id="1_v35xb"]
 [ext_resource type="PackedScene" uid="uid://bpa3p06mjob4u" path="res://Scenes/Player.tscn" id="2_us8vv"]
 [ext_resource type="PackedScene" uid="uid://oxhjgdfmxxch" path="res://Scenes/GolfCart.tscn" id="3_pjotx"]
 [ext_resource type="PackedScene" uid="uid://cu3ftopqq2vdn" path="res://Scenes/Ball.tscn" id="4_xebw6"]
-[ext_resource type="Script" uid="uid://ckqax8xrfaijj" path="res://Scripts/BallShadow.gd" id="5_kbwmi"]
+[ext_resource type="Script" uid="uid://ckqax8xrfaijj" path="res://Scripts/Balls/BallShadow.gd" id="5_kbwmi"]
 [ext_resource type="PackedScene" uid="uid://dn6xsiot3ogq1" path="res://Scenes/SecurityGuard.tscn" id="6_fcnec"]
 [ext_resource type="Texture2D" uid="uid://bo7feg3anb7e3" path="res://Art assets/tileSet.png" id="7_8g7dv"]
 
