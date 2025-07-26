@@ -76,7 +76,7 @@ func _on_are_attack_area_entered(area: Area2D) -> void:
 		parArea.takeDamage(damage, media * 3)
 		parArea.mouFollow = true
 		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10
-		
+
 func rotationAttack (delta : float):
 	if !pressioned:
 		pass
