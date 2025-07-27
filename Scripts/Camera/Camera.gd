@@ -13,11 +13,13 @@ var canBallFollow = false
 var shake_amount = 0.0
 var shake_decay = 1.0  # Velocidade com que o tremor diminui
 var original_offset = Vector2.ZERO
+var zoomCam = Vector2(2.5,2.5)
+
+var debugCamZoom = false
 
 
 func _ready():
 	original_offset = offset  # Armazena a posição original da câmera
-	self.zoom = Vector2(3.5,3.5)
 
 func _process(delta):
 	posTarget = target.position
@@ -34,6 +36,15 @@ func _process(delta):
 	else:
 		# Restaura a posição original
 		offset = original_offset
+	
+	self.zoom = zoomCam
+	if Input.is_action_just_pressed("press_c"):
+		debugCamZoom = !debugCamZoom
+		
+	if debugCamZoom:
+		zoomCam = Vector2(2.5,2.5)
+	else:
+		zoomCam = Vector2(3.5,3.5)
 
 func start_shake(intensity: float, decay: float = 1.0):
 	shake_amount = intensity

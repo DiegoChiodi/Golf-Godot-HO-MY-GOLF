@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name NormalBall
 #Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug
 @onready var player : Player = null
@@ -22,7 +22,7 @@ var speed : Vector2
 var speedZ = 0
 const gravity = 9.8
 #Objects variants / Life world
-var airFriction = 0.98
+var airFriction = 0.99
 var groundFriction = 0.95
 var golfClubForce = 600.0
 #Limits

@@ -16,7 +16,8 @@ func _process(delta: float) -> void:
 	var clubManager = run_manager.clubManager
 	
 	if clubManager.actualClub == clubManager.Clubs.HAND:
-		print('a')
+		pass
 
 func setup(_player : Player) -> void:
 	self.player = _player
+	

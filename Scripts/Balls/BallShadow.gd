@@ -1,9 +1,15 @@
 extends ColorRect
-
+class_name ShadowBall
 #Load files
-@onready var bod_ball = get_parent().get_node("ball")
+var ball
 
 func _process(delta: float) -> void:
 	#Ball x is equals position ball void 
-	position.x = bod_ball.position.x - 2
-	position.y = bod_ball.position.y - bod_ball.posZ * delta - 2
+	position.x = ball.position.x - 2
+	position.y = ball.position.y - ball.posZ * delta - 2
+	
+	self.color.a = ball.posZ / ball.disMaxZ / - 25
+
+
+func setup(_ball : NormalBall) -> void:
+	ball = _ball
