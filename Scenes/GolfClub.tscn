@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8esk8t6c272h"]
 
-[ext_resource type="Script" uid="uid://fuuamyus23w6" path="res://Scripts/Clubs/GolfClub.gd" id="1_nm6ro"]
+[ext_resource type="Script" uid="uid://fuuamyus23w6" path="res://Scripts/Clubs/ClubChildren/GolfClub.gd" id="1_nm6ro"]
 [ext_resource type="Texture2D" uid="uid://drx4ms06agav5" path="res://Art assets/GolfStelClub.png" id="2_7dk7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jb2yw"]

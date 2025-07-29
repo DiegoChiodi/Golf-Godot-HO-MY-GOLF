@@ -159,6 +159,7 @@ offset_right = -124.0
 offset_bottom = 63.0
 color = Color(0.123473, 0.123473, 0.123473, 1)
 script = ExtResource("6_45d1s")
+metadata/_edit_use_anchors_ = true
 
 [node name="securityGuard" parent="." instance=ExtResource("7_y7y61")]
 position = Vector2(41, 37)

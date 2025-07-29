@@ -1,4 +1,5 @@
-extends Node2D
+extends Club
+class_name NormalClub
 
 var player : Player
 @onready var spr_golfClub := $spr_golfClub as Sprite2D
@@ -18,7 +19,6 @@ var pressioned = false
 var timePressed = 0.0
 const alaPressed = 0.32
 var mouseDis = 0.0
-var iniMousePos : Vector2 = Vector2.ZERO
 var previousPressed = false
 #Attack
 @export var damage : float = 10.0 
@@ -40,53 +40,52 @@ func _process(delta: float) -> void:
 	var solt = Input.is_action_just_released("left_click")
 	
 	var B = col_attack.position
-	debugRect.position = B
+	self.debugRect.position = B
 	
 	look_at(get_global_mouse_position())
-	rotation_degrees -= 90
+	self.rotation_degrees -= 90
 	
 	if press:
-		iniMousePos = get_global_mouse_position() - get_parent().position
-		previousPressed = true
+		self.previousPressed = true
 
 	if solt && previousPressed:
-		previousPressed = false
-		mouseDis = (get_global_mouse_position() - get_parent().position)
-		attacking = true
+		self.previousPressed = false
+		self.mouseDis = (get_global_mouse_position() - get_parent().position)
+		self.attacking = true
 	
-	angle = int(rotation_degrees) % 360
-	if (0 > angle):
-		angle += 360
+	self.angle = int(self.rotation_degrees) % 360
+	if (0 > self.angle):
+		self.angle += 360
 
 func _physics_process(delta: float) -> void:
-	global_position = player.global_position
+	self.global_position = player.global_position
 
 func _on_are_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
 		var parArea = area.get_parent()
 		
-		var playerPos = player.global_position
-		var attackPos = col_attack.global_position
+		var playerPos = self.player.global_position
+		var attackPos = self.col_attack.global_position
 		var enemyPos = parArea.global_position
 		
 		var dirPlayerEnemy = (playerPos - enemyPos).normalized()
 		var dirAttackEnemy = (attackPos - enemyPos).normalized()
 		
 		var media = (dirPlayerEnemy + dirAttackEnemy).normalized()
-		parArea.takeDamage(damage, media * 3)
+		parArea.takeDamage(self.damage, media * 3)
 		parArea.mouFollow = true
 		#parArea.speed = abs((lastAngle - rotation_degrees)) / 2 + 10
 
 func rotationAttack (delta : float):
-	if !pressioned:
+	if !self.self.pressioned:
 		pass
 	else:
-		compRotation += delta * -720 * 1.5
-		timePressed += delta
-		if timePressed > alaPressed:
-			timePressed = 0
-			compRotation = 0
-			pressioned = false
+		self.compRotation += delta * -720 * 1.5
+		self.timePressed += delta
+		if self.timePressed > self.alaPressed:
+			self.timePressed = 0
+			self.compRotation = 0
+			self.pressioned = false
 			
 func setup(_player : Player) -> void:
-	player = _player
+	self.player = _player

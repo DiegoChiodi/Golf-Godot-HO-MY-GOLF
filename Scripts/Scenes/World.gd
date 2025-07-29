@@ -13,14 +13,13 @@ func _ready():
 	camera.position = player.position
 	guard.setup(player, self)
 	camera.setLimit(roomSize)
-	print(roomSize)
 	camera.position = $PlayerSpawn.position
 	golfClub.setup(player)
 	shadowBall.setup(ball)
 	
 
 func _process(delta):  
-	#modulate = cor_rgb(255,255,0)
+	#modulate = cor_rgb(255,255,0
 	pass
 
 func cor_rgb(r: int, g: int, b: int, a: int = 255) -> Color:  
