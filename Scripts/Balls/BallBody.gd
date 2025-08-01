@@ -9,7 +9,7 @@ var previousPressed = false
 var mouseDis : Vector2
 var attack = false
 var readyShot = true
-const mouDisInterval = 25.0
+const mouDisInterval = 15.0
 #Colision -------------------
 var colPlayer = false
 var colEnemy = false
