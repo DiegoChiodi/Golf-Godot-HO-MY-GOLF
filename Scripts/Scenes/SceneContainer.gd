@@ -19,6 +19,6 @@ func load_room(path : String, player : Player, camera : Camera) -> void:
 		currentRoom.setup(player, camera)
 	add_child(currentRoom)
 
-func change_map(path : String, player : Player, camera : Camera) -> void:
+func change_room(path : String, player : Player, camera : Camera) -> void:
 	destroy_room()
 	load_room(path, player, camera)

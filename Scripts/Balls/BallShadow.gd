@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 	position.x = ball.position.x - 2
 	position.y = ball.position.y - ball.posZ * delta - 2
 	
-	#self.color.a = ball.posZ / ball.disMaxZ / - 25
+	self.color.a = ball.posZ / ball.disMaxZ / - 25
 
 
 func setup(_ball : NormalBall) -> void:
