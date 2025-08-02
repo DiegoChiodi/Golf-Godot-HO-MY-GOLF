@@ -8,8 +8,9 @@ var iniMousePos : Vector2 = Vector2.ZERO
 var previousPressed = false
 var mouseDis : Vector2
 var attack = false
-var readyShot = true
+var readyShot = true # permissão para a acertar a bolinha
 const mouDisInterval = 15.0
+var line
 #Colision -------------------
 var colPlayer = false
 var colEnemy = false
@@ -44,24 +45,38 @@ func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
 	if colPlayer:
-		if readyShot:
+		if readyShot: # se posso tacar
 			if press:
 				iniMousePos = get_global_mouse_position()
 				previousPressed = true
-			if solt && previousPressed:
-				previousPressed = false
-				if (get_global_mouse_position() - iniMousePos).length() > mouDisInterval:
-					mouseDis = (get_global_mouse_position() - iniMousePos)
-					attack = false
-					movSpeed = 1
-					initialImpulse()
-				elif colEnemy:
-					mouseDis = (position - enemyId.position)
-					attack = true
-					position = enemyId.position
-					enemyId.takeDamage(0, mouseDis.normalized() * 3)
-					movSpeed = 3
-					initialImpulse()
+				line = create_line()
+				add_child(line)
+				
+			if line != null:
+				var mousePos = get_local_mouse_position()
+				var points = line.points
+				points[1] = mousePos
+				line.points = points
+				
+			if previousPressed:
+				if solt:
+					var mousePos = get_global_mouse_position()
+					previousPressed = false
+					line.queue_free()
+					if (mousePos - iniMousePos).length() > mouDisInterval:
+						mouseDis = (mousePos - iniMousePos)
+						attack = false
+						movSpeed = 1
+						initialImpulse()
+					elif colEnemy:
+						mouseDis = (position - enemyId.position)
+						attack = true
+						position = enemyId.position
+						enemyId.takeDamage(0, mouseDis.normalized() * 3)
+						movSpeed = 3
+						initialImpulse()
+	elif line != null:
+		line.queue_free()
 	if state == State.MOVING:
 		ballMoviment(delta)
 
@@ -119,3 +134,24 @@ func ballMoviment(delta : float):
 			state = State.IDLE
 			speedZ = 0
 			posZ = 0
+
+func create_line() -> Line2D:
+	var line := Line2D.new()
+
+	# Pontos
+	line.points = PackedVector2Array([
+		Vector2(0,0),
+		Vector2(0,0)
+	])
+
+	# Largura da linha
+	line.width = 5.0
+	line.closed = true  # Igual ao "Closed: On" da imagem
+
+	# Curva de largura
+	var curve := Curve.new()
+	curve.add_point(Vector2(0.0, 0.0))
+	curve.add_point(Vector2(1.0, 1.0))
+	line.width_curve = curve
+
+	return line
