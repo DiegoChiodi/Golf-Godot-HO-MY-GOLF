@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dmlcaxedukan0"]
+[gd_scene load_steps=13 format=4 uid="uid://dmlcaxedukan0"]
 
 [ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/Scenes/World.gd" id="1_gjpho"]
 [ext_resource type="Texture2D" uid="uid://bo7feg3anb7e3" path="res://Art assets/tileSet.png" id="2_5nsto"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://ckqax8xrfaijj" path="res://Scripts/Balls/BallShadow.gd" id="6_45d1s"]
 [ext_resource type="PackedScene" uid="uid://2spk7t200iju" path="res://Scenes/GuardHelmet.tscn" id="6_q2d71"]
 [ext_resource type="PackedScene" uid="uid://dn6xsiot3ogq1" path="res://Scenes/SecurityGuard.tscn" id="7_y7y61"]
-[ext_resource type="PackedScene" uid="uid://c8esk8t6c272h" path="res://Scenes/GolfClub.tscn" id="8_q2d71"]
 [ext_resource type="PackedScene" uid="uid://irhmbxcjvw8u" path="res://Scenes/Hole.tscn" id="9_kn06e"]
 [ext_resource type="PackedScene" uid="uid://cc7xpjtgj8vt0" path="res://Scenes/Flag.tscn" id="10_7yo87"]
 
@@ -149,7 +148,7 @@ position = Vector2(-12, 103)
 rotation = 0.874499
 
 [node name="ball" parent="." instance=ExtResource("5_p70al")]
-position = Vector2(6, 80)
+position = Vector2(133, 117)
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("6_q2d71")]
 position = Vector2(64, 55)
@@ -171,9 +170,6 @@ position = Vector2(160, 129)
 
 [node name="roomSize" type="Marker2D" parent="."]
 position = Vector2(601, 591)
-
-[node name="bod_golfClub" parent="." instance=ExtResource("8_q2d71")]
-position = Vector2(17, 71)
 
 [node name="Hole" parent="." instance=ExtResource("9_kn06e")]
 position = Vector2(97, 127)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpa3p06mjob4u"]
+[gd_scene load_steps=7 format=3 uid="uid://bpa3p06mjob4u"]
 
-[ext_resource type="Script" uid="uid://b2sev4k5gg2vo" path="res://Scripts/Characters/PlayerBody.gd" id="1_kyqiw"]
+[ext_resource type="Script" uid="uid://b2sev4k5gg2vo" path="res://Scripts/Characters/Player/PlayerBody.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://db1bjfv62pfi0" path="res://Art assets/newPlayer.png" id="3_dewec"]
 [ext_resource type="PackedScene" uid="uid://bxj4qfysdscuf" path="res://Scenes/Hands.tscn" id="3_gntrk"]
+[ext_resource type="Script" uid="uid://rhkd0yxoke01" path="res://Scripts/Characters/Player/ActualClub.gd" id="4_dewec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
 size = Vector2(5, 4)
@@ -32,6 +33,9 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Hands" parent="." instance=ExtResource("3_gntrk")]
+
+[node name="ActualClub" type="Node2D" parent="."]
+script = ExtResource("4_dewec")
 
 [connection signal="area_entered" from="are_hbAttack" to="." method="_on_are_hb_attack_area_entered"]
 [connection signal="area_exited" from="are_hbAttack" to="." method="_on_are_hb_attack_area_exited"]

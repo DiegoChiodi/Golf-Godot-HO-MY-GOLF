@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 			if press:
 				iniMousePos = get_global_mouse_position()
 				previousPressed = true
-				line = create_line()
+				line = create_line(get_local_mouse_position())
 				add_child(line)
 				
 			if line != null:
@@ -135,12 +135,12 @@ func ballMoviment(delta : float):
 			speedZ = 0
 			posZ = 0
 
-func create_line() -> Line2D:
+func create_line(initialPoint : Vector2) -> Line2D:
 	var line := Line2D.new()
-
+	
 	# Pontos
 	line.points = PackedVector2Array([
-		Vector2(0,0),
+		initialPoint,
 		Vector2(0,0)
 	])
 

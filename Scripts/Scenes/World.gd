@@ -5,7 +5,6 @@ extends BaseScene  # ou Node3D, se for 3D
 @onready var shadowBall : ShadowBall = $rec_ballShadow
 @onready var guard = $securityGuard
 @onready var roomSize = $roomSize.global_position
-@onready var golfClub = $bod_golfClub
 
 #Functions ----------------
 func _ready():  
@@ -14,9 +13,7 @@ func _ready():
 	guard.setup(player, self)
 	camera.setLimit(roomSize)
 	camera.position = $PlayerSpawn.position
-	golfClub.setup(player)
 	shadowBall.setup(ball)
-	
 
 func _process(delta):  
 	#modulate = cor_rgb(255,255,0
