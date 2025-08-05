@@ -2,9 +2,11 @@ extends Node2D
 class_name BaseClub
 
 var player : Player
+
 @onready var spr_golfClub := $spr_golfClub as Sprite2D
 @onready var are_attack := $are_attack as Area2D
 @onready var col_attack := are_attack.get_node("col_attack") as CollisionShape2D
+
 #Mouse
 var pressioned = false
 var previousPressed = false

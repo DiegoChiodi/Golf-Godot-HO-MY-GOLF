@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2spk7t200iju" path="res://Scenes/GuardHelmet.tscn" id="5_jeqjr"]
 [ext_resource type="Script" uid="uid://ckqax8xrfaijj" path="res://Scripts/Balls/BallShadow.gd" id="6_7kmno"]
 [ext_resource type="PackedScene" uid="uid://dn6xsiot3ogq1" path="res://Scenes/SecurityGuard.tscn" id="7_nxl7q"]
-[ext_resource type="PackedScene" uid="uid://c8esk8t6c272h" path="res://Scenes/GolfClub.tscn" id="8_vkyju"]
+[ext_resource type="PackedScene" uid="uid://c8esk8t6c272h" path="res://Scenes/Clubs/GolfClub.tscn" id="8_vkyju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf5tu"]
 texture = ExtResource("2_vkyju")
