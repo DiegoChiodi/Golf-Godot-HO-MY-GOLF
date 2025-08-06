@@ -13,12 +13,14 @@ script = ExtResource("1_gye8g")
 position = Vector2(11, -1)
 texture = ExtResource("2_akojj")
 
-[node name="spawn_tiro" type="Marker2D" parent="."]
-position = Vector2(14, -3)
-
 [node name="are_attack" type="Area2D" parent="."]
 position = Vector2(9, 0)
 
 [node name="col_attack" type="CollisionShape2D" parent="are_attack"]
 position = Vector2(2, -2.5)
 shape = SubResource("RectangleShape2D_gye8g")
+
+[node name="spawn_tiro" type="Marker2D" parent="."]
+position = Vector2(14, -3)
+
+[connection signal="area_entered" from="are_attack" to="." method="_on_are_attack_area_entered"]
