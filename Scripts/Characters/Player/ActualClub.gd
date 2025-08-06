@@ -23,9 +23,11 @@ func _process(delta: float) -> void:
 
 func setup(_player : Player) -> void:
 	player = _player
-	var club_scene := load("res://Scenes/Clubs/GolfClub.tscn")
-	golfClub1 = club_scene.instantiate()
-	golfClub2 = club_scene.instantiate()
+	var golfClub := load("res://Scenes/Clubs/GolfClub.tscn")
+	var pistol := load("res://Scenes/Clubs/ClubPistol.tscn")
+	
+	golfClub1 = golfClub.instantiate()
+	golfClub2 = pistol.instantiate()
 	golfClub1.setup(player)
 	golfClub2.setup(player)
 	actualClub = golfClub1

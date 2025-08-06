@@ -4,38 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://drx4ms06agav5" path="res://Art assets/GolfStelClub.png" id="2_8yc4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jb2yw"]
-size = Vector2(4.46789, 4.46789)
+size = Vector2(5, 7)
 
 [node name="bod_golfClub" type="Node2D"]
 script = ExtResource("1_gorgj")
 
 [node name="spr_golfClub" type="Sprite2D" parent="."]
-position = Vector2(1, 15)
+position = Vector2(16.0047, -2.99376)
+rotation = -1.57002
 texture = ExtResource("2_8yc4u")
 
 [node name="are_attack" type="Area2D" parent="."]
 
 [node name="col_attack" type="CollisionShape2D" parent="are_attack"]
-position = Vector2(3, 19)
-rotation = -0.420064
+position = Vector2(20.5, -4.5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jb2yw")
-
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -37.0
-offset_top = 10.0
-offset_right = -8.0
-offset_bottom = 33.0
-text = "
-"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-z_index = 20
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 1.0
-offset_bottom = 1.0
-color = Color(0, 0, 0, 1)
 
 [connection signal="area_entered" from="are_attack" to="." method="_on_are_attack_area_entered"]

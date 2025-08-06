@@ -16,8 +16,6 @@ var angle = 0.0
 #Z
 var z = 5
 
-func _ready() -> void:
-	spr_golfClub.z_index = z
 	
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
@@ -44,7 +42,6 @@ func onEnemyColission(enemy):
 
 func setAngle() -> void:
 	look_at(get_global_mouse_position())
-	self.rotation_degrees -= 90
 
 func setup(_player : Player) -> void:
 	self.player = _player
