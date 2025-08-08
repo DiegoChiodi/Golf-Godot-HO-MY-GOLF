@@ -87,8 +87,9 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
-		colPlayer = false
-		player = area.get_parent()
+		self.colPlayer = false
+		self.player = area.get_parent()
+		self.previousPressed = false
 
 func initialImpulse():
 	readyShot = false
