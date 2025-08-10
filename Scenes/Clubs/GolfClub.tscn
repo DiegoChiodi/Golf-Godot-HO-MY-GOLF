@@ -10,14 +10,14 @@ size = Vector2(5, 7)
 script = ExtResource("1_gorgj")
 
 [node name="spr_golfClub" type="Sprite2D" parent="."]
-position = Vector2(16.0047, -2.99376)
+position = Vector2(13, -3)
 rotation = -1.57002
 texture = ExtResource("2_8yc4u")
 
 [node name="are_attack" type="Area2D" parent="."]
 
 [node name="col_attack" type="CollisionShape2D" parent="are_attack"]
-position = Vector2(20.5, -4.5)
+position = Vector2(18.2778, -4.5)
 shape = SubResource("RectangleShape2D_jb2yw")
 
 [connection signal="area_entered" from="are_attack" to="." method="_on_are_attack_area_entered"]

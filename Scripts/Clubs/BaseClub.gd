@@ -9,9 +9,10 @@ var player : Player
 var pressioned = false
 #Stats
 var longDamage : float = 0
-var attackWait : float = 0.0
+var attackWait : float = 1.0
 var attackDelay : float =  1.0
 var angle = 0.0
+var anglePermition = true
 
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
@@ -21,7 +22,8 @@ func _process(delta: float) -> void:
 	attackWait += delta
 	if press:
 		pressMouse()
-	setAngle()
+	if anglePermition:
+		setAngle()
 	
 	self.angle = int(self.rotation_degrees) % 360
 	if (0 > self.angle):

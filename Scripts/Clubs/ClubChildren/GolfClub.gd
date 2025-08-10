@@ -1,4 +1,4 @@
-extends ClubPhysics
+extends ClubMelee
 class_name GolfClub
 
 func onEnemyPhysicColission(enemy) -> void:
