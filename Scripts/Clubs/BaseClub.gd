@@ -7,18 +7,20 @@ var player : Player
 
 #Mouse
 var pressioned = false
-var previousPressed = false
 #Stats
-@export var longDamage : float = 0 
+var longDamage : float = 0
+var attackWait : float = 0.0
+var attackDelay : float =  1.0
 var angle = 0.0
 
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
 	var pressed = Input.is_action_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
+	
+	attackWait += delta
 	if press:
 		pressMouse()
-	
 	setAngle()
 	
 	self.angle = int(self.rotation_degrees) % 360
@@ -26,8 +28,12 @@ func _process(delta: float) -> void:
 		self.angle += 360
 
 func pressMouse () -> void:
-	self.previousPressed = true
-
+	if attackWait > attackDelay:
+		attackGo()
+		attackWait = 0.0
+	
+func attackGo() -> void:
+	pass
 func setAngle() -> void:
 	look_at(get_global_mouse_position())
 
