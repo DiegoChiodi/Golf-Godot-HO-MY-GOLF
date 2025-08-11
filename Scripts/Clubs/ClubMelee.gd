@@ -7,16 +7,36 @@ class_name ClubMelee
 @onready var col_attack := are_attack.get_node("col_attack") as CollisionShape2D
 var inAttacking = false
 var enemyStreak = 2 #Quantos inimigos posso acertar em um ataque
-var displacementAttack = Vector2.ZERO
-var finalDisplacemetAttack = Vector2(5,5)
-var attacking = false
-
+var displacementAttack := Vector2.ZERO
+var finalDisplacemetAttack := Vector2.ZERO
+var attacking : bool = false
+var attackReturn = false
+var attackDurationDelay : float = 1.8
+var attackDurationWait : float = 0
 
 func _process(delta: float) -> void:
 	super._process(delta)
+	
 	if attacking:
-		displacementAttack = displacementAttack.lerp(finalDisplacemetAttack, delta) # * Vector2.RIGHT.rotated(rotation)
-	position += displacementAttack
+		finalDisplacemetAttack = (get_global_mouse_position() - global_position).normalized() * 20
+		
+		if !attackReturn and (attackDurationWait >= attackDurationDelay or displacementAttack.length()
+		 >= (finalDisplacemetAttack.length() * 0.93)):
+			attackReturn = true
+			attackDurationWait = 0
+		else:
+			attackDurationWait += delta
+		
+		if !attackReturn:
+			displacementAttack = displacementAttack.lerp(finalDisplacemetAttack, delta * 4) # * Vector2.RIGHT.rotated(rotation)
+		else:
+			displacementAttack = displacementAttack.lerp(Vector2.ZERO, delta * 3) # * Vector2.RIGHT.rotated(rotation)
+		if displacementAttack.length() <= Vector2(1,1).length() and attackReturn:
+			attackReturn = false
+			attacking = false
+			
+			
+	position = displacementAttack
 
 func attackGo() -> void:
 	attacking = true

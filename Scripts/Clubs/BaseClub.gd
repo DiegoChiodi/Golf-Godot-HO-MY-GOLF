@@ -3,7 +3,7 @@ class_name BaseClub
 
 var player : Player
 
-@onready var spr_golfClub := $spr_golfClub as Sprite2D
+var spr_golfClub
 
 #Mouse
 var pressioned = false

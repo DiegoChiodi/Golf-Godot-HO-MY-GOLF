@@ -6,6 +6,7 @@ var enemyId = null
 
 @onready var hands : Node2D = $Hands
 @onready var actualClub = $ActualClub
+var colBall : bool = false
 
 func _ready() -> void:
 	sliceX = 1

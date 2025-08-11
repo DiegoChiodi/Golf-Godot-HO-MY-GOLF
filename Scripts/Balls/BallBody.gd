@@ -82,14 +82,15 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
-		colPlayer = true
-		player = area.get_parent()
+		self.colPlayer = true
+		self.player = area.get_parent()
+		self.player.colBall = true
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
 		self.colPlayer = false
-		self.player = area.get_parent()
 		self.previousPressed = false
+		self.player.colBall = false
 
 func initialImpulse():
 	readyShot = false
