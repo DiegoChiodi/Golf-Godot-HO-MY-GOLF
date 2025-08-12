@@ -72,7 +72,8 @@ func _process(delta: float) -> void:
 						mouseDis = (position - enemyId.position)
 						attack = true
 						position = enemyId.position
-						enemyId.takeDamage(0, mouseDis.normalized() * 3)
+						enemyId.takeDamage(0)
+						enemyId.collisionImpulse(mouseDis.normalized() * 3)
 						movSpeed = 3
 						initialImpulse()
 	elif line != null:

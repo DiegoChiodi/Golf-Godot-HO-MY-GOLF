@@ -13,6 +13,7 @@ var attackWait : float = 1.0
 var attackDelay : float =  1.0
 var angle = 0.0
 var anglePermition = true
+var damage : float = 0
 
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
@@ -30,7 +31,7 @@ func _process(delta: float) -> void:
 		self.angle += 360
 
 func pressMouse () -> void:
-	if attackWait > attackDelay:
+	if self.attackWait > self.attackDelay and !self.player.colBall and !self.player.drivingCart :
 		attackGo()
 		attackWait = 0.0
 	

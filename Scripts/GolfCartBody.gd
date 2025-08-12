@@ -27,6 +27,7 @@ var angle = 0
 func _ready() -> void:
 	ani_golf.z_index = z
 	ani_golf.position = Vector2.ZERO
+	
 func _process(delta: float) -> void:
 	rotation_degrees = int(rotation_degrees) % 360
 	angle = rotation_degrees
@@ -69,7 +70,7 @@ func _process(delta: float) -> void:
 		
 func _physics_process(delta: float) -> void:
 	if colEnemy:
-		enemy.setCollisionImpulse((global_position - enemy.global_position).normalized() * 5)
+		enemy.collisionImpulse((global_position - enemy.global_position).normalized() * 2)
 	if colPlayer:
 		var space = Input.is_action_just_pressed("move_space")
 		enterDelay += delta
@@ -78,10 +79,11 @@ func _physics_process(delta: float) -> void:
 			if !interact:
 				player.visible = true
 				player.get_node("col_colisor").disabled = false
+				player.drivingCart = false
 			else:
 				player.visible = false
 				player.get_node("col_colisor").disabled = true
-			
+				player.drivingCart = true
 			enterDelay = 0.0
 		if interact:
 			driving(delta)

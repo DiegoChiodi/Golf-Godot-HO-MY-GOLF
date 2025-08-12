@@ -30,6 +30,10 @@ var life = lifeMax
 var is_invulnerability : bool = false
 var invulnerabilityCowdow : float = 0.0
 var invulnerabilityDelay : float = 0.4
+var is_impulsioned : bool = false
+var impulsionedCowdow : float = 0.0
+var impulsionedDelay : float = 0.2
+
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 var drawSelf
@@ -50,6 +54,11 @@ func _process(delta: float) -> void:
 	else:
 		feedbackDamage(1.0)
 	
+	if is_impulsioned:
+		impulsionedCowdow += delta
+		if impulsionedCowdow > impulsionedDelay:
+			impulsionedCowdow = 0.0
+			is_impulsioned = false
 
 func _physics_process(delta):
 	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
@@ -82,10 +91,9 @@ func swing (delta : float):
 	var angle := sin(timePassed) * swingingDis  # Oscila entre -10 e +10 graus
 	drawSelf.rotation_degrees = angle
 
-func takeDamage(damage : float, impulseForce : Vector2):
+func takeDamage(damage : float):
 	if !is_invulnerability:
 		life -= damage
-		setCollisionImpulse(impulseForce)
 		is_invulnerability = true
 		invulnerabilityCowdow = 0.0
 
@@ -93,8 +101,9 @@ func feedbackDamage(target : float) -> void:
 	drawSelf.modulate.g = lerp(drawSelf.modulate.g, target, 0.09)
 	drawSelf.modulate.b = lerp(drawSelf.modulate.b, target, 0.09)
 
-func setCollisionImpulse (impulseForce : Vector2):
-	colImpulse = impulseForce
+func collisionImpulse (impulseForce : Vector2):
+	if !is_impulsioned:
+		colImpulse += impulseForce
 	
 func groupsAdd () -> void:
 	pass

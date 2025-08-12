@@ -10,6 +10,7 @@ var lifeParcent = 0
 var lifeParcentMax = 2
 var lestLifeParcent = lifeParcent
 var is_week = false
+var damage : float = 15
 
 func _ready() -> void:
 	sliceX = 3
@@ -41,7 +42,8 @@ func _physics_process(delta: float) -> void:
 			mouFollowCow = 0.0
 	
 	if colRival:
-		colRivalId.takeDamage(15, (global_position - colRivalId.global_position).normalized())
+		colRivalId.collisionImpulse((global_position - colRivalId.global_position).normalized() * 1)
+		colRivalId.takeDamage(damage)
 		#colImpulse = (colRivalId.global_position - global_position).normalized()
 
 func setDirection () -> Vector2:

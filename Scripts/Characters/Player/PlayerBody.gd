@@ -2,11 +2,13 @@ extends Movel
 class_name Player
 
 var colEnemy : bool = false
+var colBall : bool = false
+var drivingCart : bool = false
 var enemyId = null
 
 @onready var hands : Node2D = $Hands
 @onready var actualClub = $ActualClub
-var colBall : bool = false
+
 
 func _ready() -> void:
 	sliceX = 1
@@ -22,7 +24,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	if colRival:
-		colRivalId.setCollisionImpulse((global_position - colRivalId.global_position).normalized() * 3)
+		colRivalId.collisionImpulse((global_position - colRivalId.global_position).normalized() * 1)
 
 func setMoveDirection () -> Vector2:
 	return Input.get_vector("move_left", "move_right", "move_up", "move_down") - colImpulse

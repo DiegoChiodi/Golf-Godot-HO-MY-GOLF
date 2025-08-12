@@ -17,6 +17,7 @@ func init(main : Node2D):
 	worldContainer.load_room(worldPath, player, camera)
 	player.position = worldContainer.currentRoom.get_node("PlayerSpawn").position
 	main.add_child(worldContainer)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
