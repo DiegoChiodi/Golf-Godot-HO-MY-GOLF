@@ -14,6 +14,7 @@ func _ready():
 	camera.setLimit(roomSize)
 	camera.position = $PlayerSpawn.position
 	shadowBall.setup(ball)
+	ball.setup(player)
 
 func _process(delta):  
 	#modulate = cor_rgb(255,255,0

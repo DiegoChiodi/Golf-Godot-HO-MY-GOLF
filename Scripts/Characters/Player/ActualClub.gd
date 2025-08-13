@@ -32,3 +32,7 @@ func setup(_player : Player) -> void:
 	golfClub2.setup(player)
 	actualClub = golfClub1
 	add_child(actualClub)
+
+func getGolfForce() -> float:
+	return actualClub.forceInBall
+	

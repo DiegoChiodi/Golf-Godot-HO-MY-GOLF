@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 func _on_are_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") and area.get_parent().is_in_group("enemy"):
 		area.get_parent().takeDamage(damage)
-		area.get_parent().collisionImpulse(-Vector2.RIGHT.rotated(rotation) * 4)
+		area.get_parent().collisionImpulse(-Vector2.RIGHT.rotated(rotation) * 3)
 		queue_free()
 
 func setup(_damage : float):

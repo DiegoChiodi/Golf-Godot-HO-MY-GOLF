@@ -14,6 +14,12 @@ var attackDelay : float =  1.0
 var angle = 0.0
 var anglePermition = true
 var damage : float = 0
+var forceInBall : float
+enum ShotForm {
+	NORMAL,
+	RANGE,
+}
+var shotForm = ShotForm.NORMAL
 
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
@@ -42,3 +48,8 @@ func setAngle() -> void:
 
 func setup(_player : Player) -> void:
 	self.player = _player
+
+func shotIsNormal() -> bool:
+	if self.shotForm == self.ShotForm.NORMAL:
+		return true
+	return false

@@ -5,7 +5,10 @@ var bullet = preload("res://Scenes/Clubs/Bullets/Bullet.tscn")
 @onready var spawnTiro = $spawn_tiro
 
 func _ready() -> void:
-	damage = 20.0
+	self.damage = 10.0
+	self.attackDelay = 0.5
+	self.forceInBall = 200
+	self.shotForm = self.ShotForm.RANGE
 
 func attackGo() -> void:
 	var world = game_manager.worldContainer.currentRoom
