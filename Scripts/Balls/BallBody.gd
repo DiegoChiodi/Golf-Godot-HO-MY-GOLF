@@ -156,7 +156,7 @@ func ballMoviment(delta : float):
 			speedZ *= 0.98
 			readyShot = true
 			
-		if abs(speed.x) < deadZone && abs(speed.y) < deadZone && abs(speedZ) < deadZone:
+		if abs(speed.x) < deadZone && abs(speed.y) < deadZone && abs(speedZ) < deadZone * 4:
 			state = State.IDLE
 			speedZ = 0
 			posZ = 0

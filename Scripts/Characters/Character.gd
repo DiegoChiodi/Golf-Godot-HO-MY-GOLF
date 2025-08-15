@@ -104,6 +104,7 @@ func feedbackDamage(target : float) -> void:
 func collisionImpulse (impulseForce : Vector2):
 	if !is_impulsioned:
 		colImpulse += impulseForce
+		is_impulsioned = true
 	
 func groupsAdd () -> void:
 	pass
