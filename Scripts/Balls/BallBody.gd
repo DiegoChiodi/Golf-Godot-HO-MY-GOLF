@@ -9,7 +9,7 @@ var previousPressed = false
 var mouseDis : Vector2
 var attack : bool = false
 var readyShot : bool = true # permissão para a acertar a bolinha
-const mouDisInterval : float = 15.0
+const mouDisInterval : float = 8.0
 var line
 #Colision -------------------
 var colPlayer = false
