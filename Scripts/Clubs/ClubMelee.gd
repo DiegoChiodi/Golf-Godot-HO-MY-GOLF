@@ -12,13 +12,19 @@ var attackReturn : bool = false
 var attackDurationDelay : float = 1.5
 var attackDurationWait : float = 0
 var damageTrue : bool = false
+var colEnemy = false
+var enemyId : Character
 
 func _ready() -> void:
 	damage = 20.0
 
+func _physics_process(delta: float) -> void:
+	if colEnemy && attacking:
+		self.onEnemyPhysicColission(enemyId)
+
+	
 func _process(delta: float) -> void:
 	super._process(delta)
-	
 	if attacking:
 		finalDisplacemetAttack = (get_global_mouse_position() - global_position).normalized() * 15
 		
@@ -45,7 +51,13 @@ func attackGo() -> void:
 	
 func _on_are_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
-		self.onEnemyPhysicColission(area.get_parent())
+		colEnemy = true
+		enemyId = area.get_parent()
+
+func _on_are_attack_area_exited(area: Area2D) -> void:
+	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
+		colEnemy = false
+		enemyId = null;
 
 
 func onEnemyPhysicColission(enemy) -> void:

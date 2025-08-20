@@ -21,3 +21,4 @@ position = Vector2(14, -4)
 shape = SubResource("RectangleShape2D_jb2yw")
 
 [connection signal="area_entered" from="are_attack" to="." method="_on_are_attack_area_entered"]
+[connection signal="area_exited" from="are_attack" to="." method="_on_are_attack_area_exited"]
