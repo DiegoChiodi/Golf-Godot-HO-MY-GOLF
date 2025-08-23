@@ -4,6 +4,8 @@ class_name BaseClub
 var player : Player
 
 var spr_golfClub
+var bullet
+var spawnTiro : Marker2D
 
 #Mouse
 var pressioned = false
@@ -42,7 +44,13 @@ func pressMouse () -> void:
 		attackWait = 0.0
 	
 func attackGo() -> void:
-	pass
+	var world = game_manager.worldContainer.currentRoom
+	var bulletIns = bullet.instantiate()
+	bulletIns.position = world.to_local(spawnTiro.global_position)
+	bulletIns.rotation = self.rotation
+	bulletIns.setup(self.damage,self.player)
+	world.add_child(bulletIns)
+
 func setAngle() -> void:
 	look_at(get_global_mouse_position())
 
@@ -53,3 +61,4 @@ func shotIsNormal() -> bool:
 	if self.shotForm == self.ShotForm.NORMAL:
 		return true
 	return false
+	
