@@ -50,12 +50,12 @@ func attackGo() -> void:
 	attacking = true
 	
 func _on_are_attack_area_entered(area: Area2D) -> void:
-	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
+	if area.is_in_group("colHbAttack") && area.get_parent().is_in_group("enemy"):
 		colEnemy = true
 		enemyId = area.get_parent()
 
 func _on_are_attack_area_exited(area: Area2D) -> void:
-	if area.is_in_group("colHb") && area.get_parent().is_in_group("enemy"):
+	if area.is_in_group("colHbAttack") && area.get_parent().is_in_group("enemy"):
 		colEnemy = false
 		enemyId = null;
 

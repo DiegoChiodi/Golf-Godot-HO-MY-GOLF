@@ -23,10 +23,10 @@ run_manager="*res://Scripts/Control/RunManager/RunManager.gd"
 [global_group]
 
 enemy=""
-colHb=""
 player=""
 colInteract=""
 ball=""
+colHbAttack=""
 
 [input]
 

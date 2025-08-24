@@ -30,7 +30,7 @@ texture = ExtResource("2_nh3vw")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="are_hbAttack" type="Area2D" parent="." groups=["colHb"]]
+[node name="are_hbAttack" type="Area2D" parent="." groups=["colHbAttack"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="are_hbAttack"]
 position = Vector2(0.5, 4.5)

@@ -19,7 +19,7 @@ func collide(area: Area2D):
 	queue_free()
 
 func _on_are_attack_area_entered(area: Area2D) -> void:
-	if area.is_in_group("colHb") and area.get_parent().is_in_group("enemy"):
+	if area.is_in_group("colHbAttack") and area.get_parent().is_in_group("enemy"):
 		collide(area)
 
 func setup(_damage : float, _player : Player):
