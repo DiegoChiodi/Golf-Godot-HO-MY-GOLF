@@ -111,5 +111,5 @@ func groupsAdd () -> void:
 	colHitBox.add_to_group("colHb")
 
 func enableCollision (definition : bool) -> void:
-	colHitBox.disabled = definition
+	colHitBox.set_deferred("disabled", definition)
 	

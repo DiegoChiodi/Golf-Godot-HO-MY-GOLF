@@ -36,6 +36,6 @@ func setDraw () -> void:
 	drawSelf = $spr_player
 
 func groupsAdd () -> void:
-	super.groupsAdd()
 	groupRival = "enemy"
 	groupSelf = "player"
+	super.groupsAdd()

@@ -144,11 +144,11 @@ tile_map_data = PackedByteArray("AAABAAcAAAAEAAgAAAAFAAkAAAAFAAgAAAAOAAUAAAAFAAk
 tile_set = SubResource("TileSet_q2d71")
 
 [node name="CartBody" parent="." instance=ExtResource("4_gjpho")]
-position = Vector2(-12, 103)
+position = Vector2(29, 29)
 rotation = 0.874499
 
 [node name="ball" parent="." instance=ExtResource("5_p70al")]
-position = Vector2(133, 117)
+position = Vector2(192, 115)
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("6_q2d71")]
 position = Vector2(64, 55)
@@ -163,10 +163,10 @@ script = ExtResource("6_45d1s")
 metadata/_edit_use_anchors_ = true
 
 [node name="securityGuard" parent="." instance=ExtResource("7_y7y61")]
-position = Vector2(41, 37)
+position = Vector2(-8, 203)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(160, 129)
+position = Vector2(137, 136)
 
 [node name="roomSize" type="Marker2D" parent="."]
 position = Vector2(601, 591)
@@ -178,7 +178,7 @@ position = Vector2(97, 127)
 position = Vector2(0, -2)
 
 [node name="securityGuard2" parent="." instance=ExtResource("7_y7y61")]
-position = Vector2(49, 86)
+position = Vector2(-34, 144)
 
 [node name="securityGuard3" parent="." instance=ExtResource("7_y7y61")]
 position = Vector2(0, 80)

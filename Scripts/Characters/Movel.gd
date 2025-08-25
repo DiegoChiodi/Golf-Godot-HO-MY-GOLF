@@ -58,7 +58,6 @@ func runUp():
 
 func enableCollision(definition : bool) -> void:
 	super.enableCollision(definition)
-	colAttackHitBox.disabled = definition
-	areAttackHitBox.monitorable = definition
-	areAttackHitBox.monitoring = definition
-	
+	colAttackHitBox.set_deferred("disabled", definition)
+	areAttackHitBox.set_deferred("monitorable", !definition)
+	areAttackHitBox.set_deferred("monitoring", !definition)	

@@ -12,7 +12,12 @@ func collide(area : Area2D):
 	
 	parent.takeDamage(self.damage)
 	parent.collisionImpulse(Vector2.RIGHT.rotated(rotation) * 2)
+	
 	var temp : Vector2 = parent.global_position
-	parent.global_position = self.player.global_position
-	self.player.global_position = temp
-	queue_free()
+	parent.call_deferred("set", "global_position", self.player.global_position)
+	self.player.call_deferred("set", "global_position", temp)
+	
+	self.player.enableCollision(false)
+	parent.enableCollision(false)
+	# Remover a bala no próximo frame
+	call_deferred("queue_free")
