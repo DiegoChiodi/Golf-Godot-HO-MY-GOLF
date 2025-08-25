@@ -2,6 +2,8 @@ extends Character
 class_name Movel
 
 @onready var frameDim = Vector2.ZERO
+@onready var areAttackHitBox : Area2D = $are_hbAttack
+@onready var colAttackHitBox : CollisionShape2D = $are_hbAttack/col_hb
 var sliceX = 1
 var sliceY = 1
 
@@ -53,4 +55,10 @@ func runDown():
 	
 func runUp():
 	drawSelf.region_rect = Rect2(Vector2(0, frameDim.y * 2), frameDim)
+
+func enableCollision(definition : bool) -> void:
+	super.enableCollision(definition)
+	colAttackHitBox.disabled = definition
+	areAttackHitBox.monitorable = definition
+	areAttackHitBox.monitoring = definition
 	

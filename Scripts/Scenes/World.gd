@@ -11,6 +11,8 @@ func _ready():
 	# Garante que a câmera siga o Player  
 	camera.position = player.position
 	guard.setup(player, self)
+	$securityGuard2.setup(player, self)
+	$securityGuard3.setup(player, self)
 	camera.setLimit(roomSize)
 	camera.position = $PlayerSpawn.position
 	shadowBall.setup(ball)

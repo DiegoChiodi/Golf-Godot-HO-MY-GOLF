@@ -37,12 +37,12 @@ var impulsionedDelay : float = 0.2
 
 # Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 var drawSelf
+@onready var colHitBox : CollisionShape2D = $col_colisor
 
 func _ready() -> void:
 	setDraw()
 	drawSelf.z_index = z
 	groupsAdd()
-	add_to_group(groupSelf)
 	
 func _process(delta: float) -> void:
 	if is_invulnerability:
@@ -107,4 +107,9 @@ func collisionImpulse (impulseForce : Vector2):
 		is_impulsioned = true
 	
 func groupsAdd () -> void:
-	pass
+	self.add_to_group(groupSelf)
+	colHitBox.add_to_group("colHb")
+
+func enableCollision (definition : bool) -> void:
+	colHitBox.disabled = definition
+	

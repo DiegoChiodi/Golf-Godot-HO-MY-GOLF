@@ -32,6 +32,7 @@ func setMoveDirection () -> Vector2:
 func groupsAdd() -> void:
 	groupRival = "player"
 	groupSelf = "enemy"
+	super.groupsAdd()
 	
 func setup(_player : Player, _world : BaseScene) -> void:
 	self.player = _player

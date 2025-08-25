@@ -14,7 +14,6 @@ func _ready() -> void:
 	sliceX = 1
 	sliceY = 3
 	super._ready()
-	
 	actualClub.setup(self)
 	hands.setup(self)
 	
@@ -37,5 +36,6 @@ func setDraw () -> void:
 	drawSelf = $spr_player
 
 func groupsAdd () -> void:
+	super.groupsAdd()
 	groupRival = "enemy"
 	groupSelf = "player"

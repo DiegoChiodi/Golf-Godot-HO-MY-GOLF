@@ -176,3 +176,9 @@ position = Vector2(97, 127)
 
 [node name="Flag" parent="Hole" instance=ExtResource("10_7yo87")]
 position = Vector2(0, -2)
+
+[node name="securityGuard2" parent="." instance=ExtResource("7_y7y61")]
+position = Vector2(49, 86)
+
+[node name="securityGuard3" parent="." instance=ExtResource("7_y7y61")]
+position = Vector2(0, 80)
