@@ -6,21 +6,9 @@ var speed : float = 50.0
 var acceleration : float = 0.2  # Fator de suavização
 var z : int = 5
 var move_direction = Vector2.ZERO
-var direction : Vector2 = Vector2.ZERO
 #Impulse -------------
 var colImpulse = Vector2.ZERO
 const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
-#Swing -------------
-var timePassed = 0.0
-var swingingSpeed : int = 5
-var swingingDis : float = 8.0
-#Groups -----------
-var groupRival : String
-var groupSelf : String
-
-#Collision -----------
-var colRival
-var colRivalId
 
 #Life system ------------
 var lifeMax = 100
@@ -35,13 +23,12 @@ var impulsionedCowdow : float = 0.0
 var impulsionedDelay : float = 0.2
 
 
-# Referência direta ao AnimatedSprite2D (ajuste o nome conforme sua cena)
 var drawSelf
 @onready var colHitBox : CollisionShape2D = $col_colisor
+@onready var areAttackHitBox : Area2D = $are_hbAttack
+@onready var colAttackHitBox : CollisionShape2D = $are_hbAttack/col_hb
 
 func _ready() -> void:
-	setDraw()
-	drawSelf.z_index = z
 	groupsAdd()
 	
 func _process(delta: float) -> void:
@@ -67,29 +54,12 @@ func _physics_process(delta):
 	velocity = velocity.lerp(move_direction * speed, acceleration)
 	move_and_slide()
 	# Controle de drawSelfmação melhorado
-	
-func _on_are_hb_attack_area_entered(area: Area2D) -> void:
-	pass
-
-func _on_are_hb_attack_area_exited(area: Area2D) -> void:
-	pass
 
 func setMoveDirection () -> Vector2:
 	return Vector2.ZERO
-	
-func setDirection () -> Vector2:
-	return Vector2.ZERO
-	
-func setDraw () -> void:
-	drawSelf = null
 
 func stop():
 	pass
-	
-func swing (delta : float):
-	timePassed += delta * swingingDis  # Velocidade do balanço
-	var angle := sin(timePassed) * swingingDis  # Oscila entre -10 e +10 graus
-	drawSelf.rotation_degrees = angle
 
 func takeDamage(damage : float):
 	if !is_invulnerability:
@@ -107,9 +77,8 @@ func collisionImpulse (impulseForce : Vector2):
 		is_impulsioned = true
 	
 func groupsAdd () -> void:
-	self.add_to_group(groupSelf)
 	colHitBox.add_to_group("colHb")
+	areAttackHitBox.add_to_group("colHbAttack")
 
 func enableCollision (definition : bool) -> void:
 	colHitBox.set_deferred("disabled", definition)
-	

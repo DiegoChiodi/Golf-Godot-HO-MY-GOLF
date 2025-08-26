@@ -1,4 +1,5 @@
-extends CharacterBody2D
+extends Character
+class_name GolfCart
 
 #Load files
 var player : Player = null
@@ -7,10 +8,10 @@ var enemy : Enemy = null
 @onready var lbl_debug: Label = $lbl_debug
 @onready var col_debug: ColorRect = $rec_colDebug
 #Controles ---------------------------
-var direction := Vector2.ZERO
+#var direction := Vector2.ZERO
 var rotationSpeed = 2.5
 var toRide = false
-var speed = 60
+#var speed = 60
 #Draw
 const fatAngle = 360 / 8#45
 const compAngle = fatAngle / 2
@@ -21,12 +22,12 @@ var interact = false
 var enterDelay = 0.0
 var enterCowdow = 0.2
 #Transform
-var z = 4
 var angle = 0
 
 func _ready() -> void:
 	ani_golf.z_index = z
 	ani_golf.position = Vector2.ZERO
+	super._ready()
 	
 func _process(delta: float) -> void:
 	rotation_degrees = int(rotation_degrees) % 360
@@ -107,8 +108,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
 		colPlayer = true
 		player = area.get_parent()
-		
-
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player") && !interact:

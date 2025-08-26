@@ -2,13 +2,29 @@ extends Character
 class_name Movel
 
 @onready var frameDim = Vector2.ZERO
-@onready var areAttackHitBox : Area2D = $are_hbAttack
-@onready var colAttackHitBox : CollisionShape2D = $are_hbAttack/col_hb
+
 var sliceX = 1
 var sliceY = 1
 
+#Swing -------------
+var timePassed = 0.0
+var swingingSpeed : int = 5
+var swingingDis : float = 8.0
+
+#Groups -----------
+var groupRival : String
+var groupSelf : String
+
+#Collision -----------
+var colRival
+var colRivalId
+
+var direction : Vector2 = Vector2.ZERO
+
 func _ready() -> void:
 	super._ready()
+	setDraw()
+	drawSelf.z_index = z
 	frameDim = Vector2(drawSelf.texture.get_size().x / sliceX, drawSelf.texture.get_size().y / sliceY)
 
 func _process(delta: float) -> void:
@@ -60,4 +76,19 @@ func enableCollision(definition : bool) -> void:
 	super.enableCollision(definition)
 	colAttackHitBox.set_deferred("disabled", definition)
 	areAttackHitBox.set_deferred("monitorable", !definition)
-	areAttackHitBox.set_deferred("monitoring", !definition)	
+	areAttackHitBox.set_deferred("monitoring", !definition)
+
+func swing (delta : float):
+	timePassed += delta * swingingDis  # Velocidade do balanço
+	var angle := sin(timePassed) * swingingDis  # Oscila entre -10 e +10 graus
+	drawSelf.rotation_degrees = angle
+	
+func setDraw () -> void:
+	drawSelf = null
+
+func setDirection () -> Vector2:
+	return Vector2.ZERO
+
+func groupsAdd () -> void:
+	super.groupsAdd()
+	self.add_to_group(groupSelf)

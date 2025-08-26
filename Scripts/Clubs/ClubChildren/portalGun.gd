@@ -4,7 +4,7 @@ class_name portalGun
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.damage = 10
-	self.attackDelay = 1
+	self.attackDelay = 0.8
 	self.forceInBall = 200
 	self.shotForm = self.ShotForm.RANGE
 	bullet = preload("res://Scenes/Clubs/Bullets/PortalGunBullet.tscn")
@@ -12,4 +12,4 @@ func _ready() -> void:
 	
 	
 func bulletSetup(bullet) -> void:
-	bullet.setup(self.damage, self.player)
+	bullet.setup(self.damage, self.player, self)

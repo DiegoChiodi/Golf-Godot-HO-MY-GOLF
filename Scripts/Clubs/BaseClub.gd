@@ -48,7 +48,7 @@ func attackGo() -> void:
 	var bulletIns = bullet.instantiate()
 	bulletIns.position = world.to_local(spawnTiro.global_position)
 	bulletIns.rotation = self.rotation
-	bulletIns.setup(self.damage,self.player)
+	bulletIns.setup(self.damage,self.player, self)
 	world.add_child(bulletIns)
 
 func setAngle() -> void:
