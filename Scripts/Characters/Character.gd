@@ -79,6 +79,7 @@ func collisionImpulse (impulseForce : Vector2):
 func groupsAdd () -> void:
 	colHitBox.add_to_group("colHb")
 	areAttackHitBox.add_to_group("colHbAttack")
+	areAttackHitBox.add_to_group("colHb")
 
 func enableCollision (definition : bool) -> void:
 	colHitBox.set_deferred("disabled", definition)

@@ -8,17 +8,16 @@ var enemy : Enemy = null
 @onready var lbl_debug: Label = $lbl_debug
 @onready var col_debug: ColorRect = $rec_colDebug
 #Controles ---------------------------
-#var direction := Vector2.ZERO
 var rotationSpeed = 2.5
 var toRide = false
-#var speed = 60
 #Draw
 const fatAngle = 360 / 8#45
 const compAngle = fatAngle / 2
-#
+#colisões
 var colPlayer = false
 var colEnemy = false
 var interact = false
+var enemys = []
 var enterDelay = 0.0
 var enterCowdow = 0.2
 #Transform
@@ -28,6 +27,7 @@ func _ready() -> void:
 	ani_golf.z_index = z
 	ani_golf.position = Vector2.ZERO
 	super._ready()
+	speed = 60.0
 	
 func _process(delta: float) -> void:
 	rotation_degrees = int(rotation_degrees) % 360
@@ -70,8 +70,6 @@ func _process(delta: float) -> void:
 	lbl_debug.position = Vector2(0, 0)
 		
 func _physics_process(delta: float) -> void:
-	if colEnemy:
-		enemy.collisionImpulse((global_position - enemy.global_position).normalized() * 2)
 	if colPlayer:
 		var space = Input.is_action_just_pressed("move_space")
 		enterDelay += delta
@@ -89,7 +87,10 @@ func _physics_process(delta: float) -> void:
 		if interact:
 			driving(delta)
 			player.position = self.global_position
-	
+			if !enemys.is_empty():
+				for i in range(enemys.size()):
+					enemys[i].get_parent().collisionImpulse((global_position - enemys[i].global_position).normalized() * 3)	
+
 func driving(delta: float) -> void:
 	var throttle = Input.get_axis("move_down", "move_up")
 	var steer = Input.get_axis("move_left", "move_right")
@@ -108,6 +109,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player"):
 		colPlayer = true
 		player = area.get_parent()
+		
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("player") && !interact:
@@ -116,6 +118,9 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _on_are_hb_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") and area.get_parent().is_in_group("enemy"):
+		if !enemys.has(area):
+			enemys.append(area)
+		
 		enemy = area.get_parent()
 		colEnemy = true
 
@@ -123,3 +128,5 @@ func _on_are_hb_attack_area_exited(area: Area2D) -> void:
 	if area.is_in_group("colHb") and area.get_parent().is_in_group("enemy"):
 		enemy = null
 		colEnemy = false
+		if enemys.has(area):
+			enemys.erase(area)

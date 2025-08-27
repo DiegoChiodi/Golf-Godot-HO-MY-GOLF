@@ -98,11 +98,10 @@ position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_l0d8i")
 
 [node name="rec_colDebug" type="ColorRect" parent="."]
-visible = false
-offset_left = -8.0
-offset_top = -5.0
-offset_right = 10.0
-offset_bottom = 6.0
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 15.0
+offset_bottom = 9.0
 scale = Vector2(0.815141, 0.900819)
 
 [node name="lbl_debug" type="Label" parent="."]
