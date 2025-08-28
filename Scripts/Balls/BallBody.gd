@@ -1,4 +1,4 @@
-extends Node2D
+extends Character
 class_name NormalBall
 #Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug
@@ -17,9 +17,7 @@ var colEnemy = false
 var enemyId
 #Fisic ----------------------
 var movSpeed = 1
-var z = 2
 var posZ = 0.0
-var speed : Vector2
 var speedZ = 0
 const gravity = 9.8
 const gravityExcedeed = 25
@@ -124,8 +122,8 @@ func initialImpulse():
 	else:
 		forcaFinal = golfClub.forceInBall
 	
-	speed.x = forcaFinal * dir.x
-	speed.y = forcaFinal * dir.y
+	velocity.x = forcaFinal * dir.x
+	velocity.y = forcaFinal * dir.y
 	
 	speedZ = forcaFinal * 0.625 if forcaFinal < disMaxZ else disMaxZ
 	state = State.MOVING
@@ -134,29 +132,29 @@ func ballMoviment(delta : float):
 	var frictionFactor = exp(-airFriction * delta)
 	#var random = randi_range(0, 2)
 	for i in range(movSpeed):
-		speed *= frictionFactor
+		velocity *= frictionFactor
 		speedZ += gravity * gravityExcedeed * delta
 		
-		position.x += speed.x * delta
-		position.y += (speed.y + speedZ) * delta
+		position.x += velocity.x * delta
+		position.y += (velocity.y + speedZ) * delta
 		posZ += speedZ
 		
 		if attack && colPlayer:
-			speed *= 0.98
+			velocity *= 0.98
 			speedZ *= 0.98
 		
 		if posZ > 0.0:
 			speedZ *= -0.6 # Muda a direção e diminui
 			posZ = 0.0
-			speed.x *= groundFriction
-			speed.y *= groundFriction
+			velocity.x *= groundFriction
+			velocity.y *= groundFriction
 		
 		
-		if (abs(speed.x) < forceDeadZone * 3 && abs(speed.y) < forceDeadZone * 3):
+		if (abs(velocity.x) < forceDeadZone * 3 && abs(velocity.y) < forceDeadZone * 3):
 			speedZ *= 0.98
 			readyShot = true
 			
-		if abs(speed.x) < deadZone && abs(speed.y) < deadZone && abs(speedZ) < deadZone * 4:
+		if abs(velocity.x) < deadZone && abs(velocity.y) < deadZone && abs(speedZ) < deadZone * 4:
 			state = State.IDLE
 			speedZ = 0
 			posZ = 0
