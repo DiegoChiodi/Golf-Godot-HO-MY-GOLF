@@ -65,11 +65,6 @@ func _on_area_2d_mouse_exited() -> void:
 		return
 	ball.colEnemy = false
 	mouseCol = false
-	
-#func _on_are_hb_attack_area_entered(area: Area2D) -> void:
-#	if area.is_in_group("colHb") && area.get_parent().is_in_group("player"):
-
-#	pass
 
 func setup(_player : Player, _world : BaseScene) -> void:
 	super.setup(_player, _world)

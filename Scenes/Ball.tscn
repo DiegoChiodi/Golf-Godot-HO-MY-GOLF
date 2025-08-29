@@ -29,7 +29,7 @@ offset_top = -2.0
 offset_right = 2.0
 offset_bottom = 2.0
 
-[node name="are_hb" type="Area2D" parent="." groups=["colHbAttack"]]
+[node name="are_hb" type="Area2D" parent="." groups=["colHb"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="are_hb"]
 shape = SubResource("RectangleShape2D_7nh6h")

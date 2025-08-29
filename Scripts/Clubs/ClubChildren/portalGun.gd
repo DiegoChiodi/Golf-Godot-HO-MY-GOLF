@@ -3,7 +3,8 @@ class_name portalGun
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.damage = 10
+	super._ready()
+	self.damage = 10.0
 	self.attackDelay = 0.8
 	self.forceInBall = 200
 	self.shotForm = self.ShotForm.RANGE

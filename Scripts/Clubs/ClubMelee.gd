@@ -15,14 +15,10 @@ var damageTrue : bool = false
 var colEnemy = false
 var enemyId : Character
 
-func _ready() -> void:
-	damage = 20.0
-
 func _physics_process(delta: float) -> void:
 	if colEnemy && attacking:
 		self.onEnemyPhysicColission(enemyId)
 
-	
 func _process(delta: float) -> void:
 	super._process(delta)
 	if attacking:

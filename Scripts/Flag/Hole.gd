@@ -13,6 +13,5 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var areFather = area.get_parent()
-	if areFather.is_in_group("ball") and areFather.posZ <= 4 and area.is_in_group("colHb") and areFather.speed.length() > 3: 
+	if areFather.is_in_group("ball") and areFather.posZ <= 4 and area.is_in_group("colHb") and areFather.velocity.length() > 3: 
 		game_manager.finishWorld()
-		print('wow owow woowo')

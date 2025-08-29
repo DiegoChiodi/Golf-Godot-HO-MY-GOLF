@@ -148,7 +148,7 @@ position = Vector2(29, 29)
 rotation = 0.874499
 
 [node name="ball" parent="." instance=ExtResource("5_p70al")]
-position = Vector2(192, 115)
+position = Vector2(184, 117)
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("6_q2d71")]
 position = Vector2(64, 55)

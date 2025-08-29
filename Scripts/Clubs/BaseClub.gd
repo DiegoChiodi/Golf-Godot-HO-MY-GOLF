@@ -21,7 +21,15 @@ enum ShotForm {
 	NORMAL,
 	RANGE,
 }
+
+var z : int = 5
 var shotForm = ShotForm.NORMAL
+var sprClub : Sprite2D
+
+func _ready() -> void:
+	if self.has_node('spr_club'):
+		sprClub = $spr_club
+		sprClub.z_index = z
 
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
