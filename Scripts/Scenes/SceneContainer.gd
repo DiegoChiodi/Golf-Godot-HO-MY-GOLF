@@ -3,7 +3,7 @@ class_name WorldContainer
 
 var player: Player
 var camera: Camera
-var currentRoom
+var currentRoom : BaseScene
 
 func setup(_player: Player, _camera: Camera) -> void:
 	player = _player
@@ -16,7 +16,9 @@ func load_room(path : String) -> void:
 	self.currentRoom = load(path).instantiate()
 	if self.currentRoom is BaseScene:
 		self.currentRoom.setup(self.player, self.camera)
+	self.currentRoom.playerSpawn()
 	add_child(self.currentRoom)
+	
 
 func change_room(path : String) -> void:
 	destroy_room()

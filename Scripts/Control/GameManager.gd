@@ -6,6 +6,7 @@ var camera : Camera = Camera.new()
 var worldContainer : WorldContainer = WorldContainer.new()
 
 var worldPath : String = "res://Scenes/World.tscn"
+var scenePath : String = "res://Scenes/ScenePath.tscn"
 
 func init(main : Node2D):
 	self.camera.setup(player)
@@ -15,14 +16,12 @@ func init(main : Node2D):
 	main.add_child(player)
 	self.worldContainer.setup(player, camera)
 	worldContainer.load_room(worldPath)
-	player.position = worldContainer.currentRoom.get_node("PlayerSpawn").position
 	main.add_child(worldContainer)
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		worldContainer.change_room(worldPath)
-		player.position = worldContainer.currentRoom.get_node("PlayerSpawn").position
-		
+
 func finishWorld() -> void:
-	self.worldContainer.change_room(worldPath)
+	self.worldContainer.change_room(scenePath)
