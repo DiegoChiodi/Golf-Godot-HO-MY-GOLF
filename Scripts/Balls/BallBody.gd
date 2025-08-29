@@ -127,7 +127,10 @@ func initialImpulse():
 	
 	speedZ = forcaFinal * 0.625 if forcaFinal < disMaxZ else disMaxZ
 	state = State.MOVING
-	
+
+func _physics_process(delta: float) -> void:
+	pass
+
 func ballMoviment(delta : float):
 	var frictionFactor = exp(-airFriction * delta)
 	#var random = randi_range(0, 2)

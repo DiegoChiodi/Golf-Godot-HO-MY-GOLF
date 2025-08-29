@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends LifeObject
 class_name Character
 
 #Moving -----------------
@@ -10,37 +10,26 @@ var move_direction = Vector2.ZERO
 var colImpulse = Vector2.ZERO
 const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 
-#Life system ------------
-var lifeMax = 100
-var life = lifeMax
-
-#Damage ----------
-var is_invulnerability : bool = false
-var invulnerabilityCowdow : float = 0.0
-var invulnerabilityDelay : float = 0.4
+#Impulsioned ----------
 var is_impulsioned : bool = false
 var impulsionedCowdow : float = 0.0
 var impulsionedDelay : float = 0.2
 
-
-var drawSelf
-@onready var colHitBox : CollisionShape2D = $col_colisor
-@onready var areAttackHitBox : Area2D = $are_hbAttack
-@onready var colAttackHitBox : CollisionShape2D = $are_hbAttack/col_hb
+var colHitBox : CollisionShape2D
+var areAttackHitBox : Area2D
+var colAttackHitBox : CollisionShape2D
 
 func _ready() -> void:
+	super._ready()
+	if has_node("are_hbAttack"):
+		areAttackHitBox = $are_hbAttack
+		colAttackHitBox = $are_hbAttack/col_hb
+	if has_node("col_colisor"):
+		colHitBox = $col_colisor
 	groupsAdd()
 	
 func _process(delta: float) -> void:
-	if is_invulnerability:
-		feedbackDamage(0.25)
-		invulnerabilityCowdow += delta
-		if invulnerabilityCowdow > invulnerabilityDelay:
-			invulnerabilityCowdow = 0.0
-			is_invulnerability = false
-	else:
-		feedbackDamage(1.0)
-	
+	super._process(delta)
 	if is_impulsioned:
 		impulsionedCowdow += delta
 		if impulsionedCowdow > impulsionedDelay:
@@ -61,25 +50,18 @@ func setMoveDirection () -> Vector2:
 func stop():
 	pass
 
-func takeDamage(damage : float):
-	if !is_invulnerability:
-		life -= damage
-		is_invulnerability = true
-		invulnerabilityCowdow = 0.0
-
-func feedbackDamage(target : float) -> void:
-	drawSelf.modulate.g = lerp(drawSelf.modulate.g, target, 0.09)
-	drawSelf.modulate.b = lerp(drawSelf.modulate.b, target, 0.09)
-
 func collisionImpulse (impulseForce : Vector2):
 	if !is_impulsioned:
 		colImpulse += impulseForce
 		is_impulsioned = true
 	
 func groupsAdd () -> void:
-	colHitBox.add_to_group("colHb")
-	areAttackHitBox.add_to_group("colHbAttack")
-	areAttackHitBox.add_to_group("colHb")
+	if colHitBox != null:
+		colHitBox.add_to_group("colHb")
+	if areAttackHitBox != null:
+		areAttackHitBox.add_to_group("colHbAttack")
+		areAttackHitBox.add_to_group("colHb")
 
 func enableCollision (definition : bool) -> void:
-	colHitBox.set_deferred("disabled", definition)
+	if colHitBox != null:
+		colHitBox.set_deferred("disabled", definition)

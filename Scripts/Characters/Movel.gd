@@ -3,8 +3,8 @@ class_name Movel
 
 @onready var frameDim = Vector2.ZERO
 
-var sliceX = 1
-var sliceY = 1
+var sliceX : int
+var sliceY : int
 
 #Swing -------------
 var timePassed = 0.0
