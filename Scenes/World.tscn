@@ -166,7 +166,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-8, 203)
 
 [node name="playerSpawn" type="Marker2D" parent="."]
-position = Vector2(137, 136)
+position = Vector2(203, 119)
 
 [node name="roomSize" type="Marker2D" parent="."]
 position = Vector2(601, 591)

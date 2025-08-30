@@ -7,34 +7,34 @@
 script = ExtResource("1_a3dfb")
 
 [node name="SceneBlock2" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(591, 302)
+position = Vector2(407, 77)
 
 [node name="SceneBlock3" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(791, 307)
+position = Vector2(491, 80)
 
 [node name="SceneBlock4" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(561, 404)
+position = Vector2(352, 110)
 
 [node name="SceneBlock5" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(713, 401)
+position = Vector2(456, 112)
 
 [node name="SceneBlock6" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(849, 463)
+position = Vector2(509, 149)
 
 [node name="SceneBlock7" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(595, 477)
+position = Vector2(397, 144)
 
 [node name="SceneBlock8" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(906, 388)
+position = Vector2(552, 110)
 
 [node name="SceneBlock" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(692, 219)
+position = Vector2(452, 45)
 
 [node name="SceneBlock9" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(723, 559)
+position = Vector2(453, 182)
 
 [node name="playerSpawn" type="Marker2D" parent="."]
-position = Vector2(702, 222)
+position = Vector2(462, 48)
 
 [node name="roomSize" type="Marker2D" parent="."]
-position = Vector2(1845, 985)
+position = Vector2(2154, 933)
