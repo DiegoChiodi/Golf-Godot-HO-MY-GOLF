@@ -11,7 +11,8 @@ func setup(_player: Player, _camera: Camera) -> void:
 	camera = _camera
 
 func destroy_room() -> void:
-	self.currentRoom.queue_free()
+	self.currentRoom.call_deferred("queue_free")
+	
 
 func load_room(path : String) -> void:
 	self.currentRoomPath = path
@@ -19,8 +20,7 @@ func load_room(path : String) -> void:
 	if self.currentRoom is BaseScene:
 		self.currentRoom.setup(self.player, self.camera)
 	self.currentRoom.playerSpawn()
-	add_child(self.currentRoom)
-	
+	self.call_deferred('add_child', self.currentRoom)
 
 func change_room(path : String) -> void:
 	destroy_room()

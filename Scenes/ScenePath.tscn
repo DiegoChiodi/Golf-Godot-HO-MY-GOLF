@@ -36,7 +36,7 @@ position = Vector2(-3911, 2688)
 position = Vector2(2154, 933)
 
 [node name="SceneBlock10" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(368, 304)
+position = Vector2(379, 305)
 
 [node name="SceneBlock11" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(456, 304)
@@ -63,7 +63,7 @@ position = Vector2(456, 465)
 position = Vector2(502, 480)
 
 [node name="PlayerHead" type="Sprite2D" parent="."]
-position = Vector2(472, 69.5)
+position = Vector2(476, 71)
 texture = ExtResource("3_faymu")
 
 [node name="SceneBlock24" parent="." instance=ExtResource("2_unck7")]
@@ -85,7 +85,7 @@ position = Vector2(449, 600)
 position = Vector2(389, 234)
 
 [node name="SceneBlock32" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(472, 235)
+position = Vector2(465, 239)
 
 [node name="SceneBlock33" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(530, 240)
@@ -118,5 +118,302 @@ position = Vector2(320, 360)
 position = Vector2(578, 360)
 
 [node name="Line2D" parent="." instance=ExtResource("4_6p7dy")]
-position = Vector2(480.958, 74.4961)
+position = Vector2(517, 120.96)
+rotation = 0.0898924
+scale = Vector2(0.29545, 0.445651)
+
+[node name="Line2D2" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(463, 74)
+rotation = 1.25967
 scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D3" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(484, 73)
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D4" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(551, 174)
+rotation = 0.0898924
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D5" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(430, 119)
+rotation = 1.25967
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D7" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(466.926, 301.54)
+rotation = 0.382604
+scale = Vector2(0.598281, 0.358615)
+
+[node name="Line2D8" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(545, 177)
+rotation = 0.874438
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D9" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(442, 188)
+rotation = 1.42446
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D10" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(452.237, 305.369)
+rotation = 1.47834
+scale = Vector2(0.439756, 0.636094)
+
+[node name="Line2D11" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(376.327, 305.044)
+rotation = 1.57138
+scale = Vector2(0.462024, 0.477351)
+
+[node name="Line2D12" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(581.759, 235.805)
+rotation = 1.25967
+scale = Vector2(0.415928, 0.584073)
+
+[node name="Line2D13" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(522.883, 304.304)
+rotation = 1.25967
+scale = Vector2(0.311613, 0.551327)
+
+[node name="Line2D14" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(464.167, 236.256)
+rotation = 0.83373
+scale = Vector2(0.365059, 0.454372)
+
+[node name="Line2D15" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(457.326, 240.505)
+rotation = 1.25967
+scale = Vector2(0.345246, 0.839019)
+
+[node name="Line2D16" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(523.966, 242.514)
+rotation = 1.25967
+scale = Vector2(0.360748, 0.669006)
+
+[node name="Line2D17" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(385.649, 363.586)
+rotation = 1.25967
+scale = Vector2(0.386114, 0.218339)
+
+[node name="Line2D18" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(526.804, 304.494)
+rotation = 1.25967
+scale = Vector2(0.491292, 0.222143)
+
+[node name="Line2D19" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(469.183, 363.396)
+rotation = 1.25967
+scale = Vector2(0.335602, 0.313281)
+
+[node name="Line2D20" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(523, 371)
+rotation = 0.911944
+scale = Vector2(0.295775, 0.449612)
+points = PackedVector2Array(0, 0, 134.094, 107.681)
+
+[node name="Line2D21" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(574.997, 364.305)
+rotation = 1.25967
+scale = Vector2(0.343547, 0.662917)
+
+[node name="Line2D22" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(370.885, 417.585)
+rotation = 1.25967
+scale = Vector2(0.351548, 0.54457)
+
+[node name="Line2D23" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(444.086, 406.959)
+rotation = 1.25967
+scale = Vector2(0.344546, 0.529555)
+
+[node name="Line2D24" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(500.182, 425.262)
+rotation = 1.25967
+scale = Vector2(0.20792, 0.464477)
+
+[node name="Line2D25" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(490, 480)
+rotation = 1.25967
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D26" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(554, 491)
+rotation = 1.25967
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D27" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(395.459, 466.603)
+rotation = 0.700846
+scale = Vector2(0.471678, 0.629753)
+
+[node name="Line2D28" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(504.283, 548.246)
+rotation = 1.25967
+scale = Vector2(0.297216, 0.525365)
+
+[node name="Line2D29" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(456, 471)
+rotation = 0.700846
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D30" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(513, 485)
+rotation = 0.700846
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D31" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(445.665, 533.672)
+rotation = 0.700846
+scale = Vector2(0.352691, 0.454923)
+points = PackedVector2Array(0, 0, 12.4916, 11.1605, 122, 109)
+
+[node name="Line2D32" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(455.494, 308.914)
+rotation = 0.700846
+scale = Vector2(0.346354, 0.392227)
+
+[node name="Line2D33" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(383, 304)
+rotation = 0.700846
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D6" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(400, 172)
+rotation = 1.25967
+scale = Vector2(0.253906, 0.840534)
+
+[node name="Line2D34" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(476, 243)
+rotation = 3.40677
+scale = Vector2(0.295775, 0.449612)
+
+[node name="Line2D35" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(526.612, 239.759)
+rotation = 3.40677
+scale = Vector2(0.571631, 0.338295)
+
+[node name="Line2D36" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(430.136, 119.398)
+rotation = 0.183851
+scale = Vector2(0.31626, 0.491566)
+
+[node name="Line2D37" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(510.386, 120.782)
+rotation = 1.25967
+scale = Vector2(0.351426, 0.531991)
+
+[node name="Line2D38" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(533.913, 240.338)
+rotation = 0.83373
+scale = Vector2(0.394906, 0.418122)
+
+[node name="Line2D39" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(381.593, 304.108)
+rotation = 3.40677
+scale = Vector2(0.546094, 0.523177)
+
+[node name="Line2D40" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(381.593, 304.108)
+rotation = 3.40677
+scale = Vector2(0.546094, 0.523177)
+
+[node name="Line2D41" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(461.199, 364.21)
+rotation = 3.40677
+scale = Vector2(0.714228, 0.369864)
+
+[node name="Line2D42" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(577.248, 358.359)
+rotation = 3.40677
+scale = Vector2(0.47299, 0.409003)
+
+[node name="Line2D43" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(461.199, 364.21)
+rotation = 3.40677
+scale = Vector2(0.714228, 0.369864)
+
+[node name="Line2D44" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(375, 412)
+rotation = 3.40677
+scale = Vector2(0.547564, 0.316636)
+
+[node name="Line2D45" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(438.683, 409.407)
+rotation = 3.40677
+scale = Vector2(0.52255, 0.291136)
+
+[node name="Line2D46" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(509.091, 421.023)
+rotation = 3.40677
+scale = Vector2(0.432131, 0.379997)
+
+[node name="Line2D47" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(386.413, 234.461)
+rotation = 0.82461
+scale = Vector2(0.393003, 0.451044)
+
+[node name="Line2D48" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(529, 302)
+rotation = 3.40677
+scale = Vector2(0.588032, 0.419955)
+
+[node name="Line2D49" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(503.422, 426.578)
+rotation = 1.25967
+scale = Vector2(0.43241, 0.196269)
+
+[node name="Line2D50" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(578.071, 494.295)
+rotation = 3.40677
+scale = Vector2(0.604641, 0.466639)
+
+[node name="Line2D51" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(402, 466)
+rotation = 3.40677
+scale = Vector2(0.351684, 0.38031)
+
+[node name="Line2D52" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(501.032, 477.469)
+rotation = 3.40677
+scale = Vector2(0.580495, 0.450121)
+
+[node name="Line2D53" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(385.707, 548.768)
+rotation = 3.40677
+scale = Vector2(0.61057, 0.487201)
+
+[node name="Line2D54" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(451, 526)
+rotation = 3.40677
+scale = Vector2(0.547564, 0.316636)
+
+[node name="Line2D55" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(447, 603)
+rotation = 3.40677
+scale = Vector2(0.547564, 0.316636)
+
+[node name="Line2D56" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(456.768, 466.988)
+rotation = 3.40677
+scale = Vector2(0.754056, 0.267705)
+
+[node name="Line2D57" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(456.606, 466.796)
+rotation = 3.40677
+scale = Vector2(0.234508, 0.461409)
+
+[node name="Line2D58" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(458.375, 469.019)
+rotation = 0.700846
+scale = Vector2(0.75103, 0.215721)
+
+[node name="Line2D59" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(512.501, 367.573)
+rotation = 1.25967
+scale = Vector2(0.187834, 0.633287)
+
+[node name="Line2D60" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(450, 471)
+rotation = 0.975483
+scale = Vector2(0.266296, 0.82069)

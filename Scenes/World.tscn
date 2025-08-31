@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dmlcaxedukan0"]
+[gd_scene load_steps=13 format=4 uid="uid://dmlcaxedukan0"]
 
 [ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/Scenes/World.gd" id="1_gjpho"]
 [ext_resource type="Texture2D" uid="uid://bo7feg3anb7e3" path="res://Art assets/tileSet.png" id="2_5nsto"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dn6xsiot3ogq1" path="res://Scenes/SecurityGuard.tscn" id="7_y7y61"]
 [ext_resource type="PackedScene" uid="uid://irhmbxcjvw8u" path="res://Scenes/Hole.tscn" id="9_kn06e"]
 [ext_resource type="PackedScene" uid="uid://cc7xpjtgj8vt0" path="res://Scenes/Flag.tscn" id="10_7yo87"]
-[ext_resource type="PackedScene" uid="uid://cd0p8dp5c4f8y" path="res://Scenes/BlocksConector.tscn" id="10_kn06e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7y61"]
 texture = ExtResource("2_5nsto")
@@ -183,6 +182,3 @@ position = Vector2(-34, 144)
 
 [node name="securityGuard3" parent="." instance=ExtResource("7_y7y61")]
 position = Vector2(0, 80)
-
-[node name="Line2D" parent="." instance=ExtResource("10_kn06e")]
-points = PackedVector2Array(0, 0, 53.0746, 47.4191, 1025, 660, 585, 565, -5, 415, -175, 740, -40, 1020, 150, 1005, 75, 680, 460, 390, 850, 650, 805, 955, 130, 755, 120, 370, 555, 650, 500, 645, 155, 680)

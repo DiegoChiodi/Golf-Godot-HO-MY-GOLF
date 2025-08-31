@@ -4,7 +4,7 @@
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1yoxk"]
 a = Vector2(-10, -9)
-b = Vector2(186, 160)
+b = Vector2(116, 100)
 
 [node name="Line2D" type="Line2D"]
 scale = Vector2(0.2, 0.2)
