@@ -22,7 +22,8 @@ func _ready():
 	original_offset = offset  # Armazena a posição original da câmera
 
 func _process(delta):
-	posTarget = target.position
+	if target != null:
+		posTarget = target.position
 	self.position = self.position.lerp(posTarget, delta * lissing)  # Ajuste o "5.0" para mudar a suavidade
 	if shake_amount > 0:
 		# Aplica uma posição aleatória
@@ -51,7 +52,8 @@ func start_shake(intensity: float, decay: float = 1.0):
 	shake_decay = decay
 
 func setup(_target) -> void:
-	target = _target
+	setTarget(_target)
+	
 """
 func followBall(delta : float ) -> void:
 	if ball.state == ball.State.MOVING && !ball.attack:
@@ -70,3 +72,6 @@ func setLimit(_limit : Vector2) -> void:
 	self.limit_top = 0
 	self.limit_right = _limit.x
 	self.limit_bottom = _limit.y
+
+func setTarget(_target) -> void:
+	self.target = _target

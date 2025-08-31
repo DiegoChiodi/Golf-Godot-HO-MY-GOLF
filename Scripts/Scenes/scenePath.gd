@@ -1,11 +1,12 @@
 extends BaseScene
 
 var blocks : Array[SceneBlock] = []
-
+@onready var playerHead = $PlayerHead
 
 func _ready() -> void:
 	blocks = getBlocks()
 	setBlocksFunction()
+	camera.setTarget(playerHead)
 
 func setBlocksFunction() -> void:
 	for block in blocks:

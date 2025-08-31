@@ -36,10 +36,10 @@ func _process(delta: float) -> void:
 	var pressed = Input.is_action_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
 	
-	attackWait += delta
+	self.attackWait += delta
 	if press:
 		pressMouse()
-	if anglePermition:
+	if self.anglePermition:
 		setAngle()
 	
 	self.angle = int(self.rotation_degrees) % 360
