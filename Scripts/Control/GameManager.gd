@@ -22,6 +22,10 @@ func init(main : Node2D):
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		worldContainer.restart_room()
+		
+	
+	if Input.is_action_just_pressed("next"):
+		finishWorld()
 
 func finishWorld() -> void:
 	self.worldContainer.change_room(scenePath)

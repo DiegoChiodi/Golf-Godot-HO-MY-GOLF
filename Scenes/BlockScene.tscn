@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvrvauxc1i3sh" path="res://Scripts/Scenes/ScenePath/BlockScene.gd" id="1_p34af"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p34af"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktpvf"]
 size = Vector2(32, 16)
 
 [node name="SceneBlock" type="Node2D"]
@@ -20,10 +20,7 @@ offset_top = -14.0
 offset_right = 36.0
 offset_bottom = 9.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="col" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_p34af")
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="col"]
+shape = SubResource("RectangleShape2D_ktpvf")

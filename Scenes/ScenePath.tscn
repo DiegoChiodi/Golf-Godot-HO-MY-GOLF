@@ -380,9 +380,9 @@ rotation = 3.40677
 scale = Vector2(0.61057, 0.487201)
 
 [node name="Line2D54" parent="." instance=ExtResource("4_6p7dy")]
-position = Vector2(451, 526)
+position = Vector2(450.98, 524.732)
 rotation = 3.40677
-scale = Vector2(0.547564, 0.316636)
+scale = Vector2(0.582732, 0.438448)
 
 [node name="Line2D55" parent="." instance=ExtResource("4_6p7dy")]
 position = Vector2(447, 603)

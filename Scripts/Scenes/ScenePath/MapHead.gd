@@ -5,28 +5,24 @@ var possibilitis : Array[BlockScene] = []
 var collidingActual : Area2D
 @onready var area : Area2D = $Area2D
 
-var delay : float = 1.0
-var wait : float = 0.0
+var checkWait : float = 0.0
+const checkDelay : float = 0.02
+var check : bool = true
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("left_click"):
-		self.global_position = get_global_mouse_position()
-	return
-	print('aaaaa')
-	if wait > delay:
+	if checkWait > checkDelay and check:
 		setPossibilitis()
-		wait = -1000000
+		checkWait = 0.0
+		check = false
 	else:
-		wait += delta
-	
+		checkWait += delta
 	if Input.is_action_just_pressed("left_click"):
 		for block in possibilitis:
-			if !block.mouseColission:
+			if block.mouseColission and block.position.y > self.position.y:
 				self.position = block.position
-				setPossibilitis()
-	
-	
-			#print("Bloco detectados no início: ", areaBlock.get_parent())
+				checkWait = 0
+				check = true
+
 func setPossibilitis() -> void:
 	possibilitis = []
 	for areaBlock in area.get_overlapping_areas():
@@ -41,6 +37,5 @@ func setPossibilitis() -> void:
 	
 	for line in lines:
 		for block in line.blocks:
-			if !possibilitis.has(block):
+			if !possibilitis.has(block) and self.position.y < block.position.y and block != collidingActual:
 				possibilitis.append(block)
-	print(possibilitis)
