@@ -89,7 +89,7 @@ func _physics_process(delta: float) -> void:
 			player.position = self.global_position
 			if !enemys.is_empty():
 				for i in range(enemys.size()):
-					enemys[i].get_parent().collisionImpulse((global_position - enemys[i].global_position).normalized() * 3)	
+					enemys[i].get_parent().collisionImpulse((global_position - enemys[i].global_position).normalized() * 4)	
 
 func driving(delta: float) -> void:
 	var throttle = Input.get_axis("move_down", "move_up")
@@ -120,13 +120,8 @@ func _on_are_hb_attack_area_entered(area: Area2D) -> void:
 	if area.is_in_group("colHb") and area.get_parent().is_in_group("enemy"):
 		if !enemys.has(area):
 			enemys.append(area)
-		
-		enemy = area.get_parent()
-		colEnemy = true
 
 func _on_are_hb_attack_area_exited(area: Area2D) -> void:
 	if area.is_in_group("colHb") and area.get_parent().is_in_group("enemy"):
-		enemy = null
-		colEnemy = false
 		if enemys.has(area):
 			enemys.erase(area)

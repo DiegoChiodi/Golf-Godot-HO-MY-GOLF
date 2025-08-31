@@ -1,38 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3ywou1jviq7j"]
+[gd_scene load_steps=5 format=3 uid="uid://d3ywou1jviq7j"]
 
 [ext_resource type="Script" uid="uid://c5h1ikf1ignyl" path="res://Scripts/Scenes/scenePath.gd" id="1_a3dfb"]
 [ext_resource type="PackedScene" uid="uid://3qus4tlbkyv1" path="res://Scenes/SceneBlock.tscn" id="2_unck7"]
 [ext_resource type="Texture2D" uid="uid://cpsrak6mxwrjt" path="res://Art assets/PlayerHead.png" id="3_faymu"]
+[ext_resource type="PackedScene" uid="uid://cd0p8dp5c4f8y" path="res://Scenes/BlocksConector.tscn" id="4_6p7dy"]
 
 [node name="ScenePath" type="Node2D"]
 script = ExtResource("1_a3dfb")
 
 [node name="SceneBlock2" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(424, 86)
+position = Vector2(432, 115.5)
 
 [node name="SceneBlock3" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(508, 89)
+position = Vector2(516, 118.5)
 
 [node name="SceneBlock4" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(392, 136)
+position = Vector2(400, 165.5)
 
 [node name="SceneBlock5" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(448, 152)
-
-[node name="SceneBlock6" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(496, 469)
-
-[node name="SceneBlock7" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(439, 464)
+position = Vector2(456, 181.5)
 
 [node name="SceneBlock8" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(536, 144)
+position = Vector2(544, 173.5)
 
 [node name="SceneBlock" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(464, 40)
+position = Vector2(472, 69.5)
 
 [node name="SceneBlock9" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(468, 524)
+position = Vector2(446, 528)
 
 [node name="playerSpawn" type="Marker2D" parent="."]
 position = Vector2(-3911, 2688)
@@ -41,71 +36,50 @@ position = Vector2(-3911, 2688)
 position = Vector2(2154, 933)
 
 [node name="SceneBlock10" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(394, 282)
+position = Vector2(368, 304)
 
 [node name="SceneBlock11" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(477, 283)
+position = Vector2(456, 304)
 
 [node name="SceneBlock12" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(535, 288)
+position = Vector2(528, 304)
 
 [node name="SceneBlock13" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(400, 345)
+position = Vector2(374, 416)
 
 [node name="SceneBlock14" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(469, 350)
+position = Vector2(446, 408)
 
 [node name="SceneBlock15" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(544, 350)
+position = Vector2(510, 424)
 
 [node name="SceneBlock16" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(402, 406)
+position = Vector2(392, 462)
 
 [node name="SceneBlock17" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(466, 409)
+position = Vector2(456, 465)
 
 [node name="SceneBlock18" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(526, 406)
+position = Vector2(502, 480)
 
 [node name="PlayerHead" type="Sprite2D" parent="."]
-position = Vector2(464, 40)
+position = Vector2(472, 69.5)
 texture = ExtResource("3_faymu")
 
-[node name="SceneBlock19" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(394, 282)
-
-[node name="SceneBlock20" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(333, 280)
-
-[node name="SceneBlock21" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(320, 352)
-
-[node name="SceneBlock22" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(591, 280)
-
-[node name="SceneBlock23" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(613, 343)
-
 [node name="SceneBlock24" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(330, 423)
+position = Vector2(320, 479)
 
 [node name="SceneBlock25" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(602, 418)
-
-[node name="SceneBlock26" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(375, 481)
-
-[node name="SceneBlock27" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(556, 477)
+position = Vector2(566, 488)
 
 [node name="SceneBlock28" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(412, 548)
+position = Vector2(390, 552)
 
 [node name="SceneBlock29" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(519, 548)
+position = Vector2(518, 544)
 
 [node name="SceneBlock30" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(471, 596)
+position = Vector2(449, 600)
 
 [node name="SceneBlock31" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(389, 234)
@@ -126,13 +100,23 @@ position = Vector2(328, 232)
 position = Vector2(586, 232)
 
 [node name="SceneBlock37" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(360, 184)
+position = Vector2(381, 362)
 
 [node name="SceneBlock38" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(416, 200)
+position = Vector2(464, 363)
 
 [node name="SceneBlock39" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(496, 192)
+position = Vector2(522, 368)
 
 [node name="SceneBlock40" parent="." instance=ExtResource("2_unck7")]
-position = Vector2(552, 192)
+position = Vector2(381, 362)
+
+[node name="SceneBlock41" parent="." instance=ExtResource("2_unck7")]
+position = Vector2(320, 360)
+
+[node name="SceneBlock42" parent="." instance=ExtResource("2_unck7")]
+position = Vector2(578, 360)
+
+[node name="Line2D" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(480.958, 74.4961)
+scale = Vector2(0.295775, 0.449612)

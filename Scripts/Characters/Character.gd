@@ -13,7 +13,7 @@ const colImpulseDrag : float = 1 # quão rápido o impulso se dissipa
 #Impulsioned ----------
 var is_impulsioned : bool = false
 var impulsionedCowdow : float = 0.0
-var impulsionedDelay : float = 0.2
+var impulsionedDelay : float = 0.1
 
 var colHitBox : CollisionShape2D
 var areAttackHitBox : Area2D
@@ -27,16 +27,18 @@ func _ready() -> void:
 	if has_node("col_colisor"):
 		colHitBox = $col_colisor
 	groupsAdd()
-	
+
 func _process(delta: float) -> void:
-	super._process(delta)
+	pass
+
+func _physics_process(delta):
+	super._physics_process(delta)
 	if is_impulsioned:
 		impulsionedCowdow += delta
 		if impulsionedCowdow > impulsionedDelay:
 			impulsionedCowdow = 0.0
 			is_impulsioned = false
-
-func _physics_process(delta):
+	
 	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
 	
 	move_direction = setMoveDirection()
