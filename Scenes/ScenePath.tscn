@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3ywou1jviq7j"]
 
-[ext_resource type="Script" uid="uid://c5h1ikf1ignyl" path="res://Scripts/Scenes/scenePath.gd" id="1_a3dfb"]
-[ext_resource type="PackedScene" uid="uid://3qus4tlbkyv1" path="res://Scenes/SceneBlock.tscn" id="2_unck7"]
-[ext_resource type="Texture2D" uid="uid://cpsrak6mxwrjt" path="res://Art assets/PlayerHead.png" id="3_faymu"]
+[ext_resource type="Script" uid="uid://c5h1ikf1ignyl" path="res://Scripts/Scenes/ScenePath/ScenePath.gd" id="1_a3dfb"]
+[ext_resource type="PackedScene" uid="uid://3qus4tlbkyv1" path="res://Scenes/BlockScene.tscn" id="2_unck7"]
 [ext_resource type="PackedScene" uid="uid://cd0p8dp5c4f8y" path="res://Scenes/BlocksConector.tscn" id="4_6p7dy"]
+[ext_resource type="PackedScene" uid="uid://xpnvxj32jme3" path="res://Scenes/MapHead.tscn" id="4_cp3x2"]
 
 [node name="ScenePath" type="Node2D"]
 script = ExtResource("1_a3dfb")
@@ -33,7 +33,7 @@ position = Vector2(446, 528)
 position = Vector2(-3911, 2688)
 
 [node name="roomSize" type="Marker2D" parent="."]
-position = Vector2(2154, 933)
+position = Vector2(2176, 1216)
 
 [node name="SceneBlock10" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(379, 305)
@@ -61,10 +61,6 @@ position = Vector2(456, 465)
 
 [node name="SceneBlock18" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(502, 480)
-
-[node name="PlayerHead" type="Sprite2D" parent="."]
-position = Vector2(476, 71)
-texture = ExtResource("3_faymu")
 
 [node name="SceneBlock24" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(320, 479)
@@ -417,3 +413,6 @@ scale = Vector2(0.187834, 0.633287)
 position = Vector2(450, 471)
 rotation = 0.975483
 scale = Vector2(0.266296, 0.82069)
+
+[node name="MapHead" parent="." instance=ExtResource("4_cp3x2")]
+position = Vector2(472, 72)
