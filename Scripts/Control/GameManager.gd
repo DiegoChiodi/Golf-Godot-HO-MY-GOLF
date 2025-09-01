@@ -5,11 +5,11 @@ var player : Player = preload("res://Scenes/Player.tscn").instantiate()
 var camera : Camera = Camera.new()
 var worldContainer : WorldContainer = WorldContainer.new()
 
-var worldPath : String = "res://Scenes/World.tscn"
+var worldPath : String = "res://Scenes/TrainingCamp.tscn"
 var scenePath : String = "res://Scenes/ScenePath.tscn"
 
 func init(main : Node2D):
-	self.camera.setup(player)
+	self.camera.setup(player, null)
 	camera.limit_left = 0
 	camera.limit_top = 0
 	main.add_child(camera)

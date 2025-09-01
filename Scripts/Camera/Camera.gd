@@ -3,6 +3,7 @@ class_name Camera
 
 #Nodes
 var target
+var posComp : Vector2 = Vector2.ZERO
 #Camera ----------------
 const normalZoom = 3.5
 var lissing = 10
@@ -23,7 +24,7 @@ func _ready():
 
 func _process(delta):
 	if target != null:
-		posTarget = target.position
+		posTarget = target.position + posComp
 	self.position = self.position.lerp(posTarget, delta * lissing)  # Ajuste o "5.0" para mudar a suavidade
 	if shake_amount > 0:
 		# Aplica uma posição aleatória
@@ -51,8 +52,8 @@ func start_shake(intensity: float, decay: float = 1.0):
 	shake_amount = intensity
 	shake_decay = decay
 
-func setup(_target) -> void:
-	setTarget(_target)
+func setup(_target, _posComp) -> void:
+	setTarget(_target, _posComp)
 	
 """
 func followBall(delta : float ) -> void:
@@ -73,5 +74,11 @@ func setLimit(_limit : Vector2) -> void:
 	self.limit_right = _limit.x
 	self.limit_bottom = _limit.y
 
-func setTarget(_target) -> void:
+func setTarget(_target, _posComp) -> void:
 	self.target = _target
+	if _posComp != null:
+		posComp = _posComp
+	if target is MapHead:
+		debugCamZoom = !debugCamZoom
+	else:
+		debugCamZoom = false

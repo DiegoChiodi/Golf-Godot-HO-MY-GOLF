@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://irhmbxcjvw8u" path="res://Scenes/Hole.tscn" id="9_kn06e"]
 [ext_resource type="PackedScene" uid="uid://cc7xpjtgj8vt0" path="res://Scenes/Flag.tscn" id="10_7yo87"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7y61"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uo7di"]
 texture = ExtResource("2_5nsto")
 8:2/0 = 0
 9:2/0 = 0
@@ -107,7 +107,7 @@ texture = ExtResource("2_5nsto")
 5:11/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_q2d71"]
-sources/0 = SubResource("TileSetAtlasSource_y7y61")
+sources/0 = SubResource("TileSetAtlasSource_uo7di")
 
 [sub_resource type="GDScript" id="GDScript_y7y61"]
 script/source = "extends TileMap

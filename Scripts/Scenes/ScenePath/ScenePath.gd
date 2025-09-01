@@ -6,13 +6,22 @@ var blocks : Array[BlockScene] = []
 func _ready() -> void:
 	blocks = getBlocks()
 	setBlocksFunction()
-	camera.setTarget(mapHead)
+	camera.setTarget(mapHead, Vector2(0,100))
 	camera.setLimit($roomSize.position)
 
 func setBlocksFunction() -> void:
 	for block in blocks:
-		block.function = randi() % 4 + 1
-	
+		
+		var sort = randi() % 20
+		if sort <= 12:
+			block.function = 1
+		elif sort <= 15:
+			block.function = 2
+		elif sort <= 18:
+			block.function = 3
+		else:
+			block.function = 4
+		block.setFunction()
 
 func getBlocks () -> Array[BlockScene]:
 	var sceneBlockChilds : Array[BlockScene] = []

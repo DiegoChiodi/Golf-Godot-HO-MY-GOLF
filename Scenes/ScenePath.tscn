@@ -25,6 +25,7 @@ position = Vector2(544, 173.5)
 
 [node name="SceneBlock" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(472, 69.5)
+initial = true
 
 [node name="SceneBlock9" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(446, 528)
@@ -76,6 +77,7 @@ position = Vector2(518, 544)
 
 [node name="SceneBlock30" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(449, 600)
+finish = true
 
 [node name="SceneBlock31" parent="." instance=ExtResource("2_unck7")]
 position = Vector2(389, 234)
@@ -416,3 +418,18 @@ scale = Vector2(0.266296, 0.82069)
 
 [node name="MapHead" parent="." instance=ExtResource("4_cp3x2")]
 position = Vector2(472, 72)
+
+[node name="Line2D61" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(401.14, 164.324)
+rotation = 1.25967
+scale = Vector2(0.523363, 0.305434)
+
+[node name="Line2D62" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(385.837, 237.209)
+rotation = -0.0993671
+scale = Vector2(0.555647, 0.679904)
+
+[node name="Line2D63" parent="." instance=ExtResource("4_6p7dy")]
+position = Vector2(463.514, 363.956)
+rotation = 1.25967
+scale = Vector2(0.215374, 0.87007)
