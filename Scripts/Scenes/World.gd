@@ -12,6 +12,7 @@ func _ready():
 	guard.setup(player, self)
 	$securityGuard2.setup(player, self)
 	$securityGuard3.setup(player, self)
+	$securityGuard4.setup(player, self)
 	shadowBall.setup(ball)
 	ball.setup(player)
 
