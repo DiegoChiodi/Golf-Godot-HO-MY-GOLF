@@ -28,8 +28,10 @@ func _ready() -> void:
 	groupsAdd()
 
 func _process(delta: float) -> void:
-	pass
-
+	if getTileisWater():
+		self.modulate.b = 2
+	else:
+		self.modulate.b = 1
 func _physics_process(delta):
 	super._physics_process(delta)
 	if is_impulsioned:
@@ -66,3 +68,17 @@ func groupsAdd () -> void:
 func enableCollision (definition : bool) -> void:
 	if colHitBox != null:
 		colHitBox.set_deferred("disabled", definition)
+
+func getTileisWater() -> bool:
+	var tileMap : TileMapLayer = get_tree().get_first_node_in_group("tileGround")
+	
+	if !tileMap:
+		return false
+	
+	var cell := tileMap.local_to_map(self.global_position)
+	var data : TileData = tileMap.get_cell_tile_data(cell)
+	if data:
+		var tileType : bool = data.get_custom_data("isWater")
+		return tileType
+	
+	return false
