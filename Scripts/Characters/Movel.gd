@@ -24,7 +24,6 @@ var direction : Vector2 = Vector2.ZERO
 func _ready() -> void:
 	super._ready()
 	setDraw()
-	drawSelf.z_index = z
 	frameDim = Vector2(drawSelf.texture.get_size().x / sliceX, drawSelf.texture.get_size().y / sliceY)
 
 func _process(delta: float) -> void:

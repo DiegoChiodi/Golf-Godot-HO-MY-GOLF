@@ -4,7 +4,6 @@ class_name Character
 #Moving -----------------
 var speed : float = 50.0
 var acceleration : float = 0.2  # Fator de suavização
-var z : int = 5
 var move_direction = Vector2.ZERO
 #Impulse -------------
 var colImpulse = Vector2.ZERO

@@ -76,6 +76,7 @@ animations = [{
 }]
 
 [node name="bod_cart" type="CharacterBody2D"]
+position = Vector2(0, -9)
 script = ExtResource("1_l0d8i")
 
 [node name="col_colisor" type="CollisionShape2D" parent="."]

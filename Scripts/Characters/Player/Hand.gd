@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	
 	if clubManager.actualClub == clubManager.Clubs.HAND:
 		pass
+	position.y -= 6
 
 func setup(_player : Player) -> void:
 	self.player = _player

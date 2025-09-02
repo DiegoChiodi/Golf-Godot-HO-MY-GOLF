@@ -24,7 +24,6 @@ var enterCowdow = 0.2
 var angle = 0
 
 func _ready() -> void:
-	ani_golf.z_index = z
 	ani_golf.position = Vector2.ZERO
 	super._ready()
 	speed = 60.0

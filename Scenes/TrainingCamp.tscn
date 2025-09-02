@@ -532,6 +532,7 @@ func _process(delta: float) -> void:
 "
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(71, 1)
 script = ExtResource("1_0ldk8")
 

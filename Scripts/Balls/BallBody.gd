@@ -1,7 +1,6 @@
 extends Character
 class_name NormalBall
 #Load files ----------------------------
-@onready var lblDebug : Label = $lbl_debug
 @onready var sprBall : ColorRect = $rec_ball
 var player : Player
 #Scoping with Mouse ----------------------
@@ -40,7 +39,6 @@ var state = State.IDLE
 var lines : Array[Line2D] = []
 #funcition
 func _ready() -> void:
-	sprBall.z_index = z
 	var shadowBall : ShadowBall = ShadowBall.new()
 	shadowBall.setup(self)
 	get_parent().call_deferred("add_child", shadowBall)
