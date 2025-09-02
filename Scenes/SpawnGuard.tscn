@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://pgydxgk884qh" path="res://Scripts/GuardSpawn.gd" id="1_tsmg8"]
 
-[node name="Node2D" type="Node2D"]
+[node name="SpawnGuard" type="Node2D"]
 script = ExtResource("1_tsmg8")

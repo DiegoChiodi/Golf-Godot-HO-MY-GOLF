@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://oxhjgdfmxxch" path="res://Scenes/GolfCart.tscn" id="3_35xth"]
 [ext_resource type="PackedScene" uid="uid://cu3ftopqq2vdn" path="res://Scenes/Ball.tscn" id="4_abbkt"]
 [ext_resource type="PackedScene" uid="uid://2spk7t200iju" path="res://Scenes/GuardHelmet.tscn" id="5_442wp"]
-[ext_resource type="Script" uid="uid://ckqax8xrfaijj" path="res://Scripts/Balls/BallShadow.gd" id="6_o2l6r"]
 [ext_resource type="PackedScene" uid="uid://dn6xsiot3ogq1" path="res://Scenes/SecurityGuard.tscn" id="7_nkq6f"]
 [ext_resource type="PackedScene" uid="uid://irhmbxcjvw8u" path="res://Scenes/Hole.tscn" id="8_2rkp2"]
 [ext_resource type="PackedScene" uid="uid://cc7xpjtgj8vt0" path="res://Scenes/Flag.tscn" id="9_fjt1s"]
+[ext_resource type="PackedScene" uid="uid://bey1gx1ypkbvm" path="res://Scenes/SpawnGuard.tscn" id="10_j7mxn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_isyhh"]
 texture = ExtResource("2_j7mxn")
@@ -562,15 +562,6 @@ position = Vector2(68, 487)
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("5_442wp")]
 position = Vector2(64, 55)
 
-[node name="rec_ballShadow" type="ColorRect" parent="."]
-offset_left = -128.0
-offset_top = 59.0
-offset_right = -124.0
-offset_bottom = 63.0
-color = Color(0.123473, 0.123473, 0.123473, 1)
-script = ExtResource("6_o2l6r")
-metadata/_edit_use_anchors_ = true
-
 [node name="securityGuard" parent="." instance=ExtResource("7_nkq6f")]
 position = Vector2(143, 369)
 
@@ -601,4 +592,7 @@ scale = Vector2(0.547046, 0.68647)
 text = "Space"
 
 [node name="securityGuard4" parent="." instance=ExtResource("7_nkq6f")]
-position = Vector2(-26, 356)
+position = Vector2(-29, 356)
+
+[node name="SpawnGuard" parent="." instance=ExtResource("10_j7mxn")]
+position = Vector2(53, 375)

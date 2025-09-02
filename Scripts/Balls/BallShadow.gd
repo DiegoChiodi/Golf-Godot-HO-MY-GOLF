@@ -1,9 +1,15 @@
 extends ColorRect
 class_name ShadowBall
 #Load files
-var ball
+var ball : NormalBall
+
+func _ready() -> void:
+	size = ball.getSize()
+	modulate = Color(0.3,0.3,0.3)
+
 
 func _process(delta: float) -> void:
+	
 	#Ball x is equals position ball void 
 	position.x = ball.position.x - 2
 	position.y = ball.position.y - ball.posZ * delta - 2

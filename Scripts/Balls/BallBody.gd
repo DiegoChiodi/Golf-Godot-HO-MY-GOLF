@@ -2,6 +2,7 @@ extends Character
 class_name NormalBall
 #Load files ----------------------------
 @onready var lblDebug : Label = $lbl_debug
+@onready var sprBall : ColorRect = $rec_ball
 var player : Player
 #Scoping with Mouse ----------------------
 var iniMousePos : Vector2 = Vector2.ZERO
@@ -39,9 +40,13 @@ var state = State.IDLE
 var lines : Array[Line2D] = []
 #funcition
 func _ready() -> void:
-	$rec_ball.z_index = z
+	sprBall.z_index = z
+	var shadowBall : ShadowBall = ShadowBall.new()
+	shadowBall.setup(self)
+	get_parent().call_deferred("add_child", shadowBall)
 
 func _process(delta: float) -> void:
+	
 	var press = Input.is_action_just_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
 	if readyShot: # se posso tacar
@@ -182,3 +187,6 @@ func create_line(initialPoint : Vector2) -> Line2D:
 	line.width_curve = curve
 
 	return line
+
+func getSize() -> Vector2:
+	return sprBall.size
