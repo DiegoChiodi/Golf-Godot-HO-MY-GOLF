@@ -3,23 +3,20 @@ class_name CombactScene
 #Load files ------------------
 @onready var ball: NormalBall = $ball
 var guards : Array[Guard] = []
-@onready var spawnGuard = $SpawnGuard
-
+var spawnGuards: Array[GuardSpawn] = []
 #Functions ----------------
 func _ready():  
 	# Garante que a câmera siga o Player  
 	super._ready()
-	"""
-	guard.setup(player, self)
-	$securityGuard2.setup(player, self)
-	$securityGuard3.setup(player, self)
-	$securityGuard4.setup(player, self)
-	"""
+	
 	guards = getGuard()
 	for guard in guards:
 		guard.setup(player,self)
 	
-	spawnGuard.setup(self)
+	spawnGuards = getSpanwner()
+	for spawnGuard in spawnGuards:
+		spawnGuard.setup(self)
+	
 	ball.setup(player)
 
 #modulate = cor_rgb(255,255,0
@@ -34,3 +31,11 @@ func getGuard () -> Array[Guard]:
 			guardChilds.append(child)
 	
 	return guardChilds
+
+func getSpanwner () -> Array[GuardSpawn]:
+	var spawnChilds : Array[GuardSpawn] = []
+	for child in get_children():
+		if child is GuardSpawn:
+			spawnChilds.append(child)
+	
+	return spawnChilds

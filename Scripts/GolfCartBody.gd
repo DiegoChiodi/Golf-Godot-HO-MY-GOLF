@@ -22,6 +22,7 @@ var enterDelay = 0.0
 var enterCowdow = 0.2
 #Transform
 var angle = 0
+var speedFix : float = 60.0
 
 func _ready() -> void:
 	ani_golf.position = Vector2.ZERO
@@ -67,6 +68,8 @@ func _process(delta: float) -> void:
 		ani_golf.flip_h = false
 	lbl_debug.rotation = -rotation
 	lbl_debug.position = Vector2(0, 0)
+	
+	colorTile()
 		
 func _physics_process(delta: float) -> void:
 	if colPlayer:
@@ -100,7 +103,7 @@ func driving(delta: float) -> void:
 		steerReverse = -steer
 		reverse = 0.66
 		
-	velocity = transform.x * throttle * reverse * speed
+	velocity = transform.x * throttle * reverse * speed * getTileSpeed() * getTileSpeed() * getTileSpeed() * getTileSpeed()
 	move_and_slide()
 	rotation += steerReverse * rotationSpeed * delta * reverse
 

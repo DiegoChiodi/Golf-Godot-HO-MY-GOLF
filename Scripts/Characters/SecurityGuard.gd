@@ -20,7 +20,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super._process(delta)
-	if life < lifeMax * 0.4:
+	if life < 0:
+		self.queue_free()
+	elif life < lifeMax * 0.4:
 		lifeParcent = 2
 		is_week = true
 		speedNormal = 20.0

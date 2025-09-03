@@ -44,9 +44,9 @@ func _ready() -> void:
 	get_parent().call_deferred("add_child", shadowBall)
 
 func _process(delta: float) -> void:
-	
 	var press = Input.is_action_just_pressed("left_click")
 	var solt = Input.is_action_just_released("left_click")
+	
 	if readyShot: # se posso tacar
 		modulate.g = lerp(modulate.g, 1.0, 0.09)
 		modulate.b = lerp(modulate.b, 1.0, 0.09)
@@ -97,7 +97,9 @@ func _process(delta: float) -> void:
 	
 	if state == State.MOVING:
 		ballMoviment(delta)
-		
+	
+	colorTile()
+	
 func setup(_player) -> void:
 	player = _player
 
@@ -149,11 +151,20 @@ func ballMoviment(delta : float):
 			velocity *= 0.98
 			speedZ *= 0.98
 		
+		#tocou o chão
 		if posZ > 0.0:
 			speedZ *= -0.6 # Muda a direção e diminui
 			posZ = 0.0
+			if getTileisSand():
+				groundFriction = 0.7
+				speedZ *= 0.7 # Muda a direção e diminui
+			elif getTileisWater():
+				speedZ = 0
+			else:
+				groundFriction = 0.95
 			velocity.x *= groundFriction
 			velocity.y *= groundFriction
+				
 		
 		
 		if (abs(velocity.x) < forceDeadZone * 3 && abs(velocity.y) < forceDeadZone * 3):

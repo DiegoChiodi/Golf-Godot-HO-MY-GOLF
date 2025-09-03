@@ -1,4 +1,5 @@
 extends Node2D
+class_name GuardSpawn
 
 var delay : float = 20
 var wait : float = 20
@@ -12,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if wait > delay:
-		delay = randi() % 10 + 15
+		delay = randi() % 10 + 10
 		wait = 0
 		
 		var guardIns : Guard = guard.instantiate()

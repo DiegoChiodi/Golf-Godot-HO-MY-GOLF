@@ -28,10 +28,8 @@ func _ready() -> void:
 	groupsAdd()
 
 func _process(delta: float) -> void:
-	if getTileisWater():
-		self.modulate.b = 2
-	else:
-		self.modulate.b = 1
+	colorTile()
+
 func _physics_process(delta):
 	super._physics_process(delta)
 	if is_impulsioned:
@@ -43,7 +41,7 @@ func _physics_process(delta):
 	colImpulse = colImpulse.lerp(Vector2.ZERO, 2 * delta)
 	
 	move_direction = setMoveDirection()
-	velocity = velocity.lerp(move_direction * speed, acceleration)
+	velocity = velocity.lerp(move_direction * speed, acceleration) * getTileSpeed()
 	move_and_slide()
 	# Controle de drawSelfmação melhorado
 
@@ -82,3 +80,42 @@ func getTileisWater() -> bool:
 		return tileType
 	
 	return false
+
+func getTileisSand() -> bool:
+	var tileMap : TileMapLayer = get_tree().get_first_node_in_group("tileGround")
+	
+	if !tileMap:
+		return false
+	
+	var cell := tileMap.local_to_map(self.global_position)
+	var data : TileData = tileMap.get_cell_tile_data(cell)
+	if data:
+		var tileType : bool = data.get_custom_data("isSand")
+		return tileType
+	
+	return false
+
+func getTileSpeed() -> float:
+	var tileMap : TileMapLayer = get_tree().get_first_node_in_group("tileGround")
+	
+	if !tileMap:
+		return 1
+	
+	var cell := tileMap.local_to_map(self.global_position)
+	var data : TileData = tileMap.get_cell_tile_data(cell)
+	if data:
+		var tileType : float = data.get_custom_data("speed")
+		return tileType
+	
+	return 1
+
+func colorTile() -> void:
+	if getTileisWater():
+		self.modulate.b = 2
+	elif getTileisSand():
+		self.modulate.r = 2
+		self.modulate.g = 2
+	else:
+		self.modulate.r = 1
+		self.modulate.g = 1
+		self.modulate.b = 1
