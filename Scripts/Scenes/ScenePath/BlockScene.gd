@@ -10,6 +10,9 @@ var function : int = 0
 
 var mouseColission : bool
 
+var trainingPath : String = "res://Scenes/TrainingCamp.tscn"
+var waterPath : String = "res://Scenes/LineWorld.tscn"
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	if initial:
@@ -42,3 +45,14 @@ func setFunction() -> void:
 			colRect.modulate = Color(0.2, 1.0, 0.2) # verde saturado
 		5:
 			colRect.modulate = Color(1, 0, 0)
+
+func randomRoom() -> void:
+	match function:
+		1:
+			var ale : int = randi() % 2
+			match ale:
+				0:
+					game_manager.setScenePath(trainingPath)
+				1:
+					game_manager.setScenePath(waterPath)
+		

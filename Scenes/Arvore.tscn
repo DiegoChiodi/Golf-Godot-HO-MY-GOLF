@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy0fs2046nkwm"]
+
+[ext_resource type="Texture2D" uid="uid://d0odq5mlai3d2" path="res://Art assets/Arvore.png" id="1_wm2v5"]
+
+[node name="Arvore" type="Node2D"]
+
+[node name="Arvore" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_wm2v5")

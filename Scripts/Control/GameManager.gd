@@ -8,6 +8,7 @@ var worldContainer : WorldContainer = WorldContainer.new()
 var worldPath : String = "res://Scenes/TrainingCamp.tscn"
 var scenePath : String = "res://Scenes/ScenePath.tscn"
 
+
 func init(main : Node2D):
 	self.camera.setup(player, null)
 	camera.limit_left = 0
@@ -26,6 +27,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("next"):
 		finishWorld()
+
+func setScenePath(_scenePath : String) -> void:
+	scenePath = _scenePath
+	finishWorld()
 
 func finishWorld() -> void:
 	self.worldContainer.change_room(scenePath)
