@@ -3,13 +3,12 @@ class_name Camera
 
 #Nodes
 var target
-var posComp : Vector2 = Vector2.ZERO
 #Camera ----------------
-const normalZoom = 3.5
 var lissing = 10
 var posTarget = Vector2.ZERO
-const targetBallPor = 0.4
 var canBallFollow = false
+var posComp : Vector2 = Vector2.ZERO
+var extPosComp : Vector2 = Vector2.ZERO
 # Parâmetros do tremor
 var shake_amount = 0.0
 var shake_decay = 1.0  # Velocidade com que o tremor diminui
@@ -17,14 +16,20 @@ var original_offset = Vector2.ZERO
 var zoomCam = Vector2(2.5,2.5)
 
 var debugCamZoom = false
-
+var permitionDebugZoom = false
 
 func _ready():
 	original_offset = offset  # Armazena a posição original da câmera
+	zoomCam = Vector2(2.5,2.5)
 
 func _process(delta):
-	if target != null:
-		posTarget = target.position + posComp
+
+	
+	if extPosComp != Vector2.ZERO:
+		posTarget = extPosComp
+	elif target != null:
+		posTarget = target.global_position + posComp
+	
 	self.position = self.position.lerp(posTarget, delta * lissing)  # Ajuste o "5.0" para mudar a suavidade
 	if shake_amount > 0:
 		# Aplica uma posição aleatória
@@ -42,11 +47,12 @@ func _process(delta):
 	self.zoom = zoomCam
 	if Input.is_action_just_pressed("press_c"):
 		debugCamZoom = !debugCamZoom
-		
-	if debugCamZoom:
-		zoomCam = Vector2(2.5,2.5)
-	else:
-		zoomCam = Vector2(3.5,3.5)
+	
+	if permitionDebugZoom:
+		if debugCamZoom:
+			zoomCam = Vector2(2.5,2.5)
+		else:
+			zoomCam = Vector2(3.5,3.5)
 
 func start_shake(intensity: float, decay: float = 1.0):
 	shake_amount = intensity
@@ -54,7 +60,6 @@ func start_shake(intensity: float, decay: float = 1.0):
 
 func setup(_target, _posComp) -> void:
 	setTarget(_target, _posComp)
-	
 """
 func followBall(delta : float ) -> void:
 	if ball.state == ball.State.MOVING && !ball.attack:
@@ -82,3 +87,6 @@ func setTarget(_target, _posComp) -> void:
 		debugCamZoom = !debugCamZoom
 	else:
 		debugCamZoom = false
+
+func setExtPosComp(_extPosComp) -> void:
+	extPosComp = _extPosComp

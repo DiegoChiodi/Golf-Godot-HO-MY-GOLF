@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 		self.angle += 360
 
 func pressMouse () -> void:
-	if self.attackWait > self.attackDelay and !self.player.colBall and !self.player.drivingCart :
+	if  !self.player.colBall and !self.player.drivingCart:
 		attackGo()
 		attackWait = 0.0
 	

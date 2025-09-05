@@ -12,13 +12,17 @@ var enemyId = null
 
 func _ready() -> void:
 	sliceX = 1
-	sliceY = 3
+	sliceY = 3                                                                                                       
 	super._ready()
 	actualClub.setup(self)
 	hands.setup(self)
+	speed = 60
 	
 func _process(delta: float) -> void:
 	super._process(delta)
+	if life  <= 0:
+		game_manager.worldContainer.restart_room()
+		life = 100
 	
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)

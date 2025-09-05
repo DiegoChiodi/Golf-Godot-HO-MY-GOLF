@@ -27,7 +27,7 @@ var speedFix : float = 60.0
 func _ready() -> void:
 	ani_golf.position = Vector2.ZERO
 	super._ready()
-	speed = 60.0
+	speed = 75.0
 	
 func _process(delta: float) -> void:
 	rotation_degrees = int(rotation_degrees) % 360

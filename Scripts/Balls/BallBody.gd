@@ -10,20 +10,20 @@ var mouseDis : Vector2
 var attack : bool = false
 var readyShot : bool = true # permissão para a acertar a bolinha
 const mouDisInterval : float = 8.0
-var line
+var line : Line2D
 #Colision -------------------
-var colPlayer = false
+var colPlayer : bool= false
 var colEnemy = false
 var enemyId
 #Fisic ----------------------
-var movSpeed = 1
-var posZ = 0.0
-var speedZ = 0
-const gravity = 9.8
-const gravityExcedeed = 25
+var movSpeed : float= 1
+var posZ : float= 0.0
+var speedZ : float = 0
+const gravity : float = 9.8
+const gravityExcedeed : int = 25
 #Objects variants / Life world
-var airFriction = 0.99
-var groundFriction = 0.95
+var airFriction : float = 0.99
+var groundFriction : float = 0.95
 var golfClub
 #Limits
 const disMax = 400
@@ -66,6 +66,9 @@ func _process(delta: float) -> void:
 				var points = line.points
 				points[1] = mousePos
 				line.points = points
+				var lineDis = points[1].distance_to(points[0])
+				print(lineDis)
+				line.modulate = Color(lineDis / 400, 1 - lineDis / 400,0)
 				
 			if previousPressed:
 				if solt:
@@ -159,7 +162,7 @@ func ballMoviment(delta : float):
 				groundFriction = 0.7
 				speedZ *= 0.7 # Muda a direção e diminui
 			elif getTileisWater():
-				speedZ = 0
+				speedZ *= 0
 			else:
 				groundFriction = 0.95
 			velocity.x *= groundFriction

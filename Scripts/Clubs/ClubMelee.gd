@@ -16,7 +16,7 @@ var colEnemy = false
 var enemyId : Character
 
 func _physics_process(delta: float) -> void:
-	if colEnemy && attacking:
+	if colEnemy:
 		self.onEnemyPhysicColission(enemyId)
 
 func _process(delta: float) -> void:

@@ -2,7 +2,7 @@ extends Node2D
 class_name GuardSpawn
 
 var delay : float = 20
-var wait : float = 20
+var wait : float = -10000
 var world : BaseScene
 var guard = preload("res://Scenes/SecurityGuard.tscn")
 
@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if wait > delay:
-		delay = randi() % 10 + 10
+		delay = randi() % 10 + 200
 		wait = 0
 		
 		var guardIns : Guard = guard.instantiate()

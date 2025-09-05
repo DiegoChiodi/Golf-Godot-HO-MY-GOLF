@@ -7,7 +7,7 @@ var worldContainer : WorldContainer = WorldContainer.new()
 
 var worldPath : String = "res://Scenes/TrainingCamp.tscn"
 var scenePath : String = "res://Scenes/ScenePath.tscn"
-
+var actualScenePath : String
 
 func init(main : Node2D):
 	self.camera.setup(player, null)
@@ -23,14 +23,13 @@ func init(main : Node2D):
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		worldContainer.restart_room()
-		
 	
 	if Input.is_action_just_pressed("next"):
 		finishWorld()
 
 func setScenePath(_scenePath : String) -> void:
-	scenePath = _scenePath
-	finishWorld()
+	actualScenePath = _scenePath
+	self.worldContainer.change_room(actualScenePath)
 
 func finishWorld() -> void:
 	self.worldContainer.change_room(scenePath)
