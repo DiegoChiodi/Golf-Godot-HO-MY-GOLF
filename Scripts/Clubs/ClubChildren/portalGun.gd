@@ -7,6 +7,7 @@ func _ready() -> void:
 	self.damage = 10.0
 	self.attackDelay = 0.8
 	self.forceInBall = 200
+	self.maxForce = self.forceInBall
 	self.shotForm = self.ShotForm.RANGE
 	bullet = preload("res://Scenes/Clubs/Bullets/PortalGunBullet.tscn")
 	spawnTiro = $spawn_tiro

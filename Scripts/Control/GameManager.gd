@@ -5,8 +5,12 @@ var player : Player = preload("res://Scenes/Player.tscn").instantiate()
 var camera : Camera = Camera.new()
 var worldContainer : WorldContainer = WorldContainer.new()
 
-var worldPath : String = "res://Scenes/TrainingCamp.tscn"
-var scenePath : String = "res://Scenes/ScenePath.tscn"
+#Specific Scenes
+var trainigScene : String = "res://Scenes/Scene/TrainingCamp.tscn"
+var scenePath : String = "res://Scenes/Scene/ScenePath.tscn"
+#Combact Scenes
+var lineWorld : String = "res://Scenes/Scene/LineWorld.tscn"
+var oasis : String = "res://Scenes/Scene/Oasis.tscn"
 var actualScenePath : String
 
 func init(main : Node2D):
@@ -16,7 +20,7 @@ func init(main : Node2D):
 	main.add_child(camera)
 	main.add_child(player)
 	self.worldContainer.setup(player, camera)
-	worldContainer.load_room(worldPath)
+	worldContainer.load_room(trainigScene)
 	main.add_child(worldContainer)
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
@@ -33,3 +37,10 @@ func setScenePath(_scenePath : String) -> void:
 
 func finishWorld() -> void:
 	self.worldContainer.change_room(scenePath)
+
+func comScene(fun : int) -> void:
+	match fun:
+		1:
+			setScenePath(lineWorld)
+		2: 
+			setScenePath(oasis)

@@ -7,6 +7,7 @@ func _ready() -> void:
 	super._ready()
 	self.damage = 20
 	self.speed = Vector2(120,120)
+	self.maxForce = 200
 
 func collide(area : Area2D):
 	if !destructSelf:

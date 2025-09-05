@@ -3,6 +3,7 @@ class_name NormalBall
 #Load files ----------------------------
 @onready var sprBall : ColorRect = $rec_ball
 var player : Player
+var golfClub : BaseClub
 #Scoping with Mouse ----------------------
 var iniMousePos : Vector2 = Vector2.ZERO
 var previousPressed = false
@@ -24,7 +25,6 @@ const gravityExcedeed : int = 25
 #Objects variants / Life world
 var airFriction : float = 0.99
 var groundFriction : float = 0.95
-var golfClub
 #Limits
 const disMax = 400
 const disMaxZ = 250
@@ -67,8 +67,10 @@ func _process(delta: float) -> void:
 				points[1] = mousePos
 				line.points = points
 				var lineDis = points[1].distance_to(points[0])
-				print(lineDis)
-				line.modulate = Color(lineDis / 400, 1 - lineDis / 400,0)
+				if golfClub.forceInBall == golfClub.maxForce:
+					line.modulate = Color(1, 0,0)
+				else:
+					line.modulate = Color(lineDis / disMax, 1 - lineDis / disMax,0)
 				
 			if previousPressed:
 				if solt:
@@ -120,16 +122,20 @@ func _on_area_exited(area: Area2D) -> void:
 
 func initialImpulse():
 	readyShot = false
-	var dis = mouseDis.length()
-	if dis > disMax:
-		dis = disMax
-	var dir = mouseDis.normalized()
-	var forcaFinal
+	var dis := mouseDis.length()
+	var dir := mouseDis.normalized()
+	var forcaFinal : float
+	var clubForce = golfClub.forceInBall
+	
+	if clubForce > golfClub.maxForce:
+		clubForce = golfClub.maxForce
+	
 	if golfClub.shotIsNormal():
-		forcaFinal = dis / disMax * golfClub.forceInBall
+		forcaFinal = dis / golfClub.maxForce * clubForce
 	else:
 		forcaFinal = golfClub.forceInBall
 	
+	print(forcaFinal)
 	velocity.x = forcaFinal * dir.x
 	velocity.y = forcaFinal * dir.y
 	

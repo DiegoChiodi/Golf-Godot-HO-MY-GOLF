@@ -17,6 +17,7 @@ var angle = 0.0
 var anglePermition = true
 var damage : float = 0
 var forceInBall : float
+var maxForce : float
 enum ShotForm {
 	NORMAL,
 	RANGE,

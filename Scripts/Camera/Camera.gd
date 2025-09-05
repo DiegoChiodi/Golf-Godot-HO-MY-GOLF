@@ -12,19 +12,18 @@ var extPosComp : Vector2 = Vector2.ZERO
 # Parâmetros do tremor
 var shake_amount = 0.0
 var shake_decay = 1.0  # Velocidade com que o tremor diminui
-var original_offset = Vector2.ZERO
-var zoomCam = Vector2(2.5,2.5)
+var original_offset := Vector2.ZERO
+var zoomTarget := Vector2(2.5,2.5)
+var zoomLissing := 0.98
 
 var debugCamZoom = false
 var permitionDebugZoom = false
 
 func _ready():
 	original_offset = offset  # Armazena a posição original da câmera
-	zoomCam = Vector2(2.5,2.5)
+	zoomTarget = Vector2(2.5,2.5)
 
 func _process(delta):
-
-	
 	if extPosComp != Vector2.ZERO:
 		posTarget = extPosComp
 	elif target != null:
@@ -44,19 +43,17 @@ func _process(delta):
 		# Restaura a posição original
 		offset = original_offset
 	
-	self.zoom = zoomCam
 	if Input.is_action_just_pressed("press_c"):
 		debugCamZoom = !debugCamZoom
 	
-	if permitionDebugZoom:
-		if debugCamZoom:
-			zoomCam = Vector2(2.5,2.5)
-		else:
-			zoomCam = Vector2(3.5,3.5)
+	zoom = lerp(zoom,zoomTarget,zoomLissing)
 
 func start_shake(intensity: float, decay: float = 1.0):
 	shake_amount = intensity
 	shake_decay = decay
+
+func setZoom(_zoomTarget : Vector2):
+	zoomTarget = _zoomTarget
 
 func setup(_target, _posComp) -> void:
 	setTarget(_target, _posComp)

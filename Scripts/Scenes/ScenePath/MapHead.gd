@@ -23,8 +23,6 @@ func _process(delta: float) -> void:
 				checkWait = 0
 				check = true
 				block.randomRoom()
-				game_manager.camera.debugCamZoom = false
-				game_manager.camera.setTarget(game_manager.player, Vector2.ZERO)
 				
 
 func setPossibilitis() -> void:
