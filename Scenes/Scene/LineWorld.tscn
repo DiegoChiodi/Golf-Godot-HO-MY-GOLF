@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://di7we3g7toka6"]
+[gd_scene load_steps=13 format=4 uid="uid://di7we3g7toka6"]
 
 [ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/Scenes/World.gd" id="1_ohadn"]
 [ext_resource type="Texture2D" uid="uid://bo7feg3anb7e3" path="res://Art assets/tileSet.png" id="2_evede"]
 [ext_resource type="PackedScene" uid="uid://oxhjgdfmxxch" path="res://Scenes/GolfCart.tscn" id="3_887xb"]
 [ext_resource type="PackedScene" uid="uid://cu3ftopqq2vdn" path="res://Scenes/Ball.tscn" id="4_1m5uw"]
-[ext_resource type="PackedScene" uid="uid://2spk7t200iju" path="res://Scenes/GuardHelmet.tscn" id="5_lqest"]
 [ext_resource type="PackedScene" uid="uid://dn6xsiot3ogq1" path="res://Scenes/SecurityGuard.tscn" id="6_rycm8"]
 [ext_resource type="PackedScene" uid="uid://irhmbxcjvw8u" path="res://Scenes/Hole.tscn" id="7_t55on"]
 [ext_resource type="PackedScene" uid="uid://cc7xpjtgj8vt0" path="res://Scenes/Flag.tscn" id="8_gphip"]
@@ -676,9 +675,6 @@ rotation = -0.593547
 [node name="ball" parent="." instance=ExtResource("4_1m5uw")]
 position = Vector2(130, 322)
 
-[node name="AnimatedSprite2D" parent="." instance=ExtResource("5_lqest")]
-position = Vector2(64, 55)
-
 [node name="securityGuard" parent="." instance=ExtResource("6_rycm8")]
 position = Vector2(377, 323)
 
@@ -728,6 +724,3 @@ position = Vector2(-18, 630)
 
 [node name="SpawnGuard6" parent="." instance=ExtResource("9_2axsj")]
 position = Vector2(127, 630)
-
-[node name="Flag" parent="." instance=ExtResource("8_gphip")]
-position = Vector2(-71, -1)

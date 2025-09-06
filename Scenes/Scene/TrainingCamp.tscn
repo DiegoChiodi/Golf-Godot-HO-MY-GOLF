@@ -728,3 +728,6 @@ position = Vector2(-392, 750)
 
 [node name="SpawnGuard6" parent="." instance=ExtResource("10_j7mxn")]
 position = Vector2(-398, 763)
+
+[node name="Flag" parent="." instance=ExtResource("9_fjt1s")]
+position = Vector2(41, 423)
