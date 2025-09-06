@@ -22,8 +22,24 @@ func init(main : Node2D):
 	self.worldContainer.setup(player, camera)
 	worldContainer.load_room(trainigScene)
 	main.add_child(worldContainer)
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+	DisplayServer.window_set_size(DisplayServer.screen_get_size())
+	center_window(DisplayServer.screen_get_size())
+
+func center_window(new_size: Vector2i):
+	# define o tamanho da janela
+	DisplayServer.window_set_size(new_size)
+	# pega o tamanho da tela
+	var screen_size = DisplayServer.screen_get_size()
+	# calcula posição para centralizar
+	var pos = (screen_size - new_size) / 2
+	# move a janela
+	DisplayServer.window_set_position(pos)
+
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		worldContainer.restart_room()
