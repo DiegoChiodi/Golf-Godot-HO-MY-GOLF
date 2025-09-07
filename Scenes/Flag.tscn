@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://eq588o6mjkps" path="res://Scripts/Scenes/obstacle.gd" id="1_i6t4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6t4d"]
-size = Vector2(2, 7)
+size = Vector2(2, 4)
 
 [node name="Flag" type="Node2D"]
 script = ExtResource("1_i6t4d")

@@ -26,11 +26,16 @@ enum ShotForm {
 var z : int = 5
 var shotForm = ShotForm.NORMAL
 var sprClub : Sprite2D
+var areAttHb : Area2D
 
 func _ready() -> void:
 	if self.has_node('spr_club'):
 		sprClub = $spr_club
 		sprClub.z_index = z
+	
+	if self.has_node('are_attack'):
+		areAttHb = $are_attack
+		areAttHb.add_to_group('colHbAttack')
 
 func _process(delta: float) -> void:
 	var press = Input.is_action_just_pressed("left_click")
