@@ -6,9 +6,9 @@ var blocks : Array[BlockScene] = []
 func _ready() -> void:
 	blocks = getBlocks()
 	setBlocksFunction()
+	camera.setZoom(Vector2(3.5,3.5))
 	camera.setTarget(mapHead, Vector2(0,80))
 	camera.setLimit($roomSize.position)
-	camera.setZoom(Vector2(3.5,3.5))
 
 func setBlocksFunction() -> void:
 	for block in blocks:

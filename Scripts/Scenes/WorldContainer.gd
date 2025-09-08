@@ -12,7 +12,6 @@ func setup(_player: Player, _camera: Camera) -> void:
 
 func destroy_room() -> void:
 	self.currentRoom.call_deferred("queue_free")
-	
 
 func load_room(path : String) -> void:
 	self.currentRoomPath = path
@@ -27,6 +26,5 @@ func change_room(path : String) -> void:
 	load_room(path)
 
 func restart_room() -> void:
-	destroy_room()
-	load_room(currentRoomPath)
+	change_room(currentRoomPath)
 	

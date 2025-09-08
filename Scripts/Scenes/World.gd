@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		camera.setZoom(camera.zoomTarget.lerp(Vector2(normalZoom,normalZoom), delta))
 	
 	for guard in guards:
-		guard.position = Vector2(100,100)
+		guard.position = Vector2(100,-100)
 
 func cor_rgb(r: int, g: int, b: int, a: int = 255) -> Color:  
 	return Color(r/255.0, g/255.0, b/255.0, a/255.0)

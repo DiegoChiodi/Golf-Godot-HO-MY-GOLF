@@ -22,6 +22,8 @@ var posZ : float= 0.0
 var speedZ : float = 0
 const gravity : float = 9.8
 const gravityExcedeed : int = 25
+#control variable
+var firstImpulsePassed : bool = false #Serve para não criar uma poça ao sair do chão
 #Objects variants / Life world
 var airFriction : float = 0.99
 var groundFriction : float = 0.95
@@ -122,6 +124,7 @@ func _on_area_exited(area: Area2D) -> void:
 
 func initialImpulse():
 	readyShot = false
+	firstImpulsePassed = false
 	var dis := mouseDis.length()
 	var dir := mouseDis.normalized()
 	var forcaFinal : float
@@ -173,8 +176,13 @@ func ballMoviment(delta : float):
 				groundFriction = 0.95
 			velocity.x *= groundFriction
 			velocity.y *= groundFriction
-				
-		
+			
+			if abs(speedZ) >= 50 and firstImpulsePassed:
+				var marc : ColorRect = ColorRect.new()
+				marc.color = Color(0.6, 0.3, 0.0, 0.3) # vermelho com 50% de transparência
+				marc.size = Vector2(4, 4)        # tamanho 2x2
+				marc.position = position         # coloca na mesma posição do nó atual
+				get_parent().add_child(marc)     # adiciona ao pai
 		
 		if (abs(velocity.x) < forceDeadZone * 3 && abs(velocity.y) < forceDeadZone * 3):
 			speedZ *= 0.98
@@ -184,6 +192,8 @@ func ballMoviment(delta : float):
 			state = State.IDLE
 			speedZ = 0
 			posZ = 0
+	
+	firstImpulsePassed = true
 
 func create_line(initialPoint : Vector2) -> Line2D:
 	var line := Line2D.new()
