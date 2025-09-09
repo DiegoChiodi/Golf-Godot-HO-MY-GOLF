@@ -24,6 +24,7 @@ const gravity : float = 9.8
 const gravityExcedeed : int = 25
 #control variable
 var firstImpulsePassed : bool = false #Serve para não criar uma poça ao sair do chão
+
 #Objects variants / Life world
 var airFriction : float = 0.99
 var groundFriction : float = 0.95
@@ -137,8 +138,6 @@ func initialImpulse():
 		forcaFinal = dis / golfClub.maxForce * clubForce
 	else:
 		forcaFinal = golfClub.forceInBall
-	
-	print(forcaFinal)
 	velocity.x = forcaFinal * dir.x
 	velocity.y = forcaFinal * dir.y
 	
@@ -192,8 +191,6 @@ func ballMoviment(delta : float):
 			state = State.IDLE
 			speedZ = 0
 			posZ = 0
-	
-	firstImpulsePassed = true
 
 func create_line(initialPoint : Vector2) -> Line2D:
 	var line := Line2D.new()

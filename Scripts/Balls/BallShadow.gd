@@ -2,10 +2,11 @@ extends ColorRect
 class_name ShadowBall
 #Load files
 var ball : NormalBall
+var shadowPower : int = 10
 
 func _ready() -> void:
 	size = ball.getSize()
-	modulate = Color(0.3,0.3,0.3)
+	modulate = Color(0.1,0.1,0.1)
 
 
 func _process(delta: float) -> void:
@@ -14,7 +15,7 @@ func _process(delta: float) -> void:
 	position.x = ball.position.x - 2
 	position.y = ball.position.y - ball.posZ * delta - 2
 	
-	self.color.a = ball.posZ / ball.disMaxZ / - 25
+	self.color.a = -(ball.posZ / ball.disMaxZ / shadowPower)
 
 
 func setup(_ball : NormalBall) -> void:

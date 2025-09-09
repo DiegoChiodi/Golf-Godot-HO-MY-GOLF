@@ -6,6 +6,7 @@ var blocks : Array[BlockScene] = []
 func _ready() -> void:
 	blocks = getBlocks()
 	setBlocksFunction()
+	camera.setExtPosComp(Vector2.ZERO)
 	camera.setZoom(Vector2(3.5,3.5))
 	camera.setTarget(mapHead, Vector2(0,80))
 	camera.setLimit($roomSize.position)

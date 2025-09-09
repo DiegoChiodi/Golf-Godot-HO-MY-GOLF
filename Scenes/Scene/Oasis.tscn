@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cpteo4iosopgt"]
+[gd_scene load_steps=12 format=4 uid="uid://cpteo4iosopgt"]
 
 [ext_resource type="Script" uid="uid://b4sqodwevmsqt" path="res://Scripts/Scenes/World.gd" id="1_bs5t3"]
 [ext_resource type="Texture2D" uid="uid://bo7feg3anb7e3" path="res://Art assets/tileSet.png" id="2_vis6s"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://irhmbxcjvw8u" path="res://Scenes/Hole.tscn" id="5_vdobt"]
 [ext_resource type="PackedScene" uid="uid://cc7xpjtgj8vt0" path="res://Scenes/Flag.tscn" id="6_jx70h"]
 [ext_resource type="PackedScene" uid="uid://cu3ftopqq2vdn" path="res://Scenes/Ball.tscn" id="7_vis6s"]
+[ext_resource type="PackedScene" uid="uid://d05batf3lmups" path="res://Scenes/Plate.tscn" id="7_x631h"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fdemu"]
 tile_data = PackedInt32Array(0, 589824, 8, 65536, 589824, 9, 1, 655360, 8, 65537, 655360, 9)
@@ -516,7 +517,7 @@ texture = ExtResource("2_vis6s")
 2:10/0/terrains_peering_bit/left_side = 3
 2:10/0/terrains_peering_bit/top_left_corner = 3
 2:10/0/terrains_peering_bit/top_side = 3
-2:10/0/custom_data_1 = 0.6
+2:10/0/custom_data_1 = 1.0
 3:10/0 = 0
 3:10/0/terrain_set = 0
 3:10/0/terrain = 3
@@ -649,6 +650,7 @@ func _process(delta: float) -> void:
 y_sort_enabled = true
 position = Vector2(71, 1)
 script = ExtResource("1_bs5t3")
+lissingMap = 0.1
 
 [node name="TileManager" type="TileMap" parent="."]
 z_index = -1
@@ -684,3 +686,19 @@ position = Vector2(0, -2)
 
 [node name="ball" parent="." instance=ExtResource("7_vis6s")]
 position = Vector2(153, 287)
+
+[node name="plate" parent="." instance=ExtResource("7_x631h")]
+position = Vector2(209, 255)
+dirArrow = Vector2(1, 0)
+
+[node name="plate2" parent="." instance=ExtResource("7_x631h")]
+position = Vector2(833, 263)
+dirArrow = Vector2(1, 0)
+
+[node name="plate3" parent="." instance=ExtResource("7_x631h")]
+position = Vector2(1681, 471)
+dirArrow = Vector2(1, 0)
+
+[node name="plate4" parent="." instance=ExtResource("7_x631h")]
+position = Vector2(1961, 271)
+dirArrow = Vector2(0, 1)

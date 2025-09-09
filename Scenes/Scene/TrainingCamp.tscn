@@ -517,7 +517,7 @@ texture = ExtResource("2_j7mxn")
 2:10/0/terrains_peering_bit/left_side = 3
 2:10/0/terrains_peering_bit/top_left_corner = 3
 2:10/0/terrains_peering_bit/top_side = 3
-2:10/0/custom_data_1 = 0.6
+2:10/0/custom_data_1 = 1.0
 3:10/0 = 0
 3:10/0/terrain_set = 0
 3:10/0/terrain = 3
@@ -652,6 +652,7 @@ func _process(delta: float) -> void:
 y_sort_enabled = true
 position = Vector2(71, 1)
 script = ExtResource("1_0ldk8")
+lissingMap = 1.0
 
 [node name="TileManager" type="TileMap" parent="."]
 z_index = -1
@@ -690,7 +691,7 @@ position = Vector2(51, 497)
 position = Vector2(601, 591)
 
 [node name="Hole" parent="." instance=ExtResource("8_2rkp2")]
-position = Vector2(546, 46)
+position = Vector2(505, 63)
 
 [node name="Flag" parent="Hole" instance=ExtResource("9_fjt1s")]
 position = Vector2(0, -2)

@@ -13,15 +13,16 @@ var extPosComp : Vector2 = Vector2.ZERO
 var shake_amount = 0.0
 var shake_decay = 1.0  # Velocidade com que o tremor diminui
 var original_offset := Vector2.ZERO
-var zoomTarget := Vector2(2.5,2.5)
+var zoomTarget := Vector2(3.5,3.5)
 var zoomLissing := 0.98
 
 var debugCamZoom = false
 var permitionDebugZoom = false
 
+var fixLissing = 0.3
+
 func _ready():
 	original_offset = offset  # Armazena a posição original da câmera
-	zoomTarget = Vector2(2.5,2.5)
 
 func _process(delta):
 	if extPosComp != Vector2.ZERO:
@@ -44,31 +45,19 @@ func _process(delta):
 		offset = original_offset
 	
 	if Input.is_action_just_pressed("press_c"):
-		debugCamZoom = !debugCamZoom
+		self.debugCamZoom = !debugCamZoom
 	
-	zoom = lerp(zoom,zoomTarget,zoomLissing)
+	self.zoom = lerp(self.zoom,self.zoomTarget,self.zoomLissing)
+
+func setup(_target, _posComp) -> void:
+	setTarget(_target, _posComp)
+
+func setFixLissing(_fixLissing):
+	fixLissing = _fixLissing
 
 func start_shake(intensity: float, decay: float = 1.0):
 	shake_amount = intensity
 	shake_decay = decay
-
-func setZoom(_zoomTarget : Vector2):
-	zoomTarget = _zoomTarget
-
-func setup(_target, _posComp) -> void:
-	setTarget(_target, _posComp)
-"""
-func followBall(delta : float ) -> void:
-	if ball.state == ball.State.MOVING && !ball.attack:
-		posTarget = player.position + ball.mouseDis * targetBallPor
-		lissing = 2.0
-		var maxDis = (player.position - ball.position).length()
-		var zoom_alvo = clamp(remap(maxDis, 100, 1000, 1.0, 0.5), 0.5, 2.0) * 3.0
-		camera.zoom = camera.zoom.lerp(Vector2(zoom_alvo, zoom_alvo), delta * 2.0)
-	else:
-		lissing += 2 * delta
-		lissing = clamp(lissing,0,10) 
-		camera.zoom = camera.zoom.lerp(Vector2(normalZoom,normalZoom), delta * 2)"""
 
 func setLimit(_limit : Vector2) -> void:
 	self.limit_left = 0
@@ -87,3 +76,6 @@ func setTarget(_target, _posComp) -> void:
 
 func setExtPosComp(_extPosComp) -> void:
 	extPosComp = _extPosComp
+
+func setZoom(_zoomTarget : Vector2):
+	zoomTarget = _zoomTarget

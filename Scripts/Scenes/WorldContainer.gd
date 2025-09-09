@@ -18,7 +18,7 @@ func load_room(path : String) -> void:
 	self.currentRoom = load(currentRoomPath).instantiate()
 	if self.currentRoom is BaseScene:
 		self.currentRoom.setup(self.player, self.camera)
-	self.currentRoom.playerSpawn()
+	self.currentRoom.setPlayerSpawn()
 	self.call_deferred('add_child', self.currentRoom)
 
 func change_room(path : String) -> void:

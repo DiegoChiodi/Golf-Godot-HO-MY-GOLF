@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Hole
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var areFather = area.get_parent()
-	if areFather.is_in_group("ball") and areFather.posZ <= 4 and area.is_in_group("colHb") and areFather.velocity.length() > 3: 
+	if areFather.is_in_group("ball") and abs(areFather.posZ) <= 40 and area.is_in_group("colHb"): 
 		game_manager.finishWorld()

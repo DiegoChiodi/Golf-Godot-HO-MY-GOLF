@@ -3,19 +3,23 @@ class_name BaseScene
 
 var player: Player
 var camera: Camera
+var roomSize : Marker2D
+var playerSpawn : Marker2D
 
 func setup(_player: Player, _camera: Camera) -> void:
 	player = _player
 	camera = _camera
 
 func _ready() -> void:
-	playerSpawn()
-	roomSize()
+	setPlayerSpawn()
+	setRoomSize()
 	
-func playerSpawn() -> void:
+func setPlayerSpawn() -> void:
 	if has_node('playerSpawn'):
-		player.global_position = $playerSpawn.global_position
+		playerSpawn = $playerSpawn
+		player.global_position = playerSpawn.global_position
 		
-func roomSize() -> void:
+func setRoomSize() -> void:
 	if has_node('roomSize'):
-		camera.setLimit($roomSize.global_position)
+		roomSize = $roomSize
+		camera.setLimit(roomSize.global_position)
