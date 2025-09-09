@@ -9,6 +9,8 @@ var spawnGuards: Array[GuardSpawn] = []
 var cutScene : bool = true
 @export var lissingMap : float
 @onready var cart : GolfCart = $CartBody
+var square : Label = Label.new()
+var stroke : int = 0
 
 #Functions ----------------
 func _ready():  
@@ -27,14 +29,16 @@ func _ready():
 	ball.setup(player)
 	camera.global_position = flag.global_position
 	camera.lissing = lissingMap
+	self.add_child(square)
 	
 #modulate = cor_rgb(255,255,0
 
 func _process(delta: float) -> void:
-	
 	for guard in guards:
 		guard.position = Vector2(100,-100)
 	
+	square.text = str(stroke)
+	square.global_position = flag.global_position + Vector2(-5, 8)
 	if cutScene:
 		setPlayerSpawn()
 		if (camera.global_position - player.global_position).length() < 100:
@@ -52,6 +56,7 @@ func _process(delta: float) -> void:
 		if !ball.firstImpulsePassed:
 			camera.start_shake(2,4)
 			ball.firstImpulsePassed = true
+			stroke += 1
 	else:
 		camera.setExtPosComp(Vector2.ZERO)
 		camera.lissing += 2 * delta
