@@ -1,435 +1,435 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3ywou1jviq7j"]
+[gd_scene format=3 uid="uid://d3ywou1jviq7j"]
 
 [ext_resource type="Script" uid="uid://c5h1ikf1ignyl" path="res://Scripts/Scenes/ScenePath/ScenePath.gd" id="1_a3dfb"]
 [ext_resource type="PackedScene" uid="uid://3qus4tlbkyv1" path="res://Scenes/BlockScene.tscn" id="2_unck7"]
 [ext_resource type="PackedScene" uid="uid://cd0p8dp5c4f8y" path="res://Scenes/BlocksConector.tscn" id="4_6p7dy"]
 [ext_resource type="PackedScene" uid="uid://xpnvxj32jme3" path="res://Scenes/MapHead.tscn" id="4_cp3x2"]
 
-[node name="ScenePath" type="Node2D"]
+[node name="ScenePath" type="Node2D" unique_id=1082580909]
 script = ExtResource("1_a3dfb")
 
-[node name="SceneBlock2" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock2" parent="." unique_id=66463685 instance=ExtResource("2_unck7")]
 position = Vector2(432, 115.5)
 
-[node name="SceneBlock3" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock3" parent="." unique_id=1132858822 instance=ExtResource("2_unck7")]
 position = Vector2(516, 118.5)
 
-[node name="SceneBlock4" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock4" parent="." unique_id=616354834 instance=ExtResource("2_unck7")]
 position = Vector2(400, 165.5)
 
-[node name="SceneBlock5" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock5" parent="." unique_id=1997055393 instance=ExtResource("2_unck7")]
 position = Vector2(456, 181.5)
 
-[node name="SceneBlock8" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock8" parent="." unique_id=2079496835 instance=ExtResource("2_unck7")]
 position = Vector2(544, 173.5)
 
-[node name="SceneBlock" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock" parent="." unique_id=1654249861 instance=ExtResource("2_unck7")]
 position = Vector2(472, 69.5)
 initial = true
 
-[node name="SceneBlock9" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock9" parent="." unique_id=1392102707 instance=ExtResource("2_unck7")]
 position = Vector2(446, 528)
 
-[node name="playerSpawn" type="Marker2D" parent="."]
+[node name="playerSpawn" type="Marker2D" parent="." unique_id=2034238755]
 position = Vector2(-3911, 2688)
 
-[node name="roomSize" type="Marker2D" parent="."]
+[node name="roomSize" type="Marker2D" parent="." unique_id=499098855]
 position = Vector2(2176, 1216)
 
-[node name="SceneBlock10" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock10" parent="." unique_id=832978535 instance=ExtResource("2_unck7")]
 position = Vector2(379, 305)
 
-[node name="SceneBlock11" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock11" parent="." unique_id=2143735430 instance=ExtResource("2_unck7")]
 position = Vector2(456, 304)
 
-[node name="SceneBlock12" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock12" parent="." unique_id=1102231968 instance=ExtResource("2_unck7")]
 position = Vector2(528, 304)
 
-[node name="SceneBlock13" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock13" parent="." unique_id=2065743117 instance=ExtResource("2_unck7")]
 position = Vector2(374, 416)
 
-[node name="SceneBlock14" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock14" parent="." unique_id=888480370 instance=ExtResource("2_unck7")]
 position = Vector2(446, 408)
 
-[node name="SceneBlock15" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock15" parent="." unique_id=912432484 instance=ExtResource("2_unck7")]
 position = Vector2(510, 424)
 
-[node name="SceneBlock16" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock16" parent="." unique_id=1547999512 instance=ExtResource("2_unck7")]
 position = Vector2(392, 462)
 
-[node name="SceneBlock17" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock17" parent="." unique_id=1579367815 instance=ExtResource("2_unck7")]
 position = Vector2(456, 465)
 
-[node name="SceneBlock18" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock18" parent="." unique_id=2071370432 instance=ExtResource("2_unck7")]
 position = Vector2(502, 480)
 
-[node name="SceneBlock24" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock24" parent="." unique_id=2118988407 instance=ExtResource("2_unck7")]
 position = Vector2(320, 479)
 
-[node name="SceneBlock25" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock25" parent="." unique_id=1864880009 instance=ExtResource("2_unck7")]
 position = Vector2(566, 488)
 
-[node name="SceneBlock28" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock28" parent="." unique_id=1817904305 instance=ExtResource("2_unck7")]
 position = Vector2(390, 552)
 
-[node name="SceneBlock29" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock29" parent="." unique_id=1935320656 instance=ExtResource("2_unck7")]
 position = Vector2(518, 544)
 
-[node name="SceneBlock30" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock30" parent="." unique_id=1088422773 instance=ExtResource("2_unck7")]
 position = Vector2(449, 600)
 finish = true
 
-[node name="SceneBlock31" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock31" parent="." unique_id=465078310 instance=ExtResource("2_unck7")]
 position = Vector2(389, 234)
 
-[node name="SceneBlock32" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock32" parent="." unique_id=1325807979 instance=ExtResource("2_unck7")]
 position = Vector2(465, 239)
 
-[node name="SceneBlock33" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock33" parent="." unique_id=1473954234 instance=ExtResource("2_unck7")]
 position = Vector2(530, 240)
 
-[node name="SceneBlock34" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock34" parent="." unique_id=2145941805 instance=ExtResource("2_unck7")]
 position = Vector2(389, 234)
 
-[node name="SceneBlock35" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock35" parent="." unique_id=1106125980 instance=ExtResource("2_unck7")]
 position = Vector2(328, 232)
 
-[node name="SceneBlock36" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock36" parent="." unique_id=652155545 instance=ExtResource("2_unck7")]
 position = Vector2(586, 232)
 
-[node name="SceneBlock37" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock37" parent="." unique_id=1398540158 instance=ExtResource("2_unck7")]
 position = Vector2(381, 362)
 
-[node name="SceneBlock38" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock38" parent="." unique_id=555873217 instance=ExtResource("2_unck7")]
 position = Vector2(464, 363)
 
-[node name="SceneBlock39" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock39" parent="." unique_id=503851922 instance=ExtResource("2_unck7")]
 position = Vector2(522, 368)
 
-[node name="SceneBlock40" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock40" parent="." unique_id=1352803830 instance=ExtResource("2_unck7")]
 position = Vector2(381, 362)
 
-[node name="SceneBlock41" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock41" parent="." unique_id=1498877012 instance=ExtResource("2_unck7")]
 position = Vector2(320, 360)
 
-[node name="SceneBlock42" parent="." instance=ExtResource("2_unck7")]
+[node name="SceneBlock42" parent="." unique_id=1043542431 instance=ExtResource("2_unck7")]
 position = Vector2(578, 360)
 
-[node name="Line2D" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D" parent="." unique_id=580313199 instance=ExtResource("4_6p7dy")]
 position = Vector2(517, 120.96)
 rotation = 0.0898924
 scale = Vector2(0.29545, 0.445651)
 
-[node name="Line2D2" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D2" parent="." unique_id=2109354771 instance=ExtResource("4_6p7dy")]
 position = Vector2(463, 74)
 rotation = 1.25967
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D3" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D3" parent="." unique_id=56052062 instance=ExtResource("4_6p7dy")]
 position = Vector2(484, 73)
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D4" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D4" parent="." unique_id=1205425812 instance=ExtResource("4_6p7dy")]
 position = Vector2(551, 174)
 rotation = 0.0898924
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D5" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D5" parent="." unique_id=1629840480 instance=ExtResource("4_6p7dy")]
 position = Vector2(430, 119)
 rotation = 1.25967
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D7" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D7" parent="." unique_id=2059189910 instance=ExtResource("4_6p7dy")]
 position = Vector2(466.926, 301.54)
 rotation = 0.382604
 scale = Vector2(0.598281, 0.358615)
 
-[node name="Line2D8" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D8" parent="." unique_id=108468164 instance=ExtResource("4_6p7dy")]
 position = Vector2(545, 177)
 rotation = 0.874438
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D9" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D9" parent="." unique_id=39847398 instance=ExtResource("4_6p7dy")]
 position = Vector2(442, 188)
 rotation = 1.42446
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D10" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D10" parent="." unique_id=797318860 instance=ExtResource("4_6p7dy")]
 position = Vector2(452.237, 305.369)
 rotation = 1.47834
 scale = Vector2(0.439756, 0.636094)
 
-[node name="Line2D11" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D11" parent="." unique_id=596253608 instance=ExtResource("4_6p7dy")]
 position = Vector2(376.327, 305.044)
 rotation = 1.57138
 scale = Vector2(0.462024, 0.477351)
 
-[node name="Line2D12" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D12" parent="." unique_id=119177092 instance=ExtResource("4_6p7dy")]
 position = Vector2(581.759, 235.805)
 rotation = 1.25967
 scale = Vector2(0.415928, 0.584073)
 
-[node name="Line2D13" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D13" parent="." unique_id=707147735 instance=ExtResource("4_6p7dy")]
 position = Vector2(522.883, 304.304)
 rotation = 1.25967
 scale = Vector2(0.311613, 0.551327)
 
-[node name="Line2D14" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D14" parent="." unique_id=912632248 instance=ExtResource("4_6p7dy")]
 position = Vector2(464.167, 236.256)
 rotation = 0.83373
 scale = Vector2(0.365059, 0.454372)
 
-[node name="Line2D15" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D15" parent="." unique_id=2100461748 instance=ExtResource("4_6p7dy")]
 position = Vector2(457.326, 240.505)
 rotation = 1.25967
 scale = Vector2(0.345246, 0.839019)
 
-[node name="Line2D16" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D16" parent="." unique_id=2103398418 instance=ExtResource("4_6p7dy")]
 position = Vector2(523.966, 242.514)
 rotation = 1.25967
 scale = Vector2(0.360748, 0.669006)
 
-[node name="Line2D17" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D17" parent="." unique_id=1274688224 instance=ExtResource("4_6p7dy")]
 position = Vector2(385.649, 363.586)
 rotation = 1.25967
 scale = Vector2(0.386114, 0.218339)
 
-[node name="Line2D18" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D18" parent="." unique_id=1236332504 instance=ExtResource("4_6p7dy")]
 position = Vector2(526.804, 304.494)
 rotation = 1.25967
 scale = Vector2(0.491292, 0.222143)
 
-[node name="Line2D19" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D19" parent="." unique_id=19705018 instance=ExtResource("4_6p7dy")]
 position = Vector2(469.183, 363.396)
 rotation = 1.25967
 scale = Vector2(0.335602, 0.313281)
 
-[node name="Line2D20" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D20" parent="." unique_id=196350706 instance=ExtResource("4_6p7dy")]
 position = Vector2(523, 371)
 rotation = 0.911944
 scale = Vector2(0.295775, 0.449612)
 points = PackedVector2Array(0, 0, 134.094, 107.681)
 
-[node name="Line2D21" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D21" parent="." unique_id=2048690149 instance=ExtResource("4_6p7dy")]
 position = Vector2(574.997, 364.305)
 rotation = 1.25967
 scale = Vector2(0.343547, 0.662917)
 
-[node name="Line2D22" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D22" parent="." unique_id=2044613240 instance=ExtResource("4_6p7dy")]
 position = Vector2(370.885, 417.585)
 rotation = 1.25967
 scale = Vector2(0.351548, 0.54457)
 
-[node name="Line2D23" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D23" parent="." unique_id=2052017281 instance=ExtResource("4_6p7dy")]
 position = Vector2(444.086, 406.959)
 rotation = 1.25967
 scale = Vector2(0.344546, 0.529555)
 
-[node name="Line2D24" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D24" parent="." unique_id=273183515 instance=ExtResource("4_6p7dy")]
 position = Vector2(500.182, 425.262)
 rotation = 1.25967
 scale = Vector2(0.20792, 0.464477)
 
-[node name="Line2D25" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D25" parent="." unique_id=1189062542 instance=ExtResource("4_6p7dy")]
 position = Vector2(490, 480)
 rotation = 1.25967
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D26" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D26" parent="." unique_id=1584074752 instance=ExtResource("4_6p7dy")]
 position = Vector2(554, 491)
 rotation = 1.25967
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D27" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D27" parent="." unique_id=753212654 instance=ExtResource("4_6p7dy")]
 position = Vector2(395.459, 466.603)
 rotation = 0.700846
 scale = Vector2(0.471678, 0.629753)
 
-[node name="Line2D28" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D28" parent="." unique_id=440305178 instance=ExtResource("4_6p7dy")]
 position = Vector2(504.283, 548.246)
 rotation = 1.25967
 scale = Vector2(0.297216, 0.525365)
 
-[node name="Line2D29" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D29" parent="." unique_id=861637279 instance=ExtResource("4_6p7dy")]
 position = Vector2(456, 471)
 rotation = 0.700846
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D30" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D30" parent="." unique_id=441852973 instance=ExtResource("4_6p7dy")]
 position = Vector2(513, 485)
 rotation = 0.700846
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D31" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D31" parent="." unique_id=1600966926 instance=ExtResource("4_6p7dy")]
 position = Vector2(445.665, 533.672)
 rotation = 0.700846
 scale = Vector2(0.352691, 0.454923)
 points = PackedVector2Array(0, 0, 12.4916, 11.1605, 122, 109)
 
-[node name="Line2D32" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D32" parent="." unique_id=1726443480 instance=ExtResource("4_6p7dy")]
 position = Vector2(455.494, 308.914)
 rotation = 0.700846
 scale = Vector2(0.346354, 0.392227)
 
-[node name="Line2D33" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D33" parent="." unique_id=1911068806 instance=ExtResource("4_6p7dy")]
 position = Vector2(383, 304)
 rotation = 0.700846
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D6" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D6" parent="." unique_id=102372012 instance=ExtResource("4_6p7dy")]
 position = Vector2(400, 172)
 rotation = 1.25967
 scale = Vector2(0.253906, 0.840534)
 
-[node name="Line2D34" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D34" parent="." unique_id=982666781 instance=ExtResource("4_6p7dy")]
 position = Vector2(476, 243)
 rotation = 3.40677
 scale = Vector2(0.295775, 0.449612)
 
-[node name="Line2D35" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D35" parent="." unique_id=1360538232 instance=ExtResource("4_6p7dy")]
 position = Vector2(526.612, 239.759)
 rotation = 3.40677
 scale = Vector2(0.571631, 0.338295)
 
-[node name="Line2D36" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D36" parent="." unique_id=1467346676 instance=ExtResource("4_6p7dy")]
 position = Vector2(430.136, 119.398)
 rotation = 0.183851
 scale = Vector2(0.31626, 0.491566)
 
-[node name="Line2D37" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D37" parent="." unique_id=719764067 instance=ExtResource("4_6p7dy")]
 position = Vector2(510.386, 120.782)
 rotation = 1.25967
 scale = Vector2(0.351426, 0.531991)
 
-[node name="Line2D38" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D38" parent="." unique_id=70484953 instance=ExtResource("4_6p7dy")]
 position = Vector2(533.913, 240.338)
 rotation = 0.83373
 scale = Vector2(0.394906, 0.418122)
 
-[node name="Line2D39" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D39" parent="." unique_id=8234972 instance=ExtResource("4_6p7dy")]
 position = Vector2(381.593, 304.108)
 rotation = 3.40677
 scale = Vector2(0.546094, 0.523177)
 
-[node name="Line2D40" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D40" parent="." unique_id=356145869 instance=ExtResource("4_6p7dy")]
 position = Vector2(381.593, 304.108)
 rotation = 3.40677
 scale = Vector2(0.546094, 0.523177)
 
-[node name="Line2D41" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D41" parent="." unique_id=968135196 instance=ExtResource("4_6p7dy")]
 position = Vector2(461.199, 364.21)
 rotation = 3.40677
 scale = Vector2(0.714228, 0.369864)
 
-[node name="Line2D42" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D42" parent="." unique_id=1841581173 instance=ExtResource("4_6p7dy")]
 position = Vector2(577.248, 358.359)
 rotation = 3.40677
 scale = Vector2(0.47299, 0.409003)
 
-[node name="Line2D43" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D43" parent="." unique_id=861142975 instance=ExtResource("4_6p7dy")]
 position = Vector2(461.199, 364.21)
 rotation = 3.40677
 scale = Vector2(0.714228, 0.369864)
 
-[node name="Line2D44" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D44" parent="." unique_id=1548044562 instance=ExtResource("4_6p7dy")]
 position = Vector2(375, 412)
 rotation = 3.40677
 scale = Vector2(0.547564, 0.316636)
 
-[node name="Line2D45" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D45" parent="." unique_id=708060182 instance=ExtResource("4_6p7dy")]
 position = Vector2(438.683, 409.407)
 rotation = 3.40677
 scale = Vector2(0.52255, 0.291136)
 
-[node name="Line2D46" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D46" parent="." unique_id=1011000934 instance=ExtResource("4_6p7dy")]
 position = Vector2(509.091, 421.023)
 rotation = 3.40677
 scale = Vector2(0.432131, 0.379997)
 
-[node name="Line2D47" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D47" parent="." unique_id=1579177058 instance=ExtResource("4_6p7dy")]
 position = Vector2(386.413, 234.461)
 rotation = 0.82461
 scale = Vector2(0.393003, 0.451044)
 
-[node name="Line2D48" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D48" parent="." unique_id=392628722 instance=ExtResource("4_6p7dy")]
 position = Vector2(529, 302)
 rotation = 3.40677
 scale = Vector2(0.588032, 0.419955)
 
-[node name="Line2D49" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D49" parent="." unique_id=2095642300 instance=ExtResource("4_6p7dy")]
 position = Vector2(503.422, 426.578)
 rotation = 1.25967
 scale = Vector2(0.43241, 0.196269)
 
-[node name="Line2D50" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D50" parent="." unique_id=338026620 instance=ExtResource("4_6p7dy")]
 position = Vector2(578.071, 494.295)
 rotation = 3.40677
 scale = Vector2(0.604641, 0.466639)
 
-[node name="Line2D51" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D51" parent="." unique_id=381678655 instance=ExtResource("4_6p7dy")]
 position = Vector2(402, 466)
 rotation = 3.40677
 scale = Vector2(0.351684, 0.38031)
 
-[node name="Line2D52" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D52" parent="." unique_id=2002129939 instance=ExtResource("4_6p7dy")]
 position = Vector2(501.032, 477.469)
 rotation = 3.40677
 scale = Vector2(0.580495, 0.450121)
 
-[node name="Line2D53" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D53" parent="." unique_id=344842665 instance=ExtResource("4_6p7dy")]
 position = Vector2(385.707, 548.768)
 rotation = 3.40677
 scale = Vector2(0.61057, 0.487201)
 
-[node name="Line2D54" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D54" parent="." unique_id=1369944118 instance=ExtResource("4_6p7dy")]
 position = Vector2(450.98, 524.732)
 rotation = 3.40677
 scale = Vector2(0.582732, 0.438448)
 
-[node name="Line2D55" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D55" parent="." unique_id=2000233972 instance=ExtResource("4_6p7dy")]
 position = Vector2(447, 603)
 rotation = 3.40677
 scale = Vector2(0.547564, 0.316636)
 
-[node name="Line2D56" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D56" parent="." unique_id=1893598900 instance=ExtResource("4_6p7dy")]
 position = Vector2(456.768, 466.988)
 rotation = 3.40677
 scale = Vector2(0.754056, 0.267705)
 
-[node name="Line2D57" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D57" parent="." unique_id=1587644501 instance=ExtResource("4_6p7dy")]
 position = Vector2(456.606, 466.796)
 rotation = 3.40677
 scale = Vector2(0.234508, 0.461409)
 
-[node name="Line2D58" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D58" parent="." unique_id=1690120341 instance=ExtResource("4_6p7dy")]
 position = Vector2(458.375, 469.019)
 rotation = 0.700846
 scale = Vector2(0.75103, 0.215721)
 
-[node name="Line2D59" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D59" parent="." unique_id=129209023 instance=ExtResource("4_6p7dy")]
 position = Vector2(512.501, 367.573)
 rotation = 1.25967
 scale = Vector2(0.187834, 0.633287)
 
-[node name="Line2D60" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D60" parent="." unique_id=1413564940 instance=ExtResource("4_6p7dy")]
 position = Vector2(450, 471)
 rotation = 0.975483
 scale = Vector2(0.266296, 0.82069)
 
-[node name="MapHead" parent="." instance=ExtResource("4_cp3x2")]
+[node name="MapHead" parent="." unique_id=20283526 instance=ExtResource("4_cp3x2")]
 position = Vector2(472, 72)
 
-[node name="Line2D61" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D61" parent="." unique_id=714157072 instance=ExtResource("4_6p7dy")]
 position = Vector2(401.14, 164.324)
 rotation = 1.25967
 scale = Vector2(0.523363, 0.305434)
 
-[node name="Line2D62" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D62" parent="." unique_id=122165183 instance=ExtResource("4_6p7dy")]
 position = Vector2(385.837, 237.209)
 rotation = -0.0993671
 scale = Vector2(0.555647, 0.679904)
 
-[node name="Line2D63" parent="." instance=ExtResource("4_6p7dy")]
+[node name="Line2D63" parent="." unique_id=1171716754 instance=ExtResource("4_6p7dy")]
 position = Vector2(463.514, 363.956)
 rotation = 1.25967
 scale = Vector2(0.215374, 0.87007)

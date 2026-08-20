@@ -9,6 +9,7 @@ var checkWait : float = 0.0
 const checkDelay : float = 0.02
 var check : bool = true
 
+
 func _process(delta: float) -> void:
 	if checkWait > checkDelay and check:
 		setPossibilitis()

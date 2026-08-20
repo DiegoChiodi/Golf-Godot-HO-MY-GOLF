@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
 	if colRect.get_global_rect().has_point(mouse_pos):
 		mouseColission = true
+		print("click")
 	else:
 		mouseColission = false
 

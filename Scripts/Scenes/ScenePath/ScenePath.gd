@@ -12,19 +12,21 @@ func _ready() -> void:
 	camera.setLimit($roomSize.position)
 
 func setBlocksFunction() -> void:
-	for block in blocks:
-		
-		var sort = randi() % 20
-		if sort <= 12:
-			block.function = 1
-		elif sort <= 15:
-			block.function = 2
-		elif sort <= 18:
-			block.function = 3
-		else:
-			block.function = 4
-		block.setFunction()
-
+	if blocks.is_empty():
+		for block in blocks:
+			
+			var sort = randi() % 20
+			if sort <= 12:
+				block.function = 1
+			elif sort <= 15:
+				block.function = 2
+			elif sort <= 18:
+				block.function = 3
+			else:
+				block.function = 4
+			block.setFunction()
+			blocks.append(block)
+			
 func getBlocks () -> Array[BlockScene]:
 	var sceneBlockChilds : Array[BlockScene] = []
 	for child in get_children():
